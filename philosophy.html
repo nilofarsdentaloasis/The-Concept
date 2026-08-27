@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Our Philosophy | The Concept</title>
+    <meta name="description" content="A commitment to timeless aesthetics, architectural rigor, and intentional design."/>
+    
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#2c1600",
+                        "on-secondary-container": "#79542d",
+                        "primary": "#181919",
+                        "on-primary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed": "#1b1c14",
+                        "secondary-container": "#fdcb9b",
+                        "on-tertiary-fixed-variant": "#46483d",
+                        "secondary-fixed-dim": "#eebd8e",
+                        "primary-fixed-dim": "#c8c6c6",
+                        "surface-container-high": "#e8e8e6",
+                        "surface-variant": "#e2e3e1",
+                        "surface": "#f9f9f7",
+                        "tertiary-fixed": "#e3e3d5",
+                        "surface-tint": "#5f5e5e",
+                        "secondary-fixed": "#ffdcbd",
+                        "primary-fixed": "#e4e2e1",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c7c7",
+                        "secondary": "#7c5730",
+                        "outline": "#747878",
+                        "surface-container-low": "#f4f4f2",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#959494",
+                        "on-primary-fixed-variant": "#474747",
+                        "inverse-primary": "#c8c6c6",
+                        "inverse-on-surface": "#f1f1ef",
+                        "inverse-surface": "#2f3130",
+                        "primary-container": "#2d2d2d",
+                        "tertiary-fixed-dim": "#c7c7ba",
+                        "on-tertiary-container": "#949589",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eeeeec",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#61401b",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f9f9f7",
+                        "tertiary-container": "#2c2e24",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9f7",
+                        "surface-dim": "#dadad8",
+                        "on-surface": "#1a1c1b",
+                        "on-background": "#1a1c1b",
+                        "tertiary": "#171911",
+                        "on-surface-variant": "#444748",
+                        "surface-container-highest": "#e2e3e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "container-max": "1440px",
+                        "gutter": "32px",
+                        "margin-mobile": "24px",
+                        "unit": "8px",
+                        "stack-md": "64px",
+                        "stack-xl": "120px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Playfair Display", "serif"],
+                        "body-lg": ["Montserrat", "sans-serif"],
+                        "headline-md": ["Playfair Display", "serif"],
+                        "headline-sm": ["Playfair Display", "serif"],
+                        "body-md": ["Montserrat", "sans-serif"],
+                        "label-caps": ["Montserrat", "sans-serif"],
+                        "display-lg": ["Playfair Display", "serif"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.8", "letterSpacing": "0.01em", "fontWeight": "300" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #custom-cursor {
+            pointer-events: none;
+            transition: transform 0.15s ease-out;
+        }
+        .cursor-hover #custom-cursor {
+            transform: translate(-50%, -50%) scale(1.8) !important;
+            background-color: rgba(124, 87, 48, 0.3);
+        }
+        /* 3D Transparent Glass Effect - Light Mode (Hero) */
+        .glass-3d {
+            background: rgba(255, 255, 255, 0.42);
+            backdrop-filter: blur(24px) saturate(200%);
+            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 
+                0 20px 40px -10px rgba(0, 0, 0, 0.12),
+                0 6px 16px -4px rgba(0, 0, 0, 0.06),
+                inset 0 2px 1px 0 rgba(255, 255, 255, 0.95),
+                inset 0 -2px 2px 0 rgba(0, 0, 0, 0.08),
+                inset 0 0 16px 0 rgba(255, 255, 255, 0.35);
+            transition: background 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        box-shadow 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* 3D Transparent Glass Effect - Deep Black Glass when Hero is Entirely Scrolled Up */
+        .header-dark .glass-3d {
+            background: rgba(12, 12, 12, 0.88) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            box-shadow: 
+                0 24px 48px -10px rgba(0, 0, 0, 0.55),
+                0 8px 20px -4px rgba(0, 0, 0, 0.4),
+                inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.35),
+                inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.75),
+                inset 0 0 16px 0 rgba(255, 255, 255, 0.05) !important;
+        }
+
+        /* Smooth logo transition between light and dark header */
+        .logo-light-img {
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 1;
+        }
+        .logo-dark-img {
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+        }
+        .header-dark .logo-light-img {
+            opacity: 0 !important;
+        }
+        .header-dark .logo-dark-img {
+            opacity: 1 !important;
+        }
+
+        /* Slow transition for Navigation Links to White (No Underline) */
+        .nav-link {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+        .header-dark .nav-link {
+            color: rgba(255, 255, 255, 0.65) !important;
+        }
+        .header-dark .nav-link:hover {
+            color: #ffffff !important;
+        }
+        .header-dark .nav-link.nav-active {
+            color: #ffffff !important;
+        }
+
+        /* Mobile Button & Menu Dark Transition */
+        #mobileMenuBtn {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        background 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .header-dark #mobileMenuBtn {
+            color: #ffffff !important;
+        }
+        .mobile-nav-link {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+        .header-dark .mobile-nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+        .header-dark .mobile-nav-link:hover {
+            color: #ffffff !important;
+        }
+        .header-dark .mobile-nav-link.mobile-nav-active {
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+    
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="fixed top-0 left-0 w-5 h-5 bg-primary/20 rounded-full z-[9999] hidden md:block -translate-x-1/2 -translate-y-1/2"></div>
+
+    <!-- Header Section -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4 md:pt-6 transition-all duration-1000">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop flex items-center justify-between relative">
+            <!-- Standalone Logo (Top Left Corner) -->
+            <a id="header-logo" href="index.html" class="pointer-events-auto relative flex items-center group cursor-pointer h-10 sm:h-11 md:h-12" title="The Concept Home">
+                <img src="assets/the_concept_logo_dark.png" alt="the Concept" class="logo-light-img h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <img src="assets/the_concept_logo_white.png" alt="the Concept" class="logo-dark-img absolute left-0 top-1/2 -translate-y-1/2 h-9 sm:h-10 md:h-11 w-auto object-contain pointer-events-none">
+            </a>
+
+            <!-- 3D Transparent Glass Rounded Pill Navigation (Bold Typography, No Underlines) -->
+            <nav id="header-nav" class="pointer-events-auto hidden md:flex items-center gap-8 glass-3d px-8 py-3 rounded-full md:absolute md:left-1/2 md:-translate-x-1/2 transition-transform duration-300 hover:scale-[1.02]">
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="index.html">Studio</a>
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="spaces.html">Spaces</a>
+                <a class="nav-link nav-active font-label-caps font-bold text-primary text-xs tracking-widest uppercase transition-colors" href="philosophy.html">Philosophy</a>
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="contact.html">Contact</a>
+            </nav>
+
+            <!-- Mobile Toggle (3D Glass, No Enquire Button) -->
+            <button id="mobileMenuBtn" class="md:hidden pointer-events-auto glass-3d p-2.5 rounded-full text-primary focus:outline-none" aria-label="Toggle navigation menu">
+                <span class="material-symbols-outlined text-2xl" id="menuIcon">menu</span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu (3D Glass, No Underlines) -->
+        <div id="mobileMenu" class="hidden md:hidden pointer-events-auto px-6 pt-3">
+            <div class="glass-3d rounded-2xl p-6 max-w-xs ml-auto shadow-2xl">
+                <nav class="flex flex-col gap-4 font-label-caps font-bold text-xs tracking-wider uppercase">
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="index.html">Studio</a>
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="spaces.html">Spaces</a>
+                    <a class="mobile-nav-link mobile-nav-active text-primary font-bold py-1.5 transition-colors" href="philosophy.html">Philosophy</a>
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 md:pt-32">
+        <!-- Hero Section -->
+        <section id="page-hero" class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-16 md:mb-24">
+            <div class="max-w-4xl reveal active">
+                <span class="font-label-caps text-secondary text-xs tracking-widest uppercase mb-4 block">Our Manifesto</span>
+                <h1 class="font-display-lg text-4xl sm:text-5xl md:text-6xl text-on-surface mb-8 leading-[1.15]">
+                    A commitment to <span class="serif-italic">timeless</span> aesthetics and <span class="serif-italic">intentional</span> design.
+                </h1>
+                <p class="font-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                    We believe that design is not just about how something looks, but how it feels and functions in the physical world. Our approach is rooted in the philosophy of minimalism—not as a lack of character, but as a deliberate focus on the essential.
+                </p>
+            </div>
+        </section>
+
+        <!-- Featured Visual Section -->
+        <section class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-24 md:mb-36">
+            <div class="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-2xl bg-surface-container shadow-2xl reveal group">
+                <div class="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" 
+                     style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxmYfgciiREoYRTyqUwyJJKfRh6R5nnGsX91l2C80oeRqPQbsa3n_LhH2odziRPDb52h5AQ9PcmoTC_pUwdYjOloIyHEP3ujS0Y2zixrFANqUeJyYJFcz1pR0h7Hxtkt91O2m6cLPDxEbtZTrKb9AdJ2m71sZtzxoWIu5U-Q_T2XJGJlNUfxsoJt6MTU1ozmyOJT4odaF-192Dd5SFepIhQqvNnodKI4BI78LLZyoeAZGTNAcr8TR-')">
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy Deep Dive -->
+        <section class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-24 md:mb-40">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-5 flex flex-col gap-12">
+                    <div class="reveal">
+                        <span class="font-label-caps text-secondary text-xs tracking-widest uppercase block mb-4">Our Core</span>
+                        <h2 class="font-headline-md text-on-surface text-2xl md:text-3xl mb-6">Designing for Depth</h2>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            At The Concept, we bypass the noise of temporary trends. We focus on the intersection of human behavior and physical form. Every curve, texture, and void is a considered choice meant to enhance the quality of life within a space or through an object.
+                        </p>
+                    </div>
+                    
+                    <div class="reveal">
+                        <span class="font-label-caps text-secondary text-xs tracking-widest uppercase block mb-4">The Process</span>
+                        <h2 class="font-headline-md text-on-surface text-2xl md:text-3xl mb-6">Restraint as a Tool</h2>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            Our methodology is subtractive. We start with the core function and carefully introduce layers of materiality and light. By exercising restraint, we allow the inherent beauty of natural materials—raw stone, open-grain wood, and tactile textiles—to communicate their own story.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                    <div class="relative w-full aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl reveal group">
+                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+                             alt="Visionary Architect" 
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6lZaXXoEdHmSTbPVh8tDGMPdn27_InZyCiO23kUotmpkZRUasRnpw9c-i9y4nXgVLLR1RomM50cAv9rhC_vDU0Pj27muCGt0CD69tup2oGLWPe232--3uzj2U-kN_eV7-E9KSMhVjhMx3-i8cSoU2jCQP8QN88feTLlCirXq7RCAi5R1P-rK5nCbDQCGZzMvvBYY5x_fKlekM6zJc1KAbyfRfrU1dmleQ0L0_VqiP8slBT1OLif0O"/>
+                        <div class="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-auto text-surface bg-primary/80 backdrop-blur-md p-6 rounded-xl max-w-sm border border-white/10 shadow-xl">
+                            <p class="text-body-md italic mb-2">"True luxury is the space to breathe and the silence to think."</p>
+                            <p class="font-label-caps text-[10px] tracking-widest uppercase opacity-80">— Elara Vance, Founding Partner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Three Pillars -->
+        <section class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-24 md:mb-40">
+            <div class="text-center mb-16 reveal">
+                <span class="font-label-caps text-secondary text-xs tracking-widest uppercase">Foundations</span>
+                <h2 class="font-headline-md text-primary mt-3 text-3xl md:text-4xl">The Three Pillars</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-outline-variant/30">
+                <div class="reveal p-8 rounded-2xl bg-surface-container-low hover:bg-surface transition-all duration-300">
+                    <div class="w-14 h-14 bg-secondary-fixed rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-2xl text-on-secondary-container">balance</span>
+                    </div>
+                    <h3 class="font-headline-sm text-on-surface text-xl mb-4">Equilibrium</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">
+                        The perfect balance between the digital and the physical, ensuring that technology serves humanity rather than overwhelming it.
+                    </p>
+                </div>
+
+                <div class="reveal p-8 rounded-2xl bg-surface-container-low hover:bg-surface transition-all duration-300">
+                    <div class="w-14 h-14 bg-secondary-fixed rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-2xl text-on-secondary-container">auto_awesome</span>
+                    </div>
+                    <h3 class="font-headline-sm text-on-surface text-xl mb-4">Authenticity</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">
+                        Using honest materials that age gracefully over time, gaining character and narrative through years of use and interaction.
+                    </p>
+                </div>
+
+                <div class="reveal p-8 rounded-2xl bg-surface-container-low hover:bg-surface transition-all duration-300">
+                    <div class="w-14 h-14 bg-secondary-fixed rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-2xl text-on-secondary-container">architecture</span>
+                    </div>
+                    <h3 class="font-headline-sm text-on-surface text-xl mb-4">Precision</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">
+                        Meticulous attention to the smallest details. We believe the macro is only as strong as the micro-decisions that support it.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studio Atmosphere -->
+        <section class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-24 md:mb-36">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal order-2 lg:order-1">
+                    <div class="flex gap-4 sm:gap-6">
+                        <div class="w-1/2 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg mt-10">
+                            <img class="w-full h-full object-cover" alt="Tactile design materials" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChpIt3fJqPdQqZqxlzaGNRBmlDklWFrlXCile_UScnkPNHuSt2FlPEwwSrm3Y_X60WcMoR8WEnA2Iq9PnCqJjy9now_YOhEOkid_eHR3G2v1h9GvSk3iSIQ4zk--e5dEgSiPMSQlIS1eAmxpTLGd-QxY7RazoGW_eTRcLhgY_JrnerWbwMEkw7rSbzOIigSvjMWnAD7df_gKkUYOW4igFfe8asDTSNU6NgT-vaARLFFxiXGgrPFWf2"/>
+                        </div>
+                        <div class="w-1/2 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
+                            <img class="w-full h-full object-cover" alt="Design library and studio space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsbHm_gB8DGAtUwXFtlhHjp9ep87MBr_FhaNoKQHk5MVCgFOsl-dUtgrgegrMF3vY1ht_Fwi_p5D1OHl535886y8UnWG2pwqeEWALBjPTNWIGMZJLOTrhQAvmBOBio8H5idXL2drOZL11IqAmZ5Li2C3zPzgN46oRO-TN4phBH4CJ9sAvkw2ay9aAj1M284SKDTblTs1Vz2ExQ0QyiSts77x4Sa4jPEWJLz43Jmbqg0CjO4PPl7TlZ"/>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal order-1 lg:order-2">
+                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase block mb-4">The Atelier</span>
+                    <h2 class="font-display-lg text-3xl sm:text-4xl md:text-5xl text-on-surface mb-8">A Sanctuary for Creation</h2>
+                    <p class="text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        Our studio in the heart of the city is designed to be a quiet enclave. We've created a space that mirrors our philosophy—open, light-filled, and free from distractions. It is here that we host clients for immersive design workshops and prototype our latest furniture and spatial concepts.
+                    </p>
+                    <a class="inline-flex items-center gap-3 text-primary font-bold hover:text-secondary transition-colors group" href="spaces.html">
+                        <span>Explore our Signature Spaces</span>
+                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">east</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer CTA -->
+        <section class="py-stack-xl bg-primary text-on-primary">
+            <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop text-center">
+                <div class="reveal max-w-3xl mx-auto">
+                    <h2 class="font-display-lg text-3xl sm:text-4xl md:text-6xl mb-8 leading-tight">Start a Conversation</h2>
+                    <p class="font-body-lg text-on-primary/70 mb-12 max-w-xl mx-auto leading-relaxed">
+                        Interested in collaborating on a residential, commercial, or spatial project? We'd love to hear your story.
+                    </p>
+                    <a href="contact.html" class="inline-block bg-surface text-primary px-12 py-6 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-secondary-fixed transition-all font-semibold shadow-lg">
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-outline-variant/30 py-20">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="inline-block mb-6 group">
+                        <img src="assets/the_concept_logo_dark.png" alt="the Concept" class="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                    </a>
+                    <p class="font-body-md text-on-surface-variant max-w-sm leading-relaxed">
+                        An international interior architecture studio based in London and Paris, specializing in high-end minimalist design.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="font-label-caps text-primary text-xs uppercase tracking-widest mb-6">Contact</h5>
+                    <ul class="space-y-3 font-body-md text-on-surface-variant text-sm">
+                        <li><a href="mailto:hello@theconcept.studio" class="hover:text-primary transition-colors">hello@theconcept.studio</a></li>
+                        <li><a href="tel:+442079460000" class="hover:text-primary transition-colors">+44 (0) 20 7946 0000</a></li>
+                        <li>24 Savile Row, London</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-label-caps text-primary text-xs uppercase tracking-widest mb-6">Explore</h5>
+                    <ul class="space-y-3 font-body-md text-on-surface-variant text-sm">
+                        <li><a class="hover:text-primary transition-colors" href="index.html">Studio Home</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="spaces.html">Signature Spaces</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="philosophy.html">Our Philosophy</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="contact.html">Begin Your Journey</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-outline-variant/30 text-xs">
+                <p class="font-label-caps text-[10px] text-on-surface-variant mb-4 md:mb-0">© 2024 The Concept Studio. All rights reserved.</p>
+                <div class="flex gap-8 font-label-caps text-[10px] text-on-surface-variant">
+                    <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Scroll reveal
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            const windowHeight = window.innerHeight;
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add("active");
+                }
+            });
+        }
+        // Header theme transition logic (turns black with white text ONLY when hero is entirely scrolled up)
+        const mainHeader = document.getElementById('main-header');
+
+        function updateHeaderTheme() {
+            if (!mainHeader) return;
+            const hero = document.getElementById('page-hero');
+            if (hero) {
+                const rect = hero.getBoundingClientRect();
+                if (rect.bottom <= 80) {
+                    mainHeader.classList.add('header-dark');
+                } else {
+                    mainHeader.classList.remove('header-dark');
+                }
+            } else if (window.scrollY > 200) {
+                mainHeader.classList.add('header-dark');
+            } else {
+                mainHeader.classList.remove('header-dark');
+            }
+        }
+        window.addEventListener("scroll", () => {
+            reveal();
+            updateHeaderTheme();
+        }, { passive: true });
+        window.addEventListener("DOMContentLoaded", () => {
+            reveal();
+            updateHeaderTheme();
+        });
+        window.addEventListener("resize", updateHeaderTheme);
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.textContent = 'menu';
+            } else {
+                menuIcon.textContent = 'close';
+            }
+        }
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Custom cursor
+        const cursor = document.getElementById('custom-cursor');
+        if (cursor) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            });
+            const interactiveElements = document.querySelectorAll('a, button, input, select, textarea');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        }
+    </script>
+</body>
+</html>

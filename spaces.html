@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Signature Spaces | The Concept</title>
+    <meta name="description" content="A curated portfolio of minimalist interior spaces and architectural works by The Concept Studio."/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "surface": "#f9f9f7",
+              "surface-dim": "#dadad8",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "surface-container": "#eeeeec",
+              "on-surface": "#1a1c1b",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e8e8e6",
+              "on-secondary-fixed-variant": "#61401b",
+              "error-container": "#ffdad6",
+              "on-secondary-fixed": "#2c1600",
+              "outline-variant": "#c4c7c7",
+              "on-primary-container": "#959494",
+              "primary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#ffdcbd",
+              "on-primary-fixed": "#1b1c1c",
+              "on-surface-variant": "#444748",
+              "on-secondary-container": "#79542d",
+              "tertiary-fixed": "#e3e3d5",
+              "surface-tint": "#5f5e5e",
+              "on-tertiary-fixed": "#1b1c14",
+              "on-error-container": "#93000a",
+              "on-primary-fixed-variant": "#474747",
+              "secondary-fixed-dim": "#eebd8e",
+              "background": "#f9f9f7",
+              "inverse-surface": "#2f3130",
+              "primary": "#181919",
+              "surface-bright": "#f9f9f7",
+              "tertiary-container": "#2c2e24",
+              "tertiary-fixed-dim": "#c7c7ba",
+              "inverse-on-surface": "#f1f1ef",
+              "inverse-primary": "#c8c6c6",
+              "outline": "#747878",
+              "primary-fixed": "#e4e2e1",
+              "tertiary": "#171911",
+              "surface-container-highest": "#e2e3e1",
+              "on-tertiary-container": "#949589",
+              "on-secondary": "#ffffff",
+              "secondary-container": "#fdcb9b",
+              "on-tertiary-fixed-variant": "#46483d",
+              "on-background": "#1a1c1b",
+              "surface-variant": "#e2e3e1",
+              "secondary": "#7c5730",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f4f4f2",
+              "primary-container": "#2d2d2d"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "margin-desktop": "80px",
+              "unit": "8px",
+              "stack-xl": "120px",
+              "container-max": "1440px",
+              "margin-mobile": "24px",
+              "stack-md": "64px",
+              "gutter": "32px"
+            },
+            "fontFamily": {
+              "body-lg": ["Montserrat", "sans-serif"],
+              "display-lg-mobile": ["Playfair Display", "serif"],
+              "display-lg": ["Playfair Display", "serif"],
+              "body-md": ["Montserrat", "sans-serif"],
+              "headline-md": ["Playfair Display", "serif"],
+              "headline-sm": ["Playfair Display", "serif"],
+              "label-caps": ["Montserrat", "sans-serif"]
+            },
+            "fontSize": {
+              "body-lg": ["18px", { "lineHeight": "1.8", "letterSpacing": "0.01em", "fontWeight": "300" }],
+              "display-lg-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+              "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+              "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+              "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }],
+              "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "400" }],
+              "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600" }]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #custom-cursor {
+            pointer-events: none;
+            transition: transform 0.15s ease-out;
+        }
+        .cursor-hover #custom-cursor {
+            transform: translate(-50%, -50%) scale(1.8) !important;
+            background-color: rgba(124, 87, 48, 0.3);
+        }
+        /* 3D Transparent Glass Effect - Light Mode (Hero) */
+        .glass-3d {
+            background: rgba(255, 255, 255, 0.42);
+            backdrop-filter: blur(24px) saturate(200%);
+            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 
+                0 20px 40px -10px rgba(0, 0, 0, 0.12),
+                0 6px 16px -4px rgba(0, 0, 0, 0.06),
+                inset 0 2px 1px 0 rgba(255, 255, 255, 0.95),
+                inset 0 -2px 2px 0 rgba(0, 0, 0, 0.08),
+                inset 0 0 16px 0 rgba(255, 255, 255, 0.35);
+            transition: background 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        box-shadow 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* 3D Transparent Glass Effect - Deep Black Glass when Hero is Entirely Scrolled Up */
+        .header-dark .glass-3d {
+            background: rgba(12, 12, 12, 0.88) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            box-shadow: 
+                0 24px 48px -10px rgba(0, 0, 0, 0.55),
+                0 8px 20px -4px rgba(0, 0, 0, 0.4),
+                inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.35),
+                inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.75),
+                inset 0 0 16px 0 rgba(255, 255, 255, 0.05) !important;
+        }
+
+        /* Smooth logo transition between light and dark header */
+        .logo-light-img {
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 1;
+        }
+        .logo-dark-img {
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+        }
+        .header-dark .logo-light-img {
+            opacity: 0 !important;
+        }
+        .header-dark .logo-dark-img {
+            opacity: 1 !important;
+        }
+
+        /* Slow transition for Navigation Links to White (No Underline) */
+        .nav-link {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+        .header-dark .nav-link {
+            color: rgba(255, 255, 255, 0.65) !important;
+        }
+        .header-dark .nav-link:hover {
+            color: #ffffff !important;
+        }
+        .header-dark .nav-link.nav-active {
+            color: #ffffff !important;
+        }
+
+        /* Mobile Button & Menu Dark Transition */
+        #mobileMenuBtn {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        background 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .header-dark #mobileMenuBtn {
+            color: #ffffff !important;
+        }
+        .mobile-nav-link {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+        .header-dark .mobile-nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+        .header-dark .mobile-nav-link:hover {
+            color: #ffffff !important;
+        }
+        .header-dark .mobile-nav-link.mobile-nav-active {
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed min-h-screen flex flex-col">
+    
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="fixed top-0 left-0 w-5 h-5 bg-primary/20 rounded-full z-[9999] hidden md:block -translate-x-1/2 -translate-y-1/2"></div>
+
+    <!-- Header Section -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4 md:pt-6 transition-all duration-1000">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop flex items-center justify-between relative">
+            <!-- Standalone Logo (Top Left Corner) -->
+            <a id="header-logo" href="index.html" class="pointer-events-auto relative flex items-center group cursor-pointer h-10 sm:h-11 md:h-12" title="The Concept Home">
+                <img src="assets/the_concept_logo_dark.png" alt="the Concept" class="logo-light-img h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <img src="assets/the_concept_logo_white.png" alt="the Concept" class="logo-dark-img absolute left-0 top-1/2 -translate-y-1/2 h-9 sm:h-10 md:h-11 w-auto object-contain pointer-events-none">
+            </a>
+
+            <!-- 3D Transparent Glass Rounded Pill Navigation (Bold Typography, No Underlines) -->
+            <nav id="header-nav" class="pointer-events-auto hidden md:flex items-center gap-8 glass-3d px-8 py-3 rounded-full md:absolute md:left-1/2 md:-translate-x-1/2 transition-transform duration-300 hover:scale-[1.02]">
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="index.html">Studio</a>
+                <a class="nav-link nav-active font-label-caps font-bold text-primary text-xs tracking-widest uppercase transition-colors" href="spaces.html">Spaces</a>
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="philosophy.html">Philosophy</a>
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="contact.html">Contact</a>
+            </nav>
+
+            <!-- Mobile Toggle (3D Glass, No Enquire Button) -->
+            <button id="mobileMenuBtn" class="md:hidden pointer-events-auto glass-3d p-2.5 rounded-full text-primary focus:outline-none" aria-label="Toggle navigation menu">
+                <span class="material-symbols-outlined text-2xl" id="menuIcon">menu</span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu (3D Glass, No Underlines) -->
+        <div id="mobileMenu" class="hidden md:hidden pointer-events-auto px-6 pt-3">
+            <div class="glass-3d rounded-2xl p-6 max-w-xs ml-auto shadow-2xl">
+                <nav class="flex flex-col gap-4 font-label-caps font-bold text-xs tracking-wider uppercase">
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="index.html">Studio</a>
+                    <a class="mobile-nav-link mobile-nav-active text-primary font-bold py-1.5 transition-colors" href="spaces.html">Spaces</a>
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="philosophy.html">Philosophy</a>
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-24 md:pt-32 pb-stack-xl">
+        <!-- Hero Title Section -->
+        <header id="page-hero" class="px-6 md:px-margin-desktop max-w-container-max mx-auto mb-16 md:mb-24">
+            <div class="grid grid-cols-12 gap-gutter">
+                <div class="col-span-12 md:col-span-8 lg:col-span-7 reveal active">
+                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase mb-4 block">Portfolio</span>
+                    <h1 class="font-display-lg text-4xl sm:text-5xl md:text-7xl text-primary mb-8 leading-[1.1]">
+                        Signature<br><span class="italic font-light">Spaces.</span>
+                    </h1>
+                    <p class="font-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+                        A curated selection of our most definitive works. Environments crafted with intentionality, where light, proportion, and materiality converge to redefine the luxury of space.
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Portfolio Grid (Asymmetric) -->
+        <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="grid grid-cols-12 gap-y-16 md:gap-gutter items-start">
+                
+                <!-- Project 1: Large Feature (Spans 8) -->
+                <article class="col-span-12 md:col-span-8 group cursor-pointer reveal">
+                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[4/3] shadow-lg">
+                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
+                             alt="The Glass Pavilion" 
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGAJxGBJZ17jFZuwMRqvYwu8ccsxpJwIlr9QDMtoc8Y0kJ9RTZ9N3FR-QvewZJK3p0YOIKw125KnnRizaI4NBiKWun3fKmC-s1VyP_eEGY7YXu1Pg2qIATpF4xSPxn4uEutctDlxCAh-V_siMNTVbHCyaSjd1x4IvrRnsUDq_Po76cSEh9b3OnfwaBxy6zhRchzTlq3PXphr8wchH0cXwrruZOZv8pcCwIC4FhJzbzlxhJ3OVxLW8N">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">01 — Residence • Malibu, CA</span>
+                        <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">The Glass Pavilion</h2>
+                    </div>
+                </article>
+
+                <!-- Project 2: Portrait (Spans 4) -->
+                <article class="col-span-12 md:col-span-4 group cursor-pointer reveal md:mt-24">
+                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[3/4] shadow-lg">
+                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
+                             alt="Materiality Study" 
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfzgiiuDxhg_2bvIRkDGJZCcH-c0g-pEuUyyH3CPSKr74jwffdUPjvJ0dCWULEqOq3kKTY-SRpKmHmT-QlCiZS79icclgbLC0WHtKLFauLupMd8FZucOhtXI7__rAAaT4MaY6MllmTlH3EGqKNWzfQnn0eiy99411NReaqm9Cd37DkbO5URW_J9JpkbZv7Soj-bJsDh6q7nZ5FhOh9VHq7gyBKexZ__La-pGJB7akwUK85x5MpfX9B">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">02 — Detail • Copenhagen</span>
+                        <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">Materiality Study</h2>
+                    </div>
+                </article>
+
+                <!-- Project 3: Wide/Panoramic (Spans 12) -->
+                <article class="col-span-12 group cursor-pointer reveal mt-8 md:mt-16">
+                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-video md:aspect-[21/9] shadow-xl">
+                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
+                             alt="Monolith House" 
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEqPZqWJjxI_st3i2ll2I0rwSX0_glLGOc_CQi0yQs59B05Klcw75HhpL72PKwAbodtxwPHmSuTJkItthVd5LL6VVj5uuLjgGxI1eaKF8k1_PNhjLbphljiMdeIwiUEA5smZ2qyHka4HvHNqCl-lp67xXzRey4x1D9y1beBYDXR_fs3muZ97XhExsvmHxBoWzHCNzgh76CXZJW-y264lQ5vvFZ-LThGfdSsEny2QXZrh9ya5Vma9UD">
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="flex flex-col gap-2">
+                            <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">03 — Dining • Kyoto</span>
+                            <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">Monolith House</h2>
+                        </div>
+                        <a href="contact.html" class="font-label-caps text-xs text-primary border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors uppercase tracking-widest font-semibold">
+                            Inquire About This Space &rarr;
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 4: Square (Spans 5, offset 1) -->
+                <article class="col-span-12 md:col-start-2 md:col-span-5 group cursor-pointer reveal mt-8 md:mt-16">
+                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-square shadow-lg">
+                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
+                             alt="The Bronze Suite" 
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgsKWPksiTFu9oP5Pw6FTp3SkjTerGXuu5Gcty-LPsED_8vMIMEx8p_BnjhhIjo3btxNtutXZFGLY9ZoRuqxS7P6O_-aX9MN6dla76_DSJ4e1AFmRvNqSRjqQ_oigJpEZLuSuBUoZBBbT1OZKCR7LzpQ7yJ58EgWMb7s4a7CXO3uH8uSyB8abK0cS7-zPvftHJH6qm3o407jFjfov2YbG4J-HahzkH9Af4T8Gq--8edNvZixG4mMQx">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">04 — Sanctuary • Paris</span>
+                        <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">The Bronze Suite</h2>
+                    </div>
+                </article>
+
+                <!-- Project 5: Portrait (Spans 4, offset 1) -->
+                <article class="col-span-12 md:col-start-8 md:col-span-4 group cursor-pointer reveal mt-8 md:mt-32">
+                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[3/4] shadow-lg">
+                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
+                             alt="Void and Ascent" 
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPyezeGIp3pl9ZJzJfJMlxzP2SFZGJlaPbEB-qJgaVb6Y1gVtGuN7H-BP7I9DT0UWvQIhnOabRdiaxQTxAad-NlQ3hFfRjatduK5gPb-Iyqwp_Zfs_nHeXlUOJQdcl7p0Kiu0ValMOk3JWI2L6POUJ2YtS6MS6JVb28hdauTgRKF3nOBuNvnxmWBFhkYLTGz6lCwtfBUbbYqtl3di6SyJLqZTX6-tZTR41YwgbKJHhYgQZwhCVt7KM">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">05 — Circulation • Zurich</span>
+                        <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">Void &amp; Ascent</h2>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="mt-24 md:mt-40 px-6 md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="bg-primary text-on-primary rounded-3xl p-12 md:p-20 text-center reveal">
+                <h2 class="font-display-lg text-3xl sm:text-4xl md:text-5xl mb-6">Commission a Signature Space</h2>
+                <p class="font-body-lg text-on-primary/70 mb-10 max-w-xl mx-auto leading-relaxed">
+                    Every project begins with a bespoke design consultation. Connect with our principal architects to start shaping your next environment.
+                </p>
+                <a href="contact.html" class="inline-block bg-surface text-primary px-12 py-5 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-secondary-fixed transition-all font-semibold">
+                    Begin Your Journey
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-stack-md border-t border-outline-variant/30 bg-surface">
+        <div class="flex flex-col md:flex-row justify-between items-start px-6 md:px-margin-desktop max-w-container-max mx-auto gap-gutter">
+            <div class="flex flex-col gap-4 max-w-xs">
+                <a href="index.html" class="inline-block group">
+                    <img src="assets/the_concept_logo_dark.png" alt="the Concept" class="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                </a>
+                <p class="font-body-md text-sm text-on-surface-variant leading-relaxed">© 2024 The Concept. Where your vision becomes reality.</p>
+            </div>
+            
+            <ul class="flex flex-col sm:flex-row gap-6 md:gap-8 font-label-caps text-xs text-on-surface-variant">
+                <li><a class="hover:text-primary transition-colors" href="index.html">Studio Home</a></li>
+                <li><a class="hover:text-primary transition-colors" href="philosophy.html">Philosophy</a></li>
+                <li><a class="hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+                <li><a class="hover:text-primary transition-colors" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Scroll reveal
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            const windowHeight = window.innerHeight;
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add("active");
+                }
+            });
+        }
+        // Header theme transition logic (turns black with white text ONLY when hero is entirely scrolled up)
+        const mainHeader = document.getElementById('main-header');
+
+        function updateHeaderTheme() {
+            if (!mainHeader) return;
+            const hero = document.getElementById('page-hero');
+            if (hero) {
+                const rect = hero.getBoundingClientRect();
+                if (rect.bottom <= 80) {
+                    mainHeader.classList.add('header-dark');
+                } else {
+                    mainHeader.classList.remove('header-dark');
+                }
+            } else if (window.scrollY > 200) {
+                mainHeader.classList.add('header-dark');
+            } else {
+                mainHeader.classList.remove('header-dark');
+            }
+        }
+        window.addEventListener("scroll", () => {
+            reveal();
+            updateHeaderTheme();
+        }, { passive: true });
+        window.addEventListener("DOMContentLoaded", () => {
+            reveal();
+            updateHeaderTheme();
+        });
+        window.addEventListener("resize", updateHeaderTheme);
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.textContent = 'menu';
+            } else {
+                menuIcon.textContent = 'close';
+            }
+        }
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Custom cursor
+        const cursor = document.getElementById('custom-cursor');
+        if (cursor) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            });
+            const interactiveElements = document.querySelectorAll('a, button, input, select, textarea');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        }
+    </script>
+</body>
+</html>

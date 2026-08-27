@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>The Concept | Minimalist Interior Design Studio</title>
+    <meta name="description" content="The Concept is an international interior architecture studio based in London and Paris, specializing in high-end minimalist design."/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS with custom theme -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "secondary-fixed": "#ffdcbd",
+              "on-secondary-container": "#79542d",
+              "on-error": "#ffffff",
+              "secondary-container": "#fdcb9b",
+              "outline-variant": "#c4c7c7",
+              "on-tertiary-fixed": "#1b1c14",
+              "on-primary": "#ffffff",
+              "primary-fixed-dim": "#c8c6c6",
+              "surface-bright": "#f9f9f7",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed": "#2c1600",
+              "surface-dim": "#dadad8",
+              "outline": "#747878",
+              "surface-tint": "#5f5e5e",
+              "inverse-on-surface": "#f1f1ef",
+              "on-primary-fixed": "#1b1c1c",
+              "on-secondary": "#ffffff",
+              "primary-container": "#2d2d2d",
+              "tertiary-fixed-dim": "#c7c7ba",
+              "surface": "#f9f9f7",
+              "tertiary-fixed": "#e3e3d5",
+              "error-container": "#ffdad6",
+              "on-surface-variant": "#444748",
+              "secondary": "#7c5730",
+              "tertiary-container": "#2c2e24",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "primary-fixed": "#e4e2e1",
+              "secondary-fixed-dim": "#eebd8e",
+              "on-tertiary-fixed-variant": "#46483d",
+              "on-primary-fixed-variant": "#474747",
+              "surface-container-highest": "#e2e3e1",
+              "on-tertiary-container": "#949589",
+              "tertiary": "#171911",
+              "on-background": "#1a1c1b",
+              "surface-container-lowest": "#ffffff",
+              "background": "#f9f9f7",
+              "surface-container": "#eeeeec",
+              "on-primary-container": "#959494",
+              "on-surface": "#1a1c1b",
+              "on-secondary-fixed-variant": "#61401b",
+              "surface-variant": "#e2e3e1",
+              "surface-container-high": "#e8e8e6",
+              "surface-container-low": "#f4f4f2",
+              "inverse-primary": "#c8c6c6",
+              "primary": "#181919",
+              "inverse-surface": "#2f3130"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "margin-desktop": "80px",
+              "margin-mobile": "24px",
+              "stack-xl": "120px",
+              "container-max": "1440px",
+              "stack-md": "64px",
+              "unit": "8px",
+              "gutter": "32px"
+            },
+            "fontFamily": {
+              "display-lg-mobile": ["Playfair Display", "serif"],
+              "label-caps": ["Montserrat", "sans-serif"],
+              "headline-md": ["Playfair Display", "serif"],
+              "body-lg": ["Montserrat", "sans-serif"],
+              "display-lg": ["Playfair Display", "serif"],
+              "headline-sm": ["Playfair Display", "serif"],
+              "body-md": ["Montserrat", "sans-serif"]
+            },
+            "fontSize": {
+              "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+              "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}],
+              "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+              "body-lg": ["18px", {"lineHeight": "1.8", "letterSpacing": "0.01em", "fontWeight": "300"}],
+              "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+              "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+              "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Custom scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Custom Smooth Scroll & Font Enhancements */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #1a1c1c;
+            overflow-x: hidden;
+        }
+        .font-serif-luxury {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-headline-lg {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .font-headline-md {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        .font-headline-sm {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        .font-label-caps {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .font-body-lg {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.75;
+            font-weight: 300;
+        }
+        .font-body-md {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* 3D Transparent Glass Effect - Light Mode (Hero) */
+        .glass-3d {
+            background: rgba(255, 255, 255, 0.42);
+            backdrop-filter: blur(24px) saturate(200%);
+            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 
+                0 20px 40px -10px rgba(0, 0, 0, 0.12),
+                0 6px 16px -4px rgba(0, 0, 0, 0.06),
+                inset 0 2px 1px 0 rgba(255, 255, 255, 0.95),
+                inset 0 -2px 2px 0 rgba(0, 0, 0, 0.08),
+                inset 0 0 16px 0 rgba(255, 255, 255, 0.35);
+            transition: background 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        box-shadow 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* 3D Transparent Glass Effect - Deep Black Glass when Hero is Entirely Scrolled Up */
+        .header-dark .glass-3d {
+            background: rgba(12, 12, 12, 0.88) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            box-shadow: 
+                0 24px 48px -10px rgba(0, 0, 0, 0.55),
+                0 8px 20px -4px rgba(0, 0, 0, 0.4),
+                inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.35),
+                inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.75),
+                inset 0 0 16px 0 rgba(255, 255, 255, 0.05) !important;
+        }
+
+        /* Smooth logo transition between light and dark header */
+        .logo-light-img {
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 1;
+        }
+        .logo-dark-img {
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+        }
+        .header-dark .logo-light-img {
+            opacity: 0 !important;
+        }
+        .header-dark .logo-dark-img {
+            opacity: 1 !important;
+        }
+
+        /* Slow transition for Navigation Links to White (No Underline) */
+        .nav-link {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+        .header-dark .nav-link {
+            color: rgba(255, 255, 255, 0.65) !important;
+        }
+        .header-dark .nav-link:hover {
+            color: #ffffff !important;
+        }
+        .header-dark .nav-link.nav-active {
+            color: #ffffff !important;
+        }
+
+        /* Mobile Button & Menu Dark Transition */
+        #mobileMenuBtn {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        background 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .header-dark #mobileMenuBtn {
+            color: #ffffff !important;
+        }
+        .mobile-nav-link {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+        .header-dark .mobile-nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+        .header-dark .mobile-nav-link:hover {
+            color: #ffffff !important;
+        }
+        .header-dark .mobile-nav-link.mobile-nav-active {
+            color: #ffffff !important;
+        }
+
+        /* Smooth reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4c7c7;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7c5730;
+        }
+
+        /* Sticky hero canvas positioning */
+        .hero-sticky-wrap {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+    
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="fixed top-0 left-0 w-5 h-5 bg-primary/20 rounded-full z-[9999] hidden md:block -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-transform duration-75"></div>
+
+    <!-- Header Section -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4 md:pt-6 transition-all duration-1000">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop flex items-center justify-between relative">
+            <!-- Standalone Logo (Top Left Corner) -->
+            <a id="header-logo" href="index.html" class="pointer-events-auto relative flex items-center group cursor-pointer h-10 sm:h-11 md:h-12" title="The Concept Home">
+                <img src="assets/the_concept_logo_dark.png" alt="the Concept" class="logo-light-img h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <img src="assets/the_concept_logo_white.png" alt="the Concept" class="logo-dark-img absolute left-0 top-1/2 -translate-y-1/2 h-9 sm:h-10 md:h-11 w-auto object-contain pointer-events-none">
+            </a>
+
+            <!-- 3D Transparent Glass Rounded Pill Navigation (Bold Typography, No Underlines) -->
+            <nav id="header-nav" class="pointer-events-auto hidden md:flex items-center gap-8 glass-3d px-8 py-3 rounded-full md:absolute md:left-1/2 md:-translate-x-1/2 transition-transform duration-300 hover:scale-[1.02]">
+                <a class="nav-link nav-active font-label-caps font-bold text-primary text-xs tracking-widest uppercase transition-colors" href="index.html">Studio</a>
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="spaces.html">Spaces</a>
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="philosophy.html">Philosophy</a>
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="contact.html">Contact</a>
+            </nav>
+
+            <!-- Mobile Toggle (3D Glass, No Enquire Button) -->
+            <button id="mobileMenuBtn" class="md:hidden pointer-events-auto glass-3d p-2.5 rounded-full text-primary focus:outline-none" aria-label="Toggle navigation menu">
+                <span class="material-symbols-outlined text-2xl" id="menuIcon">menu</span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu (3D Glass, No Underlines) -->
+        <div id="mobileMenu" class="hidden md:hidden pointer-events-auto px-6 pt-3">
+            <div class="glass-3d rounded-2xl p-6 max-w-xs ml-auto shadow-2xl">
+                <nav class="flex flex-col gap-4 font-label-caps font-bold text-xs tracking-wider uppercase">
+                    <a class="mobile-nav-link mobile-nav-active text-primary font-bold py-1.5 transition-colors" href="index.html">Studio</a>
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="spaces.html">Spaces</a>
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="philosophy.html">Philosophy</a>
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Scroll Animation Section -->
+        <section id="hero-scroll-container" class="relative w-full" style="height: 380vh;">
+            <!-- Sticky Viewport Window -->
+            <div class="sticky top-0 left-0 w-full h-screen overflow-hidden flex items-center">
+                <!-- 60FPS High Performance Frame Sequence Canvas (Pure & Unfiltered) -->
+                <canvas id="hero-canvas" class="absolute inset-0 w-full h-full block" width="1920" height="1080"></canvas>
+
+                <!-- Hero Content (100% Solid & Crisp - No Fadeness) -->
+                <div id="hero-content" class="relative z-10 max-w-container-max mx-auto px-6 md:px-margin-desktop w-full pt-16">
+                    <div class="max-w-2xl">
+                        <span class="font-label-caps text-secondary mb-6 block text-xs tracking-[0.25em]">Interior Architecture Studio</span>
+                        <h1 class="font-display-lg text-primary mb-8 leading-[1.1] text-4xl sm:text-5xl md:text-[76px]">
+                            Where your vision becomes <span class="italic font-light">reality</span>
+                        </h1>
+                        <p class="font-body-lg text-on-surface-variant mb-10 max-w-lg leading-relaxed">
+                            We curate environments that balance architectural rigor with human warmth, creating timeless sanctuaries for modern living.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="spaces.html" class="inline-flex items-center justify-center bg-primary text-on-primary px-10 py-5 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-secondary transition-all shadow-lg hover:shadow-xl">
+                                View Portfolio
+                            </a>
+                            <a href="philosophy.html" class="inline-flex items-center justify-center border border-primary text-primary px-10 py-5 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all">
+                                Our Story
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bottom scroll indicator -->
+                <a href="#philosophy" id="hero-scroll-indicator" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group z-20">
+                    <span class="font-label-caps text-[10px] text-on-surface-variant group-hover:text-primary transition-colors tracking-widest uppercase">Scroll to Experience</span>
+                    <div class="w-[1px] h-12 bg-outline-variant/60 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1/2 bg-primary animate-bounce"></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy" class="py-stack-xl bg-surface relative z-20">
+            <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-gutter items-center">
+                    <div class="reveal">
+                        <span class="font-label-caps text-secondary mb-4 block text-xs tracking-widest uppercase">Philosophy</span>
+                        <h2 class="font-headline-md text-primary mb-8 text-3xl md:text-4xl">The Aesthetic of Minimalism</h2>
+                        <p class="font-body-lg text-on-surface-variant mb-6 leading-relaxed">
+                            We believe in the power of refined simplicity. Our studio focuses on curating spaces that breathe, using natural textures, ivory palettes, and architectural precision to create sanctuaries of calm.
+                        </p>
+                        <p class="font-body-md text-on-surface-variant mb-10 leading-relaxed">
+                            Minimalism isn't just an aesthetic choice; it's a philosophy of intentionality. By removing the superfluous, we reveal the essence of space and material, allowing the beauty of light and form to speak for itself.
+                        </p>
+                        <div class="grid grid-cols-2 gap-8 pt-6 border-t border-outline-variant/30">
+                            <div>
+                                <h4 class="font-display-lg text-secondary text-4xl mb-2">12+</h4>
+                                <p class="font-label-caps text-on-surface-variant text-xs">Years Experience</p>
+                            </div>
+                            <div>
+                                <h4 class="font-display-lg text-secondary text-4xl mb-2">150+</h4>
+                                <p class="font-label-caps text-on-surface-variant text-xs">Spaces Designed</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative reveal h-[460px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl group">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" 
+                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAL5KJtN79Tpx6EsfTaK8jg2s6ywaGtRN8S2tiKv7vdnvaER7SuDucDHC6BdD_gsPsr_MlGRDGrm79rOuUcX-1eJ0Lt-cu2xeFH_rxMwHGl1NaOkZCvvAb62F1HYjddh7vKMxtV4OrbnVdD1zPo2VCy2WxRwn0yukoz3raf6fSp7K2B-HqK87iysVSFe6b1DTuYyxGxdqicGXaMZmIxdNFT6Sskq_8Co50IRFeD09-0IDI3_6rrlPMf')">
+                        </div>
+                        <div class="absolute bottom-8 right-8 bg-surface-container-lowest/95 backdrop-blur-md p-6 sm:p-8 max-w-xs rounded-xl shadow-xl border border-outline-variant/20">
+                            <p class="italic font-headline-sm text-primary mb-3 text-lg sm:text-xl">"Simplicity is the ultimate sophistication."</p>
+                            <p class="font-label-caps text-on-surface-variant text-[10px] tracking-widest uppercase">Leonardo da Vinci</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section id="services" class="py-stack-xl bg-surface-container-low relative z-20">
+            <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+                <div class="text-center mb-16 md:mb-20 reveal">
+                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase">Expertise</span>
+                    <h2 class="font-headline-md text-primary mt-4 text-3xl md:text-4xl">Bespoke Design Services</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="group reveal p-8 md:p-10 bg-surface hover:bg-primary transition-all duration-500 rounded-2xl shadow-sm hover:shadow-2xl">
+                        <div class="size-14 rounded-full bg-secondary-fixed flex items-center justify-center mb-8 group-hover:bg-on-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-2xl text-on-secondary-container group-hover:text-on-primary transition-colors">home_work</span>
+                        </div>
+                        <h3 class="font-headline-sm text-primary text-xl mb-4 group-hover:text-on-primary transition-colors">Residential Design</h3>
+                        <p class="font-body-md text-on-surface-variant group-hover:text-on-primary/80 transition-colors leading-relaxed">
+                            Complete interior transformations for private residences, focusing on flow, light, and materiality.
+                        </p>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="group reveal p-8 md:p-10 bg-surface hover:bg-primary transition-all duration-500 rounded-2xl shadow-sm hover:shadow-2xl">
+                        <div class="size-14 rounded-full bg-secondary-fixed flex items-center justify-center mb-8 group-hover:bg-on-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-2xl text-on-secondary-container group-hover:text-on-primary transition-colors">business_center</span>
+                        </div>
+                        <h3 class="font-headline-sm text-primary text-xl mb-4 group-hover:text-on-primary transition-colors">Commercial Spaces</h3>
+                        <p class="font-body-md text-on-surface-variant group-hover:text-on-primary/80 transition-colors leading-relaxed">
+                            Curating retail and office environments that reflect brand identity through minimalist excellence.
+                        </p>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="group reveal p-8 md:p-10 bg-surface hover:bg-primary transition-all duration-500 rounded-2xl shadow-sm hover:shadow-2xl">
+                        <div class="size-14 rounded-full bg-secondary-fixed flex items-center justify-center mb-8 group-hover:bg-on-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-2xl text-on-secondary-container group-hover:text-on-primary transition-colors">palette</span>
+                        </div>
+                        <h3 class="font-headline-sm text-primary text-xl mb-4 group-hover:text-on-primary transition-colors">Art Curation</h3>
+                        <p class="font-body-md text-on-surface-variant group-hover:text-on-primary/80 transition-colors leading-relaxed">
+                            Integrating fine art and sculptural pieces into architectural contexts for a cohesive aesthetic.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects (Horizontal Gallery Style) -->
+        <section class="py-stack-xl bg-surface overflow-hidden relative z-20">
+            <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-12 flex justify-between items-end">
+                <div class="reveal">
+                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase">The Archive</span>
+                    <h2 class="font-headline-md text-primary mt-4 text-3xl md:text-4xl">Selected Works</h2>
+                </div>
+                <a class="font-label-caps text-primary border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-all text-xs tracking-widest uppercase font-semibold" href="spaces.html">
+                    All Projects &rarr;
+                </a>
+            </div>
+            
+            <div class="flex gap-8 px-6 md:px-margin-desktop overflow-x-auto no-scrollbar pb-12 reveal">
+                <!-- Project 1 -->
+                <a href="spaces.html" class="min-w-[280px] sm:min-w-[360px] md:min-w-[480px] group cursor-pointer block">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
+                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQbZUK7agopCL6kOaS_eWA9gPzfXjJe0lFgrGNE1UZbCYaNJqA9-5CrzLXcSKpPcFbUCYvizGg8lBNcklxnaAIWMsLsqsY7AKV0uY45hyFmH6d3H0J3g2QLUaWPzSGRxU-RHi072NpSyR-vQQdge4jD7keh89cVMxQ7RpdF6s0-EY5ijWGKU8pdC_Kg7zEfVrIYSt2LUreXX3ihCW9ig_E5LpFj9hfs7ldUa0q855iN23YHaLBrMEX')">
+                        </div>
+                    </div>
+                    <p class="font-label-caps text-on-surface-variant text-[10px] tracking-widest uppercase mb-2">Malibu, CA</p>
+                    <h4 class="font-headline-sm text-primary text-xl group-hover:text-secondary transition-colors">The Shoreline House</h4>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="spaces.html" class="min-w-[280px] sm:min-w-[360px] md:min-w-[480px] group cursor-pointer block">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
+                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkEMNbnjX0dHEn4AUVyvxwgYptigsCtaWmtoaxpechM5_ZTOVv5f5tq1VINJxYwXnyTjHSD7Soy2GCvPKZIsUCf8YB4ajcHanjZ7tTQ-V_e6_kDEEkewfjcLOK0iHz-s0YqJ4hNbCyq2BAZ-4m-kr-MfVQK3k_-Kgw3OYsxXtyj7L4i4tqCMKvliqPxdeo9fDezsv5FPiO0PPkdTvSZZzDvP1pyrphtipxX-UkcqoS3c7LklVZmW5C')">
+                        </div>
+                    </div>
+                    <p class="font-label-caps text-on-surface-variant text-[10px] tracking-widest uppercase mb-2">Berlin, DE</p>
+                    <h4 class="font-headline-sm text-primary text-xl group-hover:text-secondary transition-colors">Kohlberg Residence</h4>
+                </a>
+
+                <!-- Project 3 -->
+                <a href="spaces.html" class="min-w-[280px] sm:min-w-[360px] md:min-w-[480px] group cursor-pointer block">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
+                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPAKvS1FZ5UFlI8CDqWXNKJzlErZpDu_Y-rRCMEKHk2QoN3Z7TYR12bcUe_2YzqwLHeiwaV4UOXWPtAcdITiB9ahBZZrIeNRegAhXEKf61Um3q2c0ICdjaYUr2u6voGbOtxt9m1xYiACEROh3IMskH5Wt-9vC3DYxLLgN2OKWdNOj6eS9u1Xlg96FeXvxYYIdrZmSyga-l5RAG431oP5O4-tTDBUQXCBm83O2UjwxBZRTwLtwdXz6U')">
+                        </div>
+                    </div>
+                    <p class="font-label-caps text-on-surface-variant text-[10px] tracking-widest uppercase mb-2">Tokyo, JP</p>
+                    <h4 class="font-headline-sm text-primary text-xl group-hover:text-secondary transition-colors">Omotesando Loft</h4>
+                </a>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-stack-xl bg-primary text-on-primary relative z-20">
+            <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop text-center">
+                <div class="reveal max-w-3xl mx-auto">
+                    <h2 class="font-display-lg text-3xl sm:text-4xl md:text-6xl mb-8 leading-tight">Ready to define your space?</h2>
+                    <p class="font-body-lg text-on-primary/70 mb-12 max-w-xl mx-auto leading-relaxed">
+                        Let's collaborate to bring your aesthetic vision to life with architectural precision and timeless design.
+                    </p>
+                    <a href="contact.html" class="inline-block bg-surface text-primary px-12 py-6 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-secondary-fixed transition-all font-semibold shadow-lg">
+                        Start a Conversation
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-outline-variant/30 py-20 relative z-20">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="inline-block mb-6 group">
+                        <img src="assets/the_concept_logo_dark.png" alt="the Concept" class="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                    </a>
+                    <p class="font-body-md text-on-surface-variant max-w-sm leading-relaxed">
+                        An international interior architecture studio based in London and Paris, specializing in high-end minimalist design.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="font-label-caps text-primary text-xs uppercase tracking-widest mb-6">Contact</h5>
+                    <ul class="space-y-3 font-body-md text-on-surface-variant text-sm">
+                        <li><a href="mailto:hello@theconcept.studio" class="hover:text-primary transition-colors">hello@theconcept.studio</a></li>
+                        <li><a href="tel:+442079460000" class="hover:text-primary transition-colors">+44 (0) 20 7946 0000</a></li>
+                        <li>24 Savile Row, London</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-label-caps text-primary text-xs uppercase tracking-widest mb-6">Explore</h5>
+                    <ul class="space-y-3 font-body-md text-on-surface-variant text-sm">
+                        <li><a class="hover:text-primary transition-colors" href="spaces.html">Signature Spaces</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="philosophy.html">Our Philosophy</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="contact.html">Begin Your Journey</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-outline-variant/30 text-xs">
+                <p class="font-label-caps text-[10px] text-on-surface-variant mb-4 md:mb-0">© 2024 The Concept Studio. All rights reserved.</p>
+                <div class="flex gap-8 font-label-caps text-[10px] text-on-surface-variant">
+                    <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Reveal elements on scroll
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal:not(#hero-content .reveal)");
+            const windowHeight = window.innerHeight;
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add("active");
+                }
+            });
+        }
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("DOMContentLoaded", reveal);
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.textContent = 'menu';
+            } else {
+                menuIcon.textContent = 'close';
+            }
+        }
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Custom cursor tracking & scaling
+        const cursor = document.getElementById('custom-cursor');
+        if (cursor) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            });
+
+            // Interactive element hover states
+            const interactiveElements = document.querySelectorAll('a, button, input, select, textarea');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        }
+
+        // ==========================================
+        // Cinematic Scroll Frame Animation Controller
+        // ==========================================
+        const FRAME_COUNT = 367;
+        const framesCache = new Array(FRAME_COUNT + 1);
+        const loadedFlags = new Uint8Array(FRAME_COUNT + 1);
+        
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas ? canvas.getContext('2d', { alpha: false }) : null;
+        const scrollContainer = document.getElementById('hero-scroll-container');
+
+        let targetFrame = 1;
+        let currentRenderedFrame = 1;
+        let isAnimating = false;
+
+        function getFrameSrc(index) {
+            const padded = String(index).padStart(4, '0');
+            return `frames_30fps/frame_${padded}.jpg`;
+        }
+
+        // Draw image onto canvas with cover fit & retina scaling
+        function drawFrame(img) {
+            if (!ctx || !canvas || !img || !img.naturalWidth) return;
+            const cw = canvas.width;
+            const ch = canvas.height;
+            const iw = img.naturalWidth;
+            const ih = img.naturalHeight;
+
+            const scale = Math.max(cw / iw, ch / ih);
+            const sw = iw * scale;
+            const sh = ih * scale;
+            const sx = (cw - sw) / 2;
+            const sy = (ch - sh) / 2;
+
+            ctx.drawImage(img, 0, 0, iw, ih, sx, sy, sw, sh);
+        }
+
+        // Render a given frame index, with fallback to closest loaded frame
+        function renderFrame(frameIndex) {
+            frameIndex = Math.max(1, Math.min(FRAME_COUNT, Math.round(frameIndex)));
+            let img = framesCache[frameIndex];
+            
+            if (!img || !loadedFlags[frameIndex]) {
+                // Find nearest loaded frame
+                for (let offset = 1; offset < FRAME_COUNT; offset++) {
+                    const prev = frameIndex - offset;
+                    const next = frameIndex + offset;
+                    if (prev >= 1 && loadedFlags[prev] && framesCache[prev]) {
+                        img = framesCache[prev];
+                        break;
+                    }
+                    if (next <= FRAME_COUNT && loadedFlags[next] && framesCache[next]) {
+                        img = framesCache[next];
+                        break;
+                    }
+                }
+            }
+
+            if (img && img.complete) {
+                drawFrame(img);
+            }
+        }
+
+        // Adjust canvas resolution for DPI & screen dimensions
+        function updateCanvasDimensions() {
+            if (!canvas) return;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            renderFrame(currentRenderedFrame);
+        }
+
+        // Preloading strategy: Frame 1 -> Keyframes (every 4) -> All remaining
+        function initFrameLoading() {
+            // 1. First frame immediate load
+            const firstImage = new Image();
+            firstImage.src = getFrameSrc(1);
+            firstImage.onload = () => {
+                framesCache[1] = firstImage;
+                loadedFlags[1] = 1;
+                updateCanvasDimensions();
+                renderFrame(1);
+            };
+
+            // 2. Load keyframes for fast responsive scrubbing
+            const stride = 4;
+            for (let i = 1; i <= FRAME_COUNT; i += stride) {
+                if (i === 1) continue;
+                loadFrame(i);
+            }
+
+            // 3. Load all remaining frames progressively
+            setTimeout(() => {
+                for (let i = 2; i <= FRAME_COUNT; i++) {
+                    if (!loadedFlags[i]) {
+                        loadFrame(i);
+                    }
+                }
+            }, 60);
+        }
+
+        function loadFrame(i) {
+            const img = new Image();
+            img.src = getFrameSrc(i);
+            img.onload = () => {
+                framesCache[i] = img;
+                loadedFlags[i] = 1;
+                // If this is near currently active frame, render it
+                if (Math.abs(Math.round(currentRenderedFrame) - i) <= 1) {
+                    renderFrame(currentRenderedFrame);
+                }
+            };
+        }
+
+        // Header theme transition logic (turns black with white text ONLY when hero is entirely scrolled up)
+        const mainHeader = document.getElementById('main-header');
+
+        function updateHeaderTheme() {
+            if (!scrollContainer || !mainHeader) return;
+            const rect = scrollContainer.getBoundingClientRect();
+            
+            // Turn black glass with white text ONLY when the hero section is entirely scrolled up out of view
+            if (rect.bottom <= 80) {
+                mainHeader.classList.add('header-dark');
+            } else {
+                mainHeader.classList.remove('header-dark');
+            }
+        }
+
+        // Scroll listener calculating exact frame (No fadeness/opacity drops)
+        function onScrollProgress() {
+            if (!scrollContainer) return;
+            const rect = scrollContainer.getBoundingClientRect();
+            const totalScroll = scrollContainer.offsetHeight - window.innerHeight;
+            const currentScroll = -rect.top;
+            
+            const progress = Math.max(0, Math.min(1, currentScroll / totalScroll));
+            targetFrame = 1 + progress * (FRAME_COUNT - 1);
+
+            updateHeaderTheme();
+
+            if (!isAnimating) {
+                isAnimating = true;
+                requestAnimationFrame(animationLoop);
+            }
+        }
+
+        function animationLoop() {
+            const delta = targetFrame - currentRenderedFrame;
+            if (Math.abs(delta) > 0.02) {
+                currentRenderedFrame += delta * 0.25;
+                renderFrame(currentRenderedFrame);
+                requestAnimationFrame(animationLoop);
+            } else {
+                currentRenderedFrame = targetFrame;
+                renderFrame(currentRenderedFrame);
+                isAnimating = false;
+            }
+        }
+
+        window.addEventListener('scroll', onScrollProgress, { passive: true });
+        window.addEventListener('resize', () => {
+            updateCanvasDimensions();
+            updateHeaderTheme();
+        });
+        window.addEventListener('DOMContentLoaded', () => {
+            initFrameLoading();
+            updateCanvasDimensions();
+            onScrollProgress();
+            updateHeaderTheme();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Begin Your Journey | The Concept</title>
+    <meta name="description" content="Connect with The Concept Studio. Commission an architectural interior project or start a design conversation."/>
+    
+    <!-- Google Fonts & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f9f9f7",
+                        "surface-dim": "#dadad8",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eeeeec",
+                        "on-surface": "#1a1c1b",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e8e8e6",
+                        "on-secondary-fixed-variant": "#61401b",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#2c1600",
+                        "outline-variant": "#c4c7c7",
+                        "on-primary-container": "#959494",
+                        "primary-fixed-dim": "#c8c6c6",
+                        "secondary-fixed": "#ffdcbd",
+                        "on-primary-fixed": "#1b1c1c",
+                        "on-surface-variant": "#444748",
+                        "on-secondary-container": "#79542d",
+                        "tertiary-fixed": "#e3e3d5",
+                        "surface-tint": "#5f5e5e",
+                        "on-tertiary-fixed": "#1b1c14",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#474747",
+                        "secondary-fixed-dim": "#eebd8e",
+                        "background": "#f9f9f7",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2f3130",
+                        "primary": "#181919",
+                        "surface-bright": "#f9f9f7",
+                        "tertiary-container": "#2c2e24",
+                        "tertiary-fixed-dim": "#c7c7ba",
+                        "inverse-on-surface": "#f1f1ef",
+                        "inverse-primary": "#c8c6c6",
+                        "outline": "#747878",
+                        "primary-fixed": "#e4e2e1",
+                        "tertiary": "#171911",
+                        "surface-container-highest": "#e2e3e1",
+                        "on-tertiary-container": "#949589",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#fdcb9b",
+                        "on-tertiary-fixed-variant": "#46483d",
+                        "on-background": "#1a1c1b",
+                        "surface-variant": "#e2e3e1",
+                        "secondary": "#7c5730",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f4f4f2",
+                        "primary-container": "#2d2d2d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "unit": "8px",
+                        "stack-xl": "120px",
+                        "container-max": "1440px",
+                        "margin-mobile": "24px",
+                        "stack-md": "64px",
+                        "gutter": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Montserrat", "sans-serif"],
+                        "display-lg-mobile": ["Playfair Display", "serif"],
+                        "display-lg": ["Playfair Display", "serif"],
+                        "body-md": ["Montserrat", "sans-serif"],
+                        "headline-md": ["Playfair Display", "serif"],
+                        "headline-sm": ["Playfair Display", "serif"],
+                        "label-caps": ["Montserrat", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.8", "letterSpacing": "0.01em", "fontWeight": "300" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .input-field {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid #181919;
+            color: #1a1c1b;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            padding: 14px 0;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            border-bottom: 2px solid #7c5730;
+            padding-left: 4px;
+        }
+        .input-label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #444748;
+            margin-bottom: 6px;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #custom-cursor {
+            pointer-events: none;
+            transition: transform 0.15s ease-out;
+        }
+        .cursor-hover #custom-cursor {
+            transform: translate(-50%, -50%) scale(1.8) !important;
+            background-color: rgba(124, 87, 48, 0.3);
+        }
+        /* 3D Transparent Glass Effect - Light Mode (Hero) */
+        .glass-3d {
+            background: rgba(255, 255, 255, 0.42);
+            backdrop-filter: blur(24px) saturate(200%);
+            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 
+                0 20px 40px -10px rgba(0, 0, 0, 0.12),
+                0 6px 16px -4px rgba(0, 0, 0, 0.06),
+                inset 0 2px 1px 0 rgba(255, 255, 255, 0.95),
+                inset 0 -2px 2px 0 rgba(0, 0, 0, 0.08),
+                inset 0 0 16px 0 rgba(255, 255, 255, 0.35);
+            transition: background 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        box-shadow 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* 3D Transparent Glass Effect - Deep Black Glass when Hero is Entirely Scrolled Up */
+        .header-dark .glass-3d {
+            background: rgba(12, 12, 12, 0.88) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            box-shadow: 
+                0 24px 48px -10px rgba(0, 0, 0, 0.55),
+                0 8px 20px -4px rgba(0, 0, 0, 0.4),
+                inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.35),
+                inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.75),
+                inset 0 0 16px 0 rgba(255, 255, 255, 0.05) !important;
+        }
+
+        /* Smooth logo transition between light and dark header */
+        .logo-light-img {
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 1;
+        }
+        .logo-dark-img {
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+        }
+        .header-dark .logo-light-img {
+            opacity: 0 !important;
+        }
+        .header-dark .logo-dark-img {
+            opacity: 1 !important;
+        }
+
+        /* Slow transition for Navigation Links to White (No Underline) */
+        .nav-link {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+        .header-dark .nav-link {
+            color: rgba(255, 255, 255, 0.65) !important;
+        }
+        .header-dark .nav-link:hover {
+            color: #ffffff !important;
+        }
+        .header-dark .nav-link.nav-active {
+            color: #ffffff !important;
+        }
+
+        /* Mobile Button & Menu Dark Transition */
+        #mobileMenuBtn {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        background 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .header-dark #mobileMenuBtn {
+            color: #ffffff !important;
+        }
+        .mobile-nav-link {
+            transition: color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+        .header-dark .mobile-nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+        .header-dark .mobile-nav-link:hover {
+            color: #ffffff !important;
+        }
+        .header-dark .mobile-nav-link.mobile-nav-active {
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed min-h-screen flex flex-col">
+    
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="fixed top-0 left-0 w-5 h-5 bg-primary/20 rounded-full z-[9999] hidden md:block -translate-x-1/2 -translate-y-1/2"></div>
+
+    <!-- Header Section -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4 md:pt-6 transition-all duration-1000">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop flex items-center justify-between relative">
+            <!-- Standalone Logo (Top Left Corner) -->
+            <a id="header-logo" href="index.html" class="pointer-events-auto relative flex items-center group cursor-pointer h-10 sm:h-11 md:h-12" title="The Concept Home">
+                <img src="assets/the_concept_logo_dark.png" alt="the Concept" class="logo-light-img h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <img src="assets/the_concept_logo_white.png" alt="the Concept" class="logo-dark-img absolute left-0 top-1/2 -translate-y-1/2 h-9 sm:h-10 md:h-11 w-auto object-contain pointer-events-none">
+            </a>
+
+            <!-- 3D Transparent Glass Rounded Pill Navigation (Bold Typography, No Underlines) -->
+            <nav id="header-nav" class="pointer-events-auto hidden md:flex items-center gap-8 glass-3d px-8 py-3 rounded-full md:absolute md:left-1/2 md:-translate-x-1/2 transition-transform duration-300 hover:scale-[1.02]">
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="index.html">Studio</a>
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="spaces.html">Spaces</a>
+                <a class="nav-link font-label-caps font-bold text-on-surface-variant hover:text-primary text-xs tracking-widest uppercase transition-colors" href="philosophy.html">Philosophy</a>
+                <a class="nav-link nav-active font-label-caps font-bold text-primary text-xs tracking-widest uppercase transition-colors" href="contact.html">Contact</a>
+            </nav>
+
+            <!-- Mobile Toggle (3D Glass, No Enquire Button) -->
+            <button id="mobileMenuBtn" class="md:hidden pointer-events-auto glass-3d p-2.5 rounded-full text-primary focus:outline-none" aria-label="Toggle navigation menu">
+                <span class="material-symbols-outlined text-2xl" id="menuIcon">menu</span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu (3D Glass, No Underlines) -->
+        <div id="mobileMenu" class="hidden md:hidden pointer-events-auto px-6 pt-3">
+            <div class="glass-3d rounded-2xl p-6 max-w-xs ml-auto shadow-2xl">
+                <nav class="flex flex-col gap-4 font-label-caps font-bold text-xs tracking-wider uppercase">
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="index.html">Studio</a>
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="spaces.html">Spaces</a>
+                    <a class="mobile-nav-link text-on-surface-variant hover:text-primary py-1.5 transition-colors" href="philosophy.html">Philosophy</a>
+                    <a class="mobile-nav-link mobile-nav-active text-primary font-bold py-1.5 transition-colors" href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-24 md:pt-32 pb-stack-xl flex flex-col justify-center">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-start">
+            
+            <!-- Left Info Column -->
+            <div id="page-hero" class="lg:col-span-5 flex flex-col gap-10 reveal active">
+                <div>
+                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase mb-4 block">Get In Touch</span>
+                    <h1 class="font-display-lg text-4xl sm:text-5xl md:text-6xl text-primary mb-6 leading-[1.15]">
+                        Begin Your <span class="italic font-light">Journey</span>
+                    </h1>
+                    <p class="font-body-lg text-on-surface-variant leading-relaxed">
+                        We invite you to reach out. Whether you have an architectural project in mind or simply wish to start a design dialogue, our team is here to listen.
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-8 pt-8 border-t border-outline-variant/30">
+                    <div>
+                        <span class="input-label">Studio Address</span>
+                        <p class="font-body-md text-primary leading-relaxed">
+                            24 Savile Row, Mayfair<br>London W1S 2ES, United Kingdom
+                        </p>
+                    </div>
+                    <div>
+                        <span class="input-label">Direct Correspondence</span>
+                        <a class="font-body-md text-primary hover:text-secondary transition-colors" href="mailto:hello@theconcept.studio">
+                            hello@theconcept.studio
+                        </a>
+                    </div>
+                    <div>
+                        <span class="input-label">Telephone</span>
+                        <a class="font-body-md text-primary hover:text-secondary transition-colors" href="tel:+442079460000">
+                            +44 (0) 20 7946 0000
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Architectural Vignette Card -->
+                <div class="w-full h-52 rounded-2xl overflow-hidden shadow-lg relative bg-surface-container group">
+                    <img alt="Map Architectural Detail" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4OHWbiSa5coVQIO-0_GjSnO-aRRJ-tDioc50-0GV6uoko0-4fVNAr_j1DWmnAetY9cqIyN0KImDxtmXBUHernECdIxJcAN9kw6gImiHe_6JSuPBq_nKZjr10FARLvAQqDiwVXxbN3bCR2FpFXkPkLCYwXZK40qUTVImDuu-EuvJvxDcJM_Fy_TTJYdE-UZyRTQ2_YuyH56aZcyD0ljTl0rUPIA-ov-2XgtvbhD5uR3Tw6RB2OTsMp">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex items-end p-6">
+                        <span class="text-surface font-label-caps text-xs tracking-widest uppercase">London & Paris Studios</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Form Column -->
+            <div class="lg:col-span-7 bg-surface-container-low p-8 sm:p-12 md:p-14 rounded-3xl relative shadow-xl reveal border border-outline-variant/30">
+                <form id="contactForm" class="flex flex-col gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="input-label" for="firstName">First Name *</label>
+                            <input class="input-field" id="firstName" name="firstName" placeholder="Eleanor" required type="text">
+                        </div>
+                        <div>
+                            <label class="input-label" for="lastName">Last Name *</label>
+                            <input class="input-field" id="lastName" name="lastName" placeholder="Vance" required type="text">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="input-label" for="email">Email Address *</label>
+                        <input class="input-field" id="email" name="email" placeholder="eleanor@example.com" required type="email">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="input-label" for="subject">Inquiry Type</label>
+                            <select class="input-field appearance-none bg-transparent cursor-pointer" id="subject" name="subject">
+                                <option value="residential">Private Residence</option>
+                                <option value="commercial">Commercial / Retail</option>
+                                <option value="curation">Art & Material Curation</option>
+                                <option value="press">Press &amp; Media</option>
+                                <option value="other">General Conversation</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="input-label" for="location">Project Location</label>
+                            <input class="input-field" id="location" name="location" placeholder="City / Country" type="text">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="input-label" for="message">Project Vision *</label>
+                        <textarea class="input-field resize-none" id="message" name="message" placeholder="Tell us about the scope, architectural ambitions, and timeline..." required rows="4"></textarea>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <button class="w-full sm:w-auto bg-primary text-on-primary font-label-caps text-xs uppercase tracking-widest px-10 py-5 rounded-full hover:bg-secondary transition-all flex items-center justify-center gap-3 shadow-lg group cursor-pointer" type="submit">
+                            <span>Submit Inquiry</span>
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </button>
+                        <span class="text-on-surface-variant text-[11px] font-label-caps">Strict client confidentiality assured</span>
+                    </div>
+                </form>
+
+                <!-- Success Confirmation Message (Hidden by default) -->
+                <div id="formSuccess" class="hidden absolute inset-0 bg-surface-container-low/98 backdrop-blur-md rounded-3xl p-10 flex flex-col items-center justify-center text-center">
+                    <div class="w-16 h-16 bg-secondary-fixed rounded-full flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-3xl text-on-secondary-container">check</span>
+                    </div>
+                    <h3 class="font-headline-md text-2xl text-primary mb-3">Inquiry Received</h3>
+                    <p class="font-body-md text-on-surface-variant max-w-md mb-8 leading-relaxed">
+                        Thank you for sharing your vision. Our architectural partners will review your project brief and respond within 24 business hours.
+                    </p>
+                    <button onclick="resetForm()" class="border border-primary text-primary px-8 py-3 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all">
+                        Send Another Note
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-outline-variant/30 py-16">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <a href="index.html" class="inline-block group">
+                    <img src="assets/the_concept_logo_dark.png" alt="the Concept" class="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                </a>
+
+                <div class="flex gap-8 font-label-caps text-xs text-on-surface-variant">
+                    <a class="hover:text-primary transition-colors" href="index.html">Studio</a>
+                    <a class="hover:text-primary transition-colors" href="spaces.html">Spaces</a>
+                    <a class="hover:text-primary transition-colors" href="philosophy.html">Philosophy</a>
+                    <a class="hover:text-primary transition-colors" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                </div>
+
+                <p class="font-label-caps text-[10px] text-on-surface-variant">© 2024 The Concept Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Scroll reveal
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            const windowHeight = window.innerHeight;
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add("active");
+                }
+            });
+        }
+        // Header theme transition logic (turns black with white text ONLY when hero is entirely scrolled up)
+        const mainHeader = document.getElementById('main-header');
+
+        function updateHeaderTheme() {
+            if (!mainHeader) return;
+            const hero = document.getElementById('page-hero');
+            if (hero) {
+                const rect = hero.getBoundingClientRect();
+                if (rect.bottom <= 80) {
+                    mainHeader.classList.add('header-dark');
+                } else {
+                    mainHeader.classList.remove('header-dark');
+                }
+            } else if (window.scrollY > 200) {
+                mainHeader.classList.add('header-dark');
+            } else {
+                mainHeader.classList.remove('header-dark');
+            }
+        }
+        window.addEventListener("scroll", () => {
+            reveal();
+            updateHeaderTheme();
+        }, { passive: true });
+        window.addEventListener("DOMContentLoaded", () => {
+            reveal();
+            updateHeaderTheme();
+        });
+        window.addEventListener("resize", updateHeaderTheme);
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.textContent = 'menu';
+            } else {
+                menuIcon.textContent = 'close';
+            }
+        }
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                formSuccess.classList.remove('hidden');
+            });
+        }
+
+        function resetForm() {
+            contactForm.reset();
+            formSuccess.classList.add('hidden');
+        }
+
+        // Custom cursor
+        const cursor = document.getElementById('custom-cursor');
+        if (cursor) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            });
+            const interactiveElements = document.querySelectorAll('a, button, input, select, textarea');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        }
+    </script>
+</body>
+</html>
