@@ -358,22 +358,15 @@
                 <!-- 60FPS High Performance Frame Sequence Canvas (Pure & Unfiltered) -->
                 <canvas id="hero-canvas" class="absolute inset-0 w-full h-full block" width="1920" height="1080"></canvas>
 
-                <!-- Hero Content (100% Solid & Crisp - No Fadeness) -->
-                <div id="hero-content" class="relative z-10 max-w-container-max mx-auto px-6 md:px-margin-desktop w-full pt-16">
-                    <div class="max-w-2xl">
-                        <span class="font-label-caps text-secondary mb-6 block text-xs tracking-[0.25em]">Interior Architecture Studio</span>
-                        <h1 class="font-display-lg text-primary mb-8 leading-[1.1] text-4xl sm:text-5xl md:text-[76px]">
-                            Where your vision becomes <span class="italic font-light">reality</span>
+                <!-- Hero Content (Appears slowly on scroll after 30% frames are scrolled) -->
+                <div id="hero-content" class="relative z-10 max-w-container-max mx-auto px-6 md:px-margin-desktop w-full pt-16 pointer-events-none opacity-0" style="will-change: opacity, transform;">
+                    <div class="max-w-3xl">
+                        <h1 class="font-display-lg font-bold text-white mb-8 leading-[1.1] text-4xl sm:text-5xl md:text-6xl lg:text-[76px] drop-shadow-lg">
+                            Where your vision becomes <span class="italic font-bold">reality</span>
                         </h1>
-                        <p class="font-body-lg text-on-surface-variant mb-10 max-w-lg leading-relaxed">
-                            We curate environments that balance architectural rigor with human warmth, creating timeless sanctuaries for modern living.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="spaces.html" class="inline-flex items-center justify-center bg-primary text-on-primary px-10 py-5 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-secondary transition-all shadow-lg hover:shadow-xl">
+                        <div class="flex items-center">
+                            <a href="spaces.html" class="inline-flex items-center justify-center bg-primary text-on-primary px-7 py-3.5 sm:px-8 sm:py-3.5 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-secondary transition-all shadow-lg hover:shadow-xl font-bold">
                                 View Portfolio
-                            </a>
-                            <a href="philosophy.html" class="inline-flex items-center justify-center border border-primary text-primary px-10 py-5 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all">
-                                Our Story
                             </a>
                         </div>
                     </div>
@@ -792,6 +785,40 @@
             }
         }
 
+        // Hero content progressive scroll appearance logic (starts after 30% frames)
+        const heroContent = document.getElementById('hero-content');
+        const heroScrollIndicator = document.getElementById('hero-scroll-indicator');
+
+        function updateHeroContentVisibility(progress) {
+            if (!heroContent) return;
+
+            // Start appearing slowly after 30% of frames are scrolled (progress >= 0.30)
+            if (progress < 0.30) {
+                heroContent.style.opacity = '0';
+                heroContent.style.transform = 'translateY(28px)';
+                heroContent.style.pointerEvents = 'none';
+            } else if (progress <= 0.60) {
+                // Smooth progressive fade-in between 30% and 60%
+                const t = (progress - 0.30) / 0.30;
+                const easeT = t * t * (3 - 2 * t);
+                heroContent.style.opacity = easeT.toFixed(3);
+                heroContent.style.transform = `translateY(${((1 - easeT) * 28).toFixed(1)}px)`;
+                heroContent.style.pointerEvents = easeT > 0.25 ? 'auto' : 'none';
+            } else {
+                // 100% solid & interactive from 60% onwards
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0px)';
+                heroContent.style.pointerEvents = 'auto';
+            }
+
+            // Scroll indicator gently fades out as user begins scrolling
+            if (heroScrollIndicator) {
+                const indOpacity = Math.max(0, 1 - (progress * 4));
+                heroScrollIndicator.style.opacity = indOpacity.toFixed(2);
+                heroScrollIndicator.style.pointerEvents = indOpacity > 0.1 ? 'auto' : 'none';
+            }
+        }
+
         // Scroll listener calculating exact frame (No fadeness/opacity drops)
         function onScrollProgress() {
             if (!scrollContainer) return;
@@ -803,6 +830,7 @@
             targetFrame = 1 + progress * (FRAME_COUNT - 1);
 
             updateHeaderTheme();
+            updateHeroContentVisibility(progress);
 
             if (!isAnimating) {
                 isAnimating = true;
@@ -833,6 +861,7 @@
             updateCanvasDimensions();
             onScrollProgress();
             updateHeaderTheme();
+            updateHeroContentVisibility(0);
         });
     </script>
 </body>
