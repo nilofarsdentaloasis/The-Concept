@@ -1,0 +1,257 @@
+/* ==========================================================================
+   THE CONCEPT - VINTAGE SWITCH & LUXURY THEME ENGINE
+   ========================================================================== */
+
+/* Smooth Gradual Theme Transition (0.85s Luxury Crossfade) */
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+    transition: background-color 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important,
+                background 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important,
+                color 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important,
+                border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important,
+                box-shadow 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important,
+                stroke 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important,
+                fill 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Atmospheric Light / Dimmer Sweep Overlay */
+#theme-transition-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 99999;
+    opacity: 0;
+    background: radial-gradient(circle at 85% 15%, rgba(201, 155, 100, 0.18), rgba(10, 12, 14, 0.45));
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+#theme-transition-overlay.active {
+    opacity: 1;
+}
+
+/* Vintage Metal Toggle Switch Button */
+.vintage-switch-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.22));
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.35s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.vintage-switch-btn:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
+}
+.vintage-switch-btn:active {
+    transform: scale(0.94);
+}
+
+.switch-plate-wrap {
+    position: relative;
+    width: 48px;
+    height: 48px;
+}
+@media (min-width: 640px) {
+    .switch-plate-wrap {
+        width: 56px;
+        height: 56px;
+    }
+}
+@media (min-width: 1024px) {
+    .switch-plate-wrap {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.switch-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: center center;
+}
+
+/* Switch UP State (Normal / Light Mode - OFF) */
+html:not(.dark) .switch-up-img {
+    opacity: 1;
+    transform: scale(1);
+}
+html:not(.dark) .switch-down-img {
+    opacity: 0;
+    transform: scale(0.94);
+}
+
+/* Switch DOWN State (Luxury Dark Mode - ON) */
+html.dark .switch-up-img {
+    opacity: 0;
+    transform: scale(0.94);
+}
+html.dark .switch-down-img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ==========================================================================
+   STRICT LOGO CONTRAST RULE (LOCKED RULE)
+   - Black on White/Light background
+   - White on Black/Dark background
+   ========================================================================== */
+.logo-light-img {
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 1;
+}
+.logo-dark-img {
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 0;
+}
+
+/* When in Dark Mode: Whole page is dark -> Logo is strictly WHITE */
+html.dark #header-logo .logo-light-img,
+html.dark .logo-on-dark .logo-light-img,
+.logo-on-dark .logo-light-img {
+    opacity: 0 !important;
+}
+html.dark #header-logo .logo-dark-img,
+html.dark .logo-on-dark .logo-dark-img,
+.logo-on-dark .logo-dark-img {
+    opacity: 1 !important;
+}
+
+/* When in Light Mode: Over light sections -> Logo is strictly BLACK */
+html:not(.dark) #header-logo.logo-on-light .logo-light-img,
+html:not(.dark) .logo-on-light .logo-light-img {
+    opacity: 1 !important;
+}
+html:not(.dark) #header-logo.logo-on-light .logo-dark-img,
+html:not(.dark) .logo-on-light .logo-dark-img {
+    opacity: 0 !important;
+}
+
+/* ==========================================================================
+   DARK MODE THEME OVERRIDES
+   ========================================================================== */
+html.dark {
+    color-scheme: dark;
+}
+
+html.dark body {
+    background-color: #0c0e10 !important;
+    color: #f3f4f6 !important;
+}
+
+html.dark .bg-surface,
+html.dark .bg-background,
+html.dark .bg-surface-bright,
+html.dark .bg-surface-container-lowest,
+html.dark .bg-white {
+    background-color: #0c0e10 !important;
+}
+
+html.dark .bg-surface-container-low,
+html.dark .bg-stone-50,
+html.dark .bg-gray-50 {
+    background-color: #121519 !important;
+}
+
+html.dark .bg-surface-container,
+html.dark .bg-surface-variant,
+html.dark .bg-stone-100,
+html.dark .bg-gray-100 {
+    background-color: #161a20 !important;
+}
+
+html.dark .bg-surface-container-high,
+html.dark .bg-surface-container-highest,
+html.dark .bg-stone-200 {
+    background-color: #1c2128 !important;
+}
+
+html.dark .text-on-surface,
+html.dark .text-primary,
+html.dark .text-stone-900,
+html.dark .text-gray-900 {
+    color: #f3f4f6 !important;
+}
+
+html.dark .text-on-surface-variant,
+html.dark .text-stone-600,
+html.dark .text-stone-500,
+html.dark .text-gray-600,
+html.dark .text-gray-500 {
+    color: #9ca3af !important;
+}
+
+html.dark .border-outline-variant,
+html.dark .border-surface-container-highest,
+html.dark .border-stone-200,
+html.dark .border-stone-300,
+html.dark .border-gray-200,
+html.dark .border-gray-300 {
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Glass Elements in Dark Mode */
+html.dark .glass-3d {
+    background: rgba(14, 17, 21, 0.84) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6),
+                inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.8) !important;
+}
+
+html.dark .nav-link {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+html.dark .nav-link:hover,
+html.dark .nav-link.nav-active {
+    color: #ffffff !important;
+}
+
+html.dark #mobileMenuBtn {
+    color: #ffffff !important;
+}
+
+html.dark .mobile-nav-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+html.dark .mobile-nav-link:hover,
+html.dark .mobile-nav-link.mobile-nav-active {
+    color: #ffffff !important;
+}
+
+/* Dark Mode Inputs, Selects & Textareas */
+html.dark input,
+html.dark textarea,
+html.dark select {
+    background-color: #14171b !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+    color: #6b7280 !important;
+}
+html.dark input:focus,
+html.dark textarea:focus,
+html.dark select:focus {
+    border-color: #c99b64 !important;
+    box-shadow: 0 0 0 2px rgba(201, 155, 100, 0.25) !important;
+}
+
+/* Dark Mode Card Backgrounds & Dividers */
+html.dark .dark-card-bg {
+    background-color: #14171b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
