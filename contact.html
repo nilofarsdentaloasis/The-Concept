@@ -9,7 +9,7 @@
     <!-- Google Fonts & Material Symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&amp;family=DM+Sans:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     
     <!-- Tailwind CSS -->
@@ -239,6 +239,370 @@
         .header-dark .mobile-nav-link.mobile-nav-active {
             color: #ffffff !important;
         }
+
+        /* ================================================= */
+        /* Architectural Letter Form Section Styling        */
+        /* ================================================= */
+        .letter-section {
+          min-height: 100vh;
+          padding: 120px 7% 90px;
+          background:
+            radial-gradient(circle at 15% 20%, rgba(255,255,255,.10), transparent 25%),
+            radial-gradient(circle at 85% 80%, rgba(255,255,255,.08), transparent 25%),
+            rgba(169, 155, 139, 0.45);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .background-text {
+          position: absolute;
+          font-family: "Playfair Display", serif;
+          font-size: clamp(100px, 18vw, 320px);
+          color: rgba(255,255,255,.06);
+          white-space: nowrap;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(-8deg);
+          pointer-events: none;
+          user-select: none;
+        }
+
+        .letter-wrapper {
+          width: min(100%, 950px);
+          position: relative;
+          z-index: 10;
+        }
+
+        .letter {
+          background: #f3eee5;
+          padding: 75px 10%;
+          box-shadow:
+            0 35px 80px rgba(50,40,30,.22),
+            15px 15px 0 rgba(70,55,40,.10);
+          position: relative;
+          transform: rotate(-1deg);
+          border-radius: 4px;
+        }
+
+        .letter::before {
+          content: "";
+          position: absolute;
+          inset: 14px;
+          border: 1px solid rgba(110,95,75,.18);
+          pointer-events: none;
+        }
+
+        .stamp {
+          position: absolute;
+          top: 30px;
+          right: 35px;
+          width: 105px;
+          height: 125px;
+          border: 2px dashed #887b6b;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: #756858;
+          transform: rotate(8deg);
+          font-family: "Caveat", cursive;
+          font-size: 23px;
+          line-height: 1.1;
+          text-align: center;
+          background: rgba(243, 238, 229, 0.8);
+        }
+
+        .stamp span {
+          font-family: "DM Sans", sans-serif;
+          font-size: 8px;
+          letter-spacing: 2px;
+          margin-top: 10px;
+        }
+
+        .letter-top {
+          margin-bottom: 50px;
+        }
+
+        .letter-tag {
+          font-family: "DM Sans", sans-serif;
+          font-size: 10px;
+          letter-spacing: 4px;
+          color: #857666;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+
+        .letter-title {
+          font-family: "Playfair Display", serif;
+          font-size: clamp(42px, 6vw, 74px);
+          font-weight: 500;
+          color: #37322c;
+          line-height: .98;
+        }
+
+        .letter-title em {
+          color: #8b7968;
+          font-weight: 500;
+          font-style: italic;
+        }
+
+        .letter-content {
+          font-family: "Caveat", cursive;
+          color: #443d35;
+          font-size: 28px;
+          line-height: 1.7;
+        }
+
+        .dear {
+          font-size: 36px;
+          margin-bottom: 22px;
+          color: #39332c;
+        }
+
+        .letter-line {
+          margin-bottom: 16px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: baseline;
+          gap: 8px;
+        }
+
+        .letter-input {
+          border: none;
+          border-bottom: 2px solid rgba(100,85,70,.35);
+          background: transparent;
+          outline: none;
+          font-family: "Caveat", cursive;
+          font-size: 28px;
+          color: #756858;
+          padding: 0 5px 2px;
+          min-width: 170px;
+          flex: 1;
+        }
+
+        .letter-input:focus,
+        .topic-select:focus {
+          border-bottom-color: #8b7968;
+        }
+
+        .letter-input::placeholder {
+          color: rgba(100,85,70,.35);
+        }
+
+        .topic-select {
+          border: none;
+          border-bottom: 2px solid rgba(100,85,70,.35);
+          background: transparent;
+          outline: none;
+          font-family: "Caveat", cursive;
+          font-size: 28px;
+          color: #756858;
+          padding: 0 4px 2px;
+          cursor: pointer;
+          max-width: 100%;
+        }
+
+        .message-box {
+          width: 100%;
+          margin-top: 25px;
+        }
+
+        .message-box label {
+          display: block;
+          margin-bottom: 8px;
+        }
+
+        .message-box textarea {
+          width: 100%;
+          min-height: 180px;
+          resize: vertical;
+          border: none;
+          outline: none;
+          background:
+            repeating-linear-gradient(
+              to bottom,
+              transparent 0,
+              transparent 46px,
+              rgba(100,85,70,.15) 47px,
+              transparent 48px
+            );
+          font-family: "Caveat", cursive;
+          font-size: 28px;
+          line-height: 1.65;
+          color: #756858;
+          padding: 5px 8px;
+        }
+
+        .message-box textarea::placeholder {
+          color: rgba(100,85,70,.35);
+        }
+
+        .contact-row {
+          margin-top: 20px;
+          padding-top: 20px;
+          border-top: 1px dashed rgba(100,85,70,.20);
+        }
+
+        .closing {
+          margin-top: 35px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .closing-text {
+          font-size: 28px;
+          margin-bottom: 8px;
+        }
+
+        .signature-input {
+          border: none;
+          border-bottom: 2px solid rgba(100,85,70,.35);
+          background: transparent;
+          outline: none;
+          font-family: "Caveat", cursive;
+          font-size: 34px;
+          color: #756858;
+          padding: 0 5px;
+          width: min(350px, 100%);
+        }
+
+        .send-area {
+          margin-top: 50px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 25px;
+        }
+
+        .send-note {
+          border: 2px solid #4a4238;
+          background: transparent;
+          color: #4a4238;
+          padding: 17px 30px;
+          cursor: pointer;
+          font-family: "DM Sans", sans-serif;
+          letter-spacing: 2px;
+          font-size: 11px;
+          font-weight: 600;
+          transition: .3s ease;
+          border-radius: 4px;
+        }
+
+        .send-note:hover {
+          background: #4a4238;
+          color: #fff;
+          transform: rotate(-2deg);
+        }
+
+        .small-note {
+          font-family: "Caveat", cursive;
+          font-size: 24px;
+          color: #8a7b6c;
+          transform: rotate(-3deg);
+        }
+
+        .envelope {
+          width: 130px;
+          height: 90px;
+          position: absolute;
+          right: -80px;
+          bottom: -35px;
+          border: 2px solid rgba(255,255,255,.55);
+          transform: rotate(12deg);
+          pointer-events: none;
+        }
+
+        .envelope::before,
+        .envelope::after {
+          content: "";
+          position: absolute;
+          width: 85px;
+          height: 2px;
+          background: rgba(255,255,255,.55);
+          top: 35px;
+        }
+
+        .envelope::before {
+          left: 0;
+          transform: rotate(30deg);
+          transform-origin: left;
+        }
+
+        .envelope::after {
+          right: 0;
+          transform: rotate(-30deg);
+          transform-origin: right;
+        }
+
+        .success-message {
+          display: none;
+          text-align: center;
+          padding: 70px 30px;
+          font-family: "Caveat", cursive;
+          color: #5d5145;
+        }
+
+        .success-message h2 {
+          font-family: "Playfair Display", serif;
+          font-size: 48px;
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+
+        .success-message p {
+          font-size: 28px;
+          line-height: 1.4;
+        }
+
+        @media (max-width: 700px) {
+          .letter-section {
+            padding: 90px 15px 60px;
+          }
+
+          .letter {
+            padding: 65px 24px 50px;
+            transform: none;
+          }
+
+          .stamp {
+            width: 70px;
+            height: 85px;
+            right: 20px;
+            top: 20px;
+            font-size: 16px;
+          }
+
+          .letter-top {
+            padding-right: 65px;
+          }
+
+          .letter-content,
+          .letter-input,
+          .topic-select {
+            font-size: 24px;
+          }
+
+          .dear {
+            font-size: 30px;
+          }
+
+          .message-box textarea {
+            font-size: 24px;
+          }
+
+          .send-area {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+          }
+
+          .envelope {
+            display: none;
+          }
+        }
     </style>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed min-h-screen flex flex-col relative">
     
@@ -283,119 +647,225 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="relative z-10 flex-grow pt-24 md:pt-32 pb-stack-xl flex flex-col justify-center">
-        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-start">
-            
-            <!-- Left Info Column -->
-            <div id="page-hero" class="lg:col-span-5 flex flex-col gap-10 reveal active">
-                <div>
-                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase mb-4 block">Get In Touch</span>
-                    <h1 class="font-display-lg text-4xl sm:text-5xl md:text-6xl text-primary mb-6 leading-[1.15]">
-                        Begin Your <span class="italic font-light">Journey</span>
-                    </h1>
-                    <p class="font-body-lg text-on-surface-variant leading-relaxed">
-                        We invite you to reach out. Whether you have an architectural project in mind or simply wish to start a design dialogue, our team is here to listen.
-                    </p>
-                </div>
+    <!-- Main Content: Tell Us About Your Space Letter Section -->
+    <main class="relative z-10 flex-grow pt-20 md:pt-24 flex flex-col justify-center items-center w-full">
+        <section class="letter-section w-full">
 
-                <div class="flex flex-col gap-8 pt-8 border-t border-outline-variant/30">
-                    <div>
-                        <span class="input-label">Studio Address</span>
-                        <p class="font-body-md text-primary leading-relaxed">
-                            24 Savile Row, Mayfair<br>London W1S 2ES, United Kingdom
+            <div class="background-text">THE CONCEPT</div>
+
+            <div class="letter-wrapper">
+
+                <form class="letter" id="conceptForm">
+
+                    <div class="stamp">
+                        YOUR<br>SPACE
+                        <span>THE CONCEPT</span>
+                    </div>
+
+                    <div class="letter-top">
+
+                        <p class="letter-tag">
+                            START YOUR DESIGN STORY
                         </p>
-                    </div>
-                    <div>
-                        <span class="input-label">Direct Correspondence</span>
-                        <a class="font-body-md text-primary hover:text-secondary transition-colors" href="mailto:hello@theconcept.studio">
-                            hello@theconcept.studio
-                        </a>
-                    </div>
-                    <div>
-                        <span class="input-label">Telephone</span>
-                        <a class="font-body-md text-primary hover:text-secondary transition-colors" href="tel:+442079460000">
-                            +44 (0) 20 7946 0000
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Architectural Vignette Card -->
-                <div class="w-full h-52 rounded-2xl overflow-hidden shadow-lg relative bg-surface-container group">
-                    <img alt="Map Architectural Detail" 
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4OHWbiSa5coVQIO-0_GjSnO-aRRJ-tDioc50-0GV6uoko0-4fVNAr_j1DWmnAetY9cqIyN0KImDxtmXBUHernECdIxJcAN9kw6gImiHe_6JSuPBq_nKZjr10FARLvAQqDiwVXxbN3bCR2FpFXkPkLCYwXZK40qUTVImDuu-EuvJvxDcJM_Fy_TTJYdE-UZyRTQ2_YuyH56aZcyD0ljTl0rUPIA-ov-2XgtvbhD5uR3Tw6RB2OTsMp">
-                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex items-end p-6">
-                        <span class="text-surface font-label-caps text-xs tracking-widest uppercase">London & Paris Studios</span>
-                    </div>
-                </div>
-            </div>
+                        <h1 class="letter-title">
+                            Tell us about<br>
+                            <em>your space.</em>
+                        </h1>
 
-            <!-- Right Form Column (Glassmorphism on top of 40% bg) -->
-            <div class="lg:col-span-7 bg-surface-container-lowest/85 backdrop-blur-md p-8 sm:p-12 md:p-14 rounded-3xl relative shadow-2xl reveal border border-outline-variant/40">
-                <form id="contactForm" class="flex flex-col gap-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <label class="input-label" for="firstName">First Name *</label>
-                            <input class="input-field" id="firstName" name="firstName" placeholder="Eleanor" required type="text">
-                        </div>
-                        <div>
-                            <label class="input-label" for="lastName">Last Name *</label>
-                            <input class="input-field" id="lastName" name="lastName" placeholder="Vance" required type="text">
-                        </div>
                     </div>
 
-                    <div>
-                        <label class="input-label" for="email">Email Address *</label>
-                        <input class="input-field" id="email" name="email" placeholder="eleanor@example.com" required type="email">
-                    </div>
+                    <div class="letter-content">
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <label class="input-label" for="subject">Inquiry Type</label>
-                            <select class="input-field appearance-none bg-transparent cursor-pointer" id="subject" name="subject">
-                                <option value="residential">Private Residence</option>
-                                <option value="commercial">Commercial / Retail</option>
-                                <option value="curation">Art & Material Curation</option>
-                                <option value="press">Press &amp; Media</option>
-                                <option value="other">General Conversation</option>
+                        <p class="dear">
+                            Dear THE CONCEPT,
+                        </p>
+
+                        <div class="letter-line">
+
+                            <span>My name is</span>
+
+                            <input
+                                type="text"
+                                class="letter-input"
+                                name="name"
+                                placeholder="your name..."
+                                required
+                            >
+
+                            <span>and I'm dreaming about</span>
+
+                            <select
+                                class="topic-select"
+                                name="project"
+                                required
+                            >
+                                <option value="">my next space...</option>
+                                <option>my dream home</option>
+                                <option>a new apartment</option>
+                                <option>my living room</option>
+                                <option>my bedroom</option>
+                                <option>my kitchen</option>
+                                <option>an office space</option>
+                                <option>a commercial project</option>
+                                <option>a complete renovation</option>
+                                <option>something unique</option>
                             </select>
+
+                            <span>.</span>
+
                         </div>
-                        <div>
-                            <label class="input-label" for="location">Project Location</label>
-                            <input class="input-field" id="location" name="location" placeholder="City / Country" type="text">
+
+                        <div class="letter-line">
+
+                            <span>The space is located in</span>
+
+                            <input
+                                type="text"
+                                class="letter-input"
+                                name="location"
+                                placeholder="your city..."
+                            >
+
+                            <span>and I need help with</span>
+
+                            <select
+                                class="topic-select"
+                                name="service"
+                            >
+                                <option value="">designing it...</option>
+                                <option>complete interior design</option>
+                                <option>space planning</option>
+                                <option>furniture & styling</option>
+                                <option>renovation</option>
+                                <option>turnkey execution</option>
+                                <option>consultation</option>
+                            </select>
+
+                            <span>.</span>
+
                         </div>
+
+                        <div class="letter-line">
+
+                            <span>I'm hoping to start around</span>
+
+                            <input
+                                type="text"
+                                class="letter-input"
+                                name="timeline"
+                                placeholder="month / date..."
+                            >
+
+                            <span>and my approximate budget is</span>
+
+                            <select
+                                class="topic-select"
+                                name="budget"
+                            >
+                                <option value="">still exploring...</option>
+                                <option>under ₹5 lakh</option>
+                                <option>₹5 – ₹10 lakh</option>
+                                <option>₹10 – ₹20 lakh</option>
+                                <option>₹20 – ₹50 lakh</option>
+                                <option>₹50 lakh+</option>
+                                <option>I'd like to discuss this</option>
+                            </select>
+
+                            <span>.</span>
+
+                        </div>
+
+                        <div class="message-box">
+
+                            <label>
+                                And here is how I imagine the space...
+                            </label>
+
+                            <textarea
+                                name="message"
+                                placeholder="Tell us about your ideas, inspiration, lifestyle, colours you love, or simply the feeling you want your space to have..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+                        <div class="contact-row">
+
+                            <div class="letter-line">
+
+                                <span>You can reach me on</span>
+
+                                <input
+                                    type="tel"
+                                    class="letter-input"
+                                    name="phone"
+                                    placeholder="your phone number..."
+                                    required
+                                >
+
+                                <span>or at</span>
+
+                                <input
+                                    type="email"
+                                    class="letter-input"
+                                    name="email"
+                                    placeholder="your email..."
+                                >
+
+                                <span>.</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="closing">
+
+                            <p class="closing-text">
+                                Looking forward to creating something beautiful,
+                            </p>
+
+                            <input
+                                type="text"
+                                class="signature-input"
+                                name="signature"
+                                placeholder="your signature..."
+                            >
+
+                        </div>
+
                     </div>
 
-                    <div>
-                        <label class="input-label" for="message">Project Vision *</label>
-                        <textarea class="input-field resize-none" id="message" name="message" placeholder="Tell us about the scope, architectural ambitions, and timeline..." required rows="4"></textarea>
-                    </div>
+                    <div class="send-area">
 
-                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <button class="w-full sm:w-auto bg-primary text-on-primary font-label-caps text-xs uppercase tracking-widest px-10 py-5 rounded-full hover:bg-secondary transition-all flex items-center justify-center gap-3 shadow-lg group cursor-pointer" type="submit">
-                            <span>Submit Inquiry</span>
-                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        <button type="submit" class="send-note">
+                            START MY DESIGN STORY →
                         </button>
-                        <span class="text-on-surface-variant text-[11px] font-label-caps">Strict client confidentiality assured</span>
+
+                        <p class="small-note">
+                            Every beautiful space begins with an idea.
+                        </p>
+
                     </div>
+
+                    <div class="success-message" id="successMessage">
+
+                        <h2>Your design story begins here.</h2>
+
+                        <p>
+                            Thank you for sharing your vision with THE CONCEPT.<br>
+                            We can't wait to imagine what your space could become.
+                        </p>
+
+                    </div>
+
                 </form>
 
-                <!-- Success Confirmation Message (Hidden by default) -->
-                <div id="formSuccess" class="hidden absolute inset-0 bg-surface-container-low/98 backdrop-blur-md rounded-3xl p-10 flex flex-col items-center justify-center text-center">
-                    <div class="w-16 h-16 bg-secondary-fixed rounded-full flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-3xl text-on-secondary-container">check</span>
-                    </div>
-                    <h3 class="font-headline-md text-2xl text-primary mb-3">Inquiry Received</h3>
-                    <p class="font-body-md text-on-surface-variant max-w-md mb-8 leading-relaxed">
-                        Thank you for sharing your vision. Our architectural partners will review your project brief and respond within 24 business hours.
-                    </p>
-                    <button onclick="resetForm()" class="border border-primary text-primary px-8 py-3 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all">
-                        Send Another Note
-                    </button>
-                </div>
+                <div class="envelope"></div>
+
             </div>
-        </div>
+
+        </section>
     </main>
 
     <!-- Footer -->
@@ -521,20 +991,26 @@
             mobileMenuBtn.addEventListener('click', toggleMobileMenu);
         }
 
-        // Form submission handling
-        const contactForm = document.getElementById('contactForm');
-        const formSuccess = document.getElementById('formSuccess');
+        // Form submission handling for Concept Letter
+        const conceptForm = document.getElementById("conceptForm");
+        const successMessage = document.getElementById("successMessage");
 
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                formSuccess.classList.remove('hidden');
+        if (conceptForm) {
+            conceptForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const formElements = conceptForm.querySelectorAll(
+                    ".letter-top, .letter-content, .send-area, .stamp"
+                );
+
+                formElements.forEach(function(element) {
+                    element.style.display = "none";
+                });
+
+                if (successMessage) {
+                    successMessage.style.display = "block";
+                }
             });
-        }
-
-        function resetForm() {
-            contactForm.reset();
-            formSuccess.classList.add('hidden');
         }
     </script>
 </body>
