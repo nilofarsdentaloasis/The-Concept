@@ -358,13 +358,17 @@
                 <!-- 60FPS High Performance Frame Sequence Canvas (Pure & Unfiltered) -->
                 <canvas id="hero-canvas" class="absolute inset-0 w-full h-full block" width="1920" height="1080"></canvas>
 
-                <!-- Hero Content (Appears slowly on scroll after 30% frames are scrolled) -->
-                <div id="hero-content" class="relative z-10 max-w-container-max mx-auto px-6 md:px-margin-desktop w-full pt-16 pointer-events-none opacity-0" style="will-change: opacity, transform;">
+                <!-- Hero Content (Reveals word-by-word on scroll after 30% frames are scrolled) -->
+                <div id="hero-content" class="relative z-10 max-w-container-max mx-auto px-6 md:px-margin-desktop w-full pt-16">
                     <div class="max-w-3xl">
-                        <h1 class="font-display-lg font-bold text-white mb-8 leading-[1.1] text-4xl sm:text-5xl md:text-6xl lg:text-[76px] drop-shadow-lg">
-                            Where your vision becomes <span class="italic font-bold">reality</span>
+                        <h1 class="font-display-lg font-bold text-white mb-8 leading-[1.1] text-4xl sm:text-5xl md:text-6xl lg:text-[76px] drop-shadow-lg flex flex-wrap gap-x-3 sm:gap-x-4 md:gap-x-5 gap-y-2">
+                            <span class="inline-block overflow-hidden py-1 -my-1"><span class="hero-word inline-block opacity-0" style="transform: translateY(115%); will-change: transform, opacity;">Where</span></span>
+                            <span class="inline-block overflow-hidden py-1 -my-1"><span class="hero-word inline-block opacity-0" style="transform: translateY(115%); will-change: transform, opacity;">your</span></span>
+                            <span class="inline-block overflow-hidden py-1 -my-1"><span class="hero-word inline-block opacity-0" style="transform: translateY(115%); will-change: transform, opacity;">vision</span></span>
+                            <span class="inline-block overflow-hidden py-1 -my-1"><span class="hero-word inline-block opacity-0" style="transform: translateY(115%); will-change: transform, opacity;">becomes</span></span>
+                            <span class="inline-block overflow-hidden py-1 -my-1"><span class="hero-word italic font-bold inline-block opacity-0" style="transform: translateY(115%); will-change: transform, opacity;">reality</span></span>
                         </h1>
-                        <div class="flex items-center">
+                        <div id="hero-btn-wrap" class="flex items-center opacity-0 pointer-events-none" style="transform: translateY(20px); will-change: transform, opacity;">
                             <a href="spaces.html" class="inline-flex items-center justify-center bg-primary text-on-primary px-7 py-3.5 sm:px-8 sm:py-3.5 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-secondary transition-all shadow-lg hover:shadow-xl font-bold">
                                 View Portfolio
                             </a>
@@ -785,30 +789,56 @@
             }
         }
 
-        // Hero content progressive scroll appearance logic (starts after 30% frames)
-        const heroContent = document.getElementById('hero-content');
+        // Hero content word-by-word progressive scroll reveal logic (starts after 30% frames)
+        const heroWords = document.querySelectorAll('.hero-word');
+        const heroBtnWrap = document.getElementById('hero-btn-wrap');
         const heroScrollIndicator = document.getElementById('hero-scroll-indicator');
 
-        function updateHeroContentVisibility(progress) {
-            if (!heroContent) return;
+        // Staggered reveal intervals for each word and the button
+        const wordSchedule = [
+            { start: 0.30, end: 0.38 }, // "Where"
+            { start: 0.36, end: 0.44 }, // "your"
+            { start: 0.42, end: 0.50 }, // "vision"
+            { start: 0.48, end: 0.56 }, // "becomes"
+            { start: 0.54, end: 0.62 }  // "reality"
+        ];
+        const btnSchedule = { start: 0.58, end: 0.66 };
 
-            // Start appearing slowly after 30% of frames are scrolled (progress >= 0.30)
-            if (progress < 0.30) {
-                heroContent.style.opacity = '0';
-                heroContent.style.transform = 'translateY(28px)';
-                heroContent.style.pointerEvents = 'none';
-            } else if (progress <= 0.60) {
-                // Smooth progressive fade-in between 30% and 60%
-                const t = (progress - 0.30) / 0.30;
-                const easeT = t * t * (3 - 2 * t);
-                heroContent.style.opacity = easeT.toFixed(3);
-                heroContent.style.transform = `translateY(${((1 - easeT) * 28).toFixed(1)}px)`;
-                heroContent.style.pointerEvents = easeT > 0.25 ? 'auto' : 'none';
-            } else {
-                // 100% solid & interactive from 60% onwards
-                heroContent.style.opacity = '1';
-                heroContent.style.transform = 'translateY(0px)';
-                heroContent.style.pointerEvents = 'auto';
+        function updateHeroContentVisibility(progress) {
+            heroWords.forEach((wordEl, index) => {
+                const sched = wordSchedule[index];
+                if (!sched) return;
+
+                if (progress < sched.start) {
+                    wordEl.style.opacity = '0';
+                    wordEl.style.transform = 'translateY(115%)';
+                } else if (progress >= sched.end) {
+                    wordEl.style.opacity = '1';
+                    wordEl.style.transform = 'translateY(0%)';
+                } else {
+                    const rawT = (progress - sched.start) / (sched.end - sched.start);
+                    const easeT = rawT * rawT * (3 - 2 * rawT);
+                    wordEl.style.opacity = easeT.toFixed(3);
+                    wordEl.style.transform = `translateY(${((1 - easeT) * 115).toFixed(1)}%)`;
+                }
+            });
+
+            if (heroBtnWrap) {
+                if (progress < btnSchedule.start) {
+                    heroBtnWrap.style.opacity = '0';
+                    heroBtnWrap.style.transform = 'translateY(20px)';
+                    heroBtnWrap.style.pointerEvents = 'none';
+                } else if (progress >= btnSchedule.end) {
+                    heroBtnWrap.style.opacity = '1';
+                    heroBtnWrap.style.transform = 'translateY(0px)';
+                    heroBtnWrap.style.pointerEvents = 'auto';
+                } else {
+                    const rawT = (progress - btnSchedule.start) / (btnSchedule.end - btnSchedule.start);
+                    const easeT = rawT * rawT * (3 - 2 * rawT);
+                    heroBtnWrap.style.opacity = easeT.toFixed(3);
+                    heroBtnWrap.style.transform = `translateY(${((1 - easeT) * 20).toFixed(1)}px)`;
+                    heroBtnWrap.style.pointerEvents = easeT > 0.3 ? 'auto' : 'none';
+                }
             }
 
             // Scroll indicator gently fades out as user begins scrolling
