@@ -20,23 +20,23 @@
         theme: {
           extend: {
             "colors": {
-              "surface": "#f9f9f7",
-              "surface-dim": "#dadad8",
+              "surface": "#FAF8F5",
+              "surface-dim": "#EBE6DC",
               "on-tertiary": "#ffffff",
               "error": "#ba1a1a",
-              "surface-container": "#eeeeec",
-              "on-surface": "#1a1c1b",
+              "surface-container": "#EDE8DC",
+              "on-surface": "#1B1917",
               "on-primary": "#ffffff",
-              "surface-container-high": "#e8e8e6",
+              "surface-container-high": "#E7E1D3",
               "on-secondary-fixed-variant": "#61401b",
               "error-container": "#ffdad6",
               "on-secondary-fixed": "#2c1600",
-              "outline-variant": "#c4c7c7",
+              "outline-variant": "#C8BFAC",
               "on-primary-container": "#959494",
               "primary-fixed-dim": "#c8c6c6",
               "secondary-fixed": "#ffdcbd",
               "on-primary-fixed": "#1b1c1c",
-              "on-surface-variant": "#444748",
+              "on-surface-variant": "#554F43",
               "on-secondary-container": "#79542d",
               "tertiary-fixed": "#e3e3d5",
               "surface-tint": "#5f5e5e",
@@ -44,27 +44,27 @@
               "on-error-container": "#93000a",
               "on-primary-fixed-variant": "#474747",
               "secondary-fixed-dim": "#eebd8e",
-              "background": "#f9f9f7",
+              "background": "#FAF8F5",
               "inverse-surface": "#2f3130",
               "primary": "#181919",
-              "surface-bright": "#f9f9f7",
+              "surface-bright": "#FAF8F5",
               "tertiary-container": "#2c2e24",
               "tertiary-fixed-dim": "#c7c7ba",
               "inverse-on-surface": "#f1f1ef",
               "inverse-primary": "#c8c6c6",
-              "outline": "#747878",
+              "outline": "#7C7362",
               "primary-fixed": "#e4e2e1",
               "tertiary": "#171911",
-              "surface-container-highest": "#e2e3e1",
+              "surface-container-highest": "#DFD8C8",
               "on-tertiary-container": "#949589",
               "on-secondary": "#ffffff",
               "secondary-container": "#fdcb9b",
               "on-tertiary-fixed-variant": "#46483d",
-              "on-background": "#1a1c1b",
-              "surface-variant": "#e2e3e1",
+              "on-background": "#1B1917",
+              "surface-variant": "#DFD8C8",
               "secondary": "#7c5730",
-              "surface-container-lowest": "#ffffff",
-              "surface-container-low": "#f4f4f2",
+              "surface-container-lowest": "#FAF8F5",
+              "surface-container-low": "#F4F0E6",
               "primary-container": "#2d2d2d"
             },
             "borderRadius": {
@@ -117,18 +117,17 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* 3D Transparent Glass Effect - Light Mode (Hero) */
+        /* 3D Transparent Glass Effect - Light Mode (Matte Ivory Frosted Glass) */
         .glass-3d {
-            background: rgba(255, 255, 255, 0.42);
-            backdrop-filter: blur(24px) saturate(200%);
-            -webkit-backdrop-filter: blur(24px) saturate(200%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
+            background: rgba(250, 248, 245, 0.78);
+            backdrop-filter: blur(20px) saturate(130%);
+            -webkit-backdrop-filter: blur(20px) saturate(130%);
+            border: 1px solid rgba(215, 207, 192, 0.65);
             box-shadow: 
-                0 20px 40px -10px rgba(0, 0, 0, 0.12),
-                0 6px 16px -4px rgba(0, 0, 0, 0.06),
-                inset 0 2px 1px 0 rgba(255, 255, 255, 0.95),
-                inset 0 -2px 2px 0 rgba(0, 0, 0, 0.08),
-                inset 0 0 16px 0 rgba(255, 255, 255, 0.35);
+                0 12px 32px -8px rgba(45, 38, 28, 0.07),
+                0 4px 12px -2px rgba(45, 38, 28, 0.04),
+                inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
+                inset 0 -1px 1px 0 rgba(180, 170, 155, 0.15);
             transition: background 1.2s cubic-bezier(0.25, 1, 0.5, 1),
                         border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
                         box-shadow 1.2s cubic-bezier(0.25, 1, 0.5, 1),
