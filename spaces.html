@@ -117,14 +117,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        #custom-cursor {
-            pointer-events: none;
-            transition: transform 0.15s ease-out;
-        }
-        .cursor-hover #custom-cursor {
-            transform: translate(-50%, -50%) scale(1.8) !important;
-            background-color: rgba(124, 87, 48, 0.3);
-        }
         /* 3D Transparent Glass Effect - Light Mode (Hero) */
         .glass-3d {
             background: rgba(255, 255, 255, 0.42);
@@ -227,9 +219,6 @@
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed min-h-screen flex flex-col">
     
-    <!-- Custom Cursor -->
-    <div id="custom-cursor" class="fixed top-0 left-0 w-5 h-5 bg-primary/20 rounded-full z-[9999] hidden md:block -translate-x-1/2 -translate-y-1/2"></div>
-
     <!-- Header Section -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4 md:pt-6 transition-all duration-1000">
         <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop flex items-center justify-between relative">
@@ -494,19 +483,6 @@
         }
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-        }
-
-        // Custom cursor
-        const cursor = document.getElementById('custom-cursor');
-        if (cursor) {
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-            });
-            const interactiveElements = document.querySelectorAll('a, button, input, select, textarea');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-            });
         }
     </script>
 </body>

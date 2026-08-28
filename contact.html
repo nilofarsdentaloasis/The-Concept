@@ -227,14 +227,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        #custom-cursor {
-            pointer-events: none;
-            transition: transform 0.15s ease-out;
-        }
-        .cursor-hover #custom-cursor {
-            transform: translate(-50%, -50%) scale(1.8) !important;
-            background-color: rgba(124, 87, 48, 0.3);
-        }
         /* 3D Transparent Glass Effect - Light Mode (Hero) */
         .glass-3d {
             background: rgba(255, 255, 255, 0.42);
@@ -340,9 +332,6 @@
     <div class="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
         <img src="assets/contact_bg.jpg" alt="The Concept Studio Background" class="w-full h-full object-cover object-center opacity-40">
     </div>
-
-    <!-- Custom Cursor -->
-    <div id="custom-cursor" class="fixed top-0 left-0 w-5 h-5 bg-primary/20 rounded-full z-[9999] hidden md:block -translate-x-1/2 -translate-y-1/2"></div>
 
     <!-- Header Section -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4 md:pt-6 transition-all duration-1000">
@@ -758,19 +747,6 @@
         function resetForm() {
             contactForm.reset();
             formSuccess.classList.add('hidden');
-        }
-
-        // Custom cursor
-        const cursor = document.getElementById('custom-cursor');
-        if (cursor) {
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-            });
-            const interactiveElements = document.querySelectorAll('a, button, input, select, textarea');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-            });
         }
     </script>
 </body>
