@@ -203,20 +203,30 @@
                 inset 0 0 16px 0 rgba(255, 255, 255, 0.05) !important;
         }
 
-        /* Smooth logo transition between light and dark header */
+        /* STRICT LOGO COLOR RULE: Black on White/Light background, White on Dark/Black background */
         .logo-light-img {
-            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             opacity: 1;
         }
         .logo-dark-img {
-            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             opacity: 0;
         }
-        .header-dark .logo-light-img {
+        #header-logo.logo-on-dark .logo-light-img,
+        .logo-on-dark .logo-light-img {
             opacity: 0 !important;
         }
-        .header-dark .logo-dark-img {
+        #header-logo.logo-on-dark .logo-dark-img,
+        .logo-on-dark .logo-dark-img {
             opacity: 1 !important;
+        }
+        #header-logo.logo-on-light .logo-light-img,
+        .logo-on-light .logo-light-img {
+            opacity: 1 !important;
+        }
+        #header-logo.logo-on-light .logo-dark-img,
+        .logo-on-light .logo-dark-img {
+            opacity: 0 !important;
         }
 
         /* Slow transition for Navigation Links to White (No Underline) */
@@ -733,18 +743,52 @@
             };
         }
 
-        // Header theme transition logic (turns black with white text ONLY when hero is entirely scrolled up)
+        // Strict logo & header theme contrast detection
         const mainHeader = document.getElementById('main-header');
+        const headerLogo = document.getElementById('header-logo');
+        const headerNav = document.getElementById('header-nav');
 
         function updateHeaderTheme() {
-            if (!scrollContainer || !mainHeader) return;
-            const rect = scrollContainer.getBoundingClientRect();
-            
-            // Turn black glass with white text ONLY when the hero section is entirely scrolled up out of view
-            if (rect.bottom <= 80) {
-                mainHeader.classList.add('header-dark');
+            if (!headerLogo) return;
+
+            const logoRect = headerLogo.getBoundingClientRect();
+            const logoCheckY = logoRect.top + (logoRect.height / 2);
+
+            const navRect = headerNav ? headerNav.getBoundingClientRect() : logoRect;
+            const navCheckY = navRect.top + (navRect.height / 2);
+
+            // Query all dark background elements on page
+            const darkElements = document.querySelectorAll('section.bg-primary, div.bg-primary, footer.bg-primary, .bg-stone-900, .bg-black, [data-theme="dark"]');
+
+            let isLogoOverDark = false;
+            let isNavOverDark = false;
+
+            darkElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= logoCheckY && rect.bottom >= logoCheckY) {
+                    isLogoOverDark = true;
+                }
+                if (rect.top <= navCheckY && rect.bottom >= navCheckY) {
+                    isNavOverDark = true;
+                }
+            });
+
+            // Strict rule for logo only: Black on white/light, White on black/dark
+            if (isLogoOverDark) {
+                headerLogo.classList.add('logo-on-dark');
+                headerLogo.classList.remove('logo-on-light');
             } else {
-                mainHeader.classList.remove('header-dark');
+                headerLogo.classList.add('logo-on-light');
+                headerLogo.classList.remove('logo-on-dark');
+            }
+
+            // Adapt nav glass pill when passing over dark sections
+            if (mainHeader) {
+                if (isNavOverDark) {
+                    mainHeader.classList.add('header-dark');
+                } else {
+                    mainHeader.classList.remove('header-dark');
+                }
             }
         }
 

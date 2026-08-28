@@ -30,7 +30,8 @@ The project consists of 4 bespoke pages:
 
 - **HTML5 & Vanilla JavaScript**: High-performance canvas frame rendering engine with retina / HiDPI support.
 - **Tailwind CSS & Vanilla CSS**: Custom 3D glassmorphism (`glass-3d`), bespoke luxury typography (`Playfair Display`, `Montserrat`), and fluid micro-animations.
-- **Brand Identity**: Custom transparent high-resolution typography & monogram logo assets (`assets/the_concept_logo_black.png`, `assets/the_concept_logo_white.png`, `assets/the_concept_icon.png`).
+- **Brand Identity**: Custom transparent high-resolution typography & monogram logo assets (`assets/the_concept_logo_dark.png`, `assets/the_concept_logo_white.png`, `assets/the_concept_icon.png`, `assets/the_concept_icon_black.png`).
+- **Strict Logo Contrast Rule**: The logo strictly and dynamically displays in **Black** when over white/light backgrounds, and **White** when over black/dark backgrounds across all pages.
 
 ---
 

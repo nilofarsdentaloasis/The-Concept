@@ -17,3 +17,8 @@
 
 3. **Perpetual Rule**:
    - This rule is permanently active and locked for all current and future prompts and tasks in this codebase.
+
+4. **Strict Brand Logo Contrast Rule (Locked Rule)**:
+   - The brand logo (`tc | the Concept`) must strictly and exclusively appear in **Black** when positioned on a white or light background (`bg-surface`, `#FAF8F5`, light hero/content sections).
+   - The brand logo must strictly and exclusively appear in **White** when positioned on a black or dark background (`bg-primary`, `#1B1917`, dark hero/content sections).
+   - This rule applies universally to all headers, footers, navigation bars, and standalone logo placements across all website pages (`index.html`, `spaces.html`, `philosophy.html`, `contact.html`).
