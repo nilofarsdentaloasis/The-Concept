@@ -241,7 +241,7 @@
         }
 
         /* ================================================= */
-        /* Architectural Letter Form (Seamless & Tilted)    */
+        /* Architectural Letter Form (Right Column Sheet)   */
         /* ================================================= */
         .letter-wrapper {
           width: 100%;
@@ -250,18 +250,26 @@
         }
 
         .letter {
-          background: transparent;
-          padding: 10px 0;
-          box-shadow: none;
+          background: #fbf8f3;
+          padding: 55px 7%;
+          box-shadow:
+            0 25px 60px rgba(27, 25, 23, 0.15),
+            0 8px 20px rgba(27, 25, 23, 0.06),
+            10px 10px 0 rgba(124, 87, 48, 0.08);
           position: relative;
-          border: none;
-          transform: rotate(-5deg);
-          transform-origin: center center;
-          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          border-radius: 6px;
+          border: 1px solid rgba(196, 199, 199, 0.45);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
         }
 
         .letter::before {
-          display: none;
+          content: "";
+          position: absolute;
+          inset: 12px;
+          border: 1px solid rgba(110, 95, 75, 0.16);
+          pointer-events: none;
+          border-radius: 3px;
         }
 
         .stamp {
@@ -276,20 +284,19 @@
           align-items: center;
           justify-content: center;
           color: #756858;
-          transform: rotate(8deg);
+          transform: rotate(6deg);
           font-family: "Caveat", cursive;
           font-size: 20px;
           line-height: 1.1;
           text-align: center;
-          background: transparent;
+          background: rgba(251, 248, 243, 0.95);
         }
 
         .stamp span {
           font-family: "DM Sans", sans-serif;
-          font-size: 7.5px;
+          font-size: 7px;
           letter-spacing: 1.5px;
           margin-top: 8px;
-          text-transform: lowercase;
         }
 
         .letter-top {
@@ -323,12 +330,12 @@
         .letter-content {
           font-family: "Caveat", cursive;
           color: #443d35;
-          font-size: 26px;
+          font-size: 25px;
           line-height: 1.65;
         }
 
         .dear {
-          font-size: 32px;
+          font-size: 30px;
           margin-bottom: 16px;
           color: #39332c;
         }
@@ -347,7 +354,7 @@
           background: transparent;
           outline: none;
           font-family: "Caveat", cursive;
-          font-size: 26px;
+          font-size: 25px;
           color: #756858;
           padding: 0 4px 2px;
           min-width: 130px;
@@ -360,7 +367,7 @@
         }
 
         .letter-input::placeholder {
-          color: rgba(100, 85, 70, 0.4);
+          color: rgba(100, 85, 70, 0.35);
         }
 
         .topic-select {
@@ -369,7 +376,7 @@
           background: transparent;
           outline: none;
           font-family: "Caveat", cursive;
-          font-size: 26px;
+          font-size: 25px;
           color: #756858;
           padding: 0 4px 2px;
           cursor: pointer;
@@ -397,24 +404,24 @@
               to bottom,
               transparent 0,
               transparent 40px,
-              rgba(100, 85, 70, 0.16) 41px,
+              rgba(100, 85, 70, 0.15) 41px,
               transparent 42px
             );
           font-family: "Caveat", cursive;
-          font-size: 26px;
+          font-size: 25px;
           line-height: 1.65;
           color: #756858;
           padding: 4px 6px;
         }
 
         .message-box textarea::placeholder {
-          color: rgba(100, 85, 70, 0.4);
+          color: rgba(100, 85, 70, 0.35);
         }
 
         .contact-row {
           margin-top: 18px;
           padding-top: 18px;
-          border-top: 1px dashed rgba(100, 85, 70, 0.22);
+          border-top: 1px dashed rgba(100, 85, 70, 0.20);
         }
 
         .closing {
@@ -425,7 +432,7 @@
         }
 
         .closing-text {
-          font-size: 26px;
+          font-size: 25px;
           margin-bottom: 6px;
         }
 
@@ -435,7 +442,7 @@
           background: transparent;
           outline: none;
           font-family: "Caveat", cursive;
-          font-size: 30px;
+          font-size: 28px;
           color: #756858;
           padding: 0 4px;
           width: min(300px, 100%);
@@ -473,7 +480,7 @@
 
         .small-note {
           font-family: "Caveat", cursive;
-          font-size: 22px;
+          font-size: 21px;
           color: #8a7b6c;
           transform: rotate(-2deg);
         }
@@ -484,10 +491,10 @@
           position: absolute;
           right: -25px;
           bottom: -20px;
-          border: 2px solid rgba(138, 123, 108, 0.35);
+          border: 2px solid rgba(138, 123, 108, 0.3);
           transform: rotate(8deg);
           pointer-events: none;
-          background: transparent;
+          background: rgba(251, 248, 243, 0.7);
         }
 
         .envelope::before,
@@ -496,7 +503,7 @@
           position: absolute;
           width: 65px;
           height: 1.5px;
-          background: rgba(138, 123, 108, 0.35);
+          background: rgba(138, 123, 108, 0.3);
           top: 28px;
         }
 
@@ -534,8 +541,8 @@
 
         @media (max-width: 700px) {
           .letter {
-            padding: 10px 0;
-            transform: rotate(-2deg);
+            padding: 45px 18px 35px;
+            transform: none;
           }
 
           .stamp {
@@ -673,8 +680,8 @@
                     <form class="letter" id="conceptForm">
 
                         <div class="stamp">
-                            your<br>space
-                            <span>the concept</span>
+                            YOUR<br>SPACE
+                            <span>THE CONCEPT</span>
                         </div>
 
                         <div class="letter-top">
@@ -693,7 +700,7 @@
                         <div class="letter-content">
 
                             <p class="dear">
-                                dear the concept,
+                                Dear THE CONCEPT,
                             </p>
 
                             <div class="letter-line">
@@ -875,6 +882,8 @@
                         </div>
 
                     </form>
+
+                    <div class="envelope"></div>
 
                 </div>
             </div>
