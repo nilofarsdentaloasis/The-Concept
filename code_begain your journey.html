@@ -241,106 +241,84 @@
         }
 
         /* ================================================= */
-        /* Architectural Letter Form Section Styling        */
+        /* Architectural Letter Form (Right Column Sheet)   */
         /* ================================================= */
-        .letter-section {
-          min-height: 100vh;
-          padding: 120px 7% 90px;
-          background:
-            radial-gradient(circle at 15% 20%, rgba(255,255,255,.10), transparent 25%),
-            radial-gradient(circle at 85% 80%, rgba(255,255,255,.08), transparent 25%),
-            rgba(169, 155, 139, 0.45);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-          position: relative;
-        }
-
-        .background-text {
-          position: absolute;
-          font-family: "Playfair Display", serif;
-          font-size: clamp(100px, 18vw, 320px);
-          color: rgba(255,255,255,.06);
-          white-space: nowrap;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) rotate(-8deg);
-          pointer-events: none;
-          user-select: none;
-        }
-
         .letter-wrapper {
-          width: min(100%, 950px);
+          width: 100%;
           position: relative;
           z-index: 10;
         }
 
         .letter {
-          background: #f3eee5;
-          padding: 75px 10%;
+          background: #fbf8f3;
+          padding: 55px 7%;
           box-shadow:
-            0 35px 80px rgba(50,40,30,.22),
-            15px 15px 0 rgba(70,55,40,.10);
+            0 25px 60px rgba(27, 25, 23, 0.15),
+            0 8px 20px rgba(27, 25, 23, 0.06),
+            10px 10px 0 rgba(124, 87, 48, 0.08);
           position: relative;
-          transform: rotate(-1deg);
-          border-radius: 4px;
+          border-radius: 6px;
+          border: 1px solid rgba(196, 199, 199, 0.45);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
         }
 
         .letter::before {
           content: "";
           position: absolute;
-          inset: 14px;
-          border: 1px solid rgba(110,95,75,.18);
+          inset: 12px;
+          border: 1px solid rgba(110, 95, 75, 0.16);
           pointer-events: none;
+          border-radius: 3px;
         }
 
         .stamp {
           position: absolute;
-          top: 30px;
-          right: 35px;
-          width: 105px;
-          height: 125px;
+          top: 25px;
+          right: 25px;
+          width: 90px;
+          height: 110px;
           border: 2px dashed #887b6b;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           color: #756858;
-          transform: rotate(8deg);
+          transform: rotate(6deg);
           font-family: "Caveat", cursive;
-          font-size: 23px;
+          font-size: 20px;
           line-height: 1.1;
           text-align: center;
-          background: rgba(243, 238, 229, 0.8);
+          background: rgba(251, 248, 243, 0.95);
         }
 
         .stamp span {
           font-family: "DM Sans", sans-serif;
-          font-size: 8px;
-          letter-spacing: 2px;
-          margin-top: 10px;
+          font-size: 7px;
+          letter-spacing: 1.5px;
+          margin-top: 8px;
         }
 
         .letter-top {
-          margin-bottom: 50px;
+          margin-bottom: 35px;
+          padding-right: 90px;
         }
 
         .letter-tag {
           font-family: "DM Sans", sans-serif;
           font-size: 10px;
-          letter-spacing: 4px;
+          letter-spacing: 3.5px;
           color: #857666;
           font-weight: 600;
-          margin-bottom: 20px;
+          margin-bottom: 12px;
         }
 
         .letter-title {
           font-family: "Playfair Display", serif;
-          font-size: clamp(42px, 6vw, 74px);
+          font-size: clamp(32px, 4vw, 48px);
           font-weight: 500;
           color: #37322c;
-          line-height: .98;
+          line-height: 1.05;
         }
 
         .letter-title em {
@@ -352,18 +330,18 @@
         .letter-content {
           font-family: "Caveat", cursive;
           color: #443d35;
-          font-size: 28px;
-          line-height: 1.7;
+          font-size: 25px;
+          line-height: 1.65;
         }
 
         .dear {
-          font-size: 36px;
-          margin-bottom: 22px;
+          font-size: 30px;
+          margin-bottom: 16px;
           color: #39332c;
         }
 
         .letter-line {
-          margin-bottom: 16px;
+          margin-bottom: 14px;
           display: flex;
           flex-wrap: wrap;
           align-items: baseline;
@@ -372,14 +350,14 @@
 
         .letter-input {
           border: none;
-          border-bottom: 2px solid rgba(100,85,70,.35);
+          border-bottom: 2px solid rgba(100, 85, 70, 0.35);
           background: transparent;
           outline: none;
           font-family: "Caveat", cursive;
-          font-size: 28px;
+          font-size: 25px;
           color: #756858;
-          padding: 0 5px 2px;
-          min-width: 170px;
+          padding: 0 4px 2px;
+          min-width: 130px;
           flex: 1;
         }
 
@@ -389,16 +367,16 @@
         }
 
         .letter-input::placeholder {
-          color: rgba(100,85,70,.35);
+          color: rgba(100, 85, 70, 0.35);
         }
 
         .topic-select {
           border: none;
-          border-bottom: 2px solid rgba(100,85,70,.35);
+          border-bottom: 2px solid rgba(100, 85, 70, 0.35);
           background: transparent;
           outline: none;
           font-family: "Caveat", cursive;
-          font-size: 28px;
+          font-size: 25px;
           color: #756858;
           padding: 0 4px 2px;
           cursor: pointer;
@@ -407,17 +385,17 @@
 
         .message-box {
           width: 100%;
-          margin-top: 25px;
+          margin-top: 18px;
         }
 
         .message-box label {
           display: block;
-          margin-bottom: 8px;
+          margin-bottom: 6px;
         }
 
         .message-box textarea {
           width: 100%;
-          min-height: 180px;
+          min-height: 150px;
           resize: vertical;
           border: none;
           outline: none;
@@ -425,105 +403,108 @@
             repeating-linear-gradient(
               to bottom,
               transparent 0,
-              transparent 46px,
-              rgba(100,85,70,.15) 47px,
-              transparent 48px
+              transparent 40px,
+              rgba(100, 85, 70, 0.15) 41px,
+              transparent 42px
             );
           font-family: "Caveat", cursive;
-          font-size: 28px;
+          font-size: 25px;
           line-height: 1.65;
           color: #756858;
-          padding: 5px 8px;
+          padding: 4px 6px;
         }
 
         .message-box textarea::placeholder {
-          color: rgba(100,85,70,.35);
+          color: rgba(100, 85, 70, 0.35);
         }
 
         .contact-row {
-          margin-top: 20px;
-          padding-top: 20px;
-          border-top: 1px dashed rgba(100,85,70,.20);
+          margin-top: 18px;
+          padding-top: 18px;
+          border-top: 1px dashed rgba(100, 85, 70, 0.20);
         }
 
         .closing {
-          margin-top: 35px;
+          margin-top: 26px;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
         }
 
         .closing-text {
-          font-size: 28px;
-          margin-bottom: 8px;
+          font-size: 25px;
+          margin-bottom: 6px;
         }
 
         .signature-input {
           border: none;
-          border-bottom: 2px solid rgba(100,85,70,.35);
+          border-bottom: 2px solid rgba(100, 85, 70, 0.35);
           background: transparent;
           outline: none;
           font-family: "Caveat", cursive;
-          font-size: 34px;
+          font-size: 28px;
           color: #756858;
-          padding: 0 5px;
-          width: min(350px, 100%);
+          padding: 0 4px;
+          width: min(300px, 100%);
         }
 
         .send-area {
-          margin-top: 50px;
+          margin-top: 36px;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          gap: 25px;
+          gap: 20px;
         }
 
         .send-note {
           border: 2px solid #4a4238;
-          background: transparent;
-          color: #4a4238;
-          padding: 17px 30px;
+          background: #4a4238;
+          color: #ffffff;
+          padding: 15px 28px;
           cursor: pointer;
           font-family: "DM Sans", sans-serif;
           letter-spacing: 2px;
           font-size: 11px;
           font-weight: 600;
-          transition: .3s ease;
+          transition: all 0.3s ease;
           border-radius: 4px;
+          box-shadow: 0 4px 12px rgba(74, 66, 56, 0.2);
         }
 
         .send-note:hover {
-          background: #4a4238;
-          color: #fff;
-          transform: rotate(-2deg);
+          background: #2c251e;
+          border-color: #2c251e;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(74, 66, 56, 0.3);
         }
 
         .small-note {
           font-family: "Caveat", cursive;
-          font-size: 24px;
+          font-size: 21px;
           color: #8a7b6c;
-          transform: rotate(-3deg);
+          transform: rotate(-2deg);
         }
 
         .envelope {
-          width: 130px;
-          height: 90px;
+          width: 100px;
+          height: 70px;
           position: absolute;
-          right: -80px;
-          bottom: -35px;
-          border: 2px solid rgba(255,255,255,.55);
-          transform: rotate(12deg);
+          right: -25px;
+          bottom: -20px;
+          border: 2px solid rgba(138, 123, 108, 0.3);
+          transform: rotate(8deg);
           pointer-events: none;
+          background: rgba(251, 248, 243, 0.7);
         }
 
         .envelope::before,
         .envelope::after {
           content: "";
           position: absolute;
-          width: 85px;
-          height: 2px;
-          background: rgba(255,255,255,.55);
-          top: 35px;
+          width: 65px;
+          height: 1.5px;
+          background: rgba(138, 123, 108, 0.3);
+          top: 28px;
         }
 
         .envelope::before {
@@ -541,57 +522,54 @@
         .success-message {
           display: none;
           text-align: center;
-          padding: 70px 30px;
+          padding: 50px 20px;
           font-family: "Caveat", cursive;
           color: #5d5145;
         }
 
         .success-message h2 {
           font-family: "Playfair Display", serif;
-          font-size: 48px;
+          font-size: 38px;
           font-weight: 500;
-          margin-bottom: 20px;
+          margin-bottom: 14px;
         }
 
         .success-message p {
-          font-size: 28px;
+          font-size: 24px;
           line-height: 1.4;
         }
 
         @media (max-width: 700px) {
-          .letter-section {
-            padding: 90px 15px 60px;
-          }
-
           .letter {
-            padding: 65px 24px 50px;
+            padding: 45px 18px 35px;
             transform: none;
           }
 
           .stamp {
-            width: 70px;
-            height: 85px;
-            right: 20px;
-            top: 20px;
-            font-size: 16px;
+            width: 65px;
+            height: 80px;
+            right: 15px;
+            top: 15px;
+            font-size: 15px;
           }
 
           .letter-top {
             padding-right: 65px;
+            margin-bottom: 25px;
           }
 
           .letter-content,
           .letter-input,
           .topic-select {
-            font-size: 24px;
+            font-size: 22px;
           }
 
           .dear {
-            font-size: 30px;
+            font-size: 26px;
           }
 
           .message-box textarea {
-            font-size: 24px;
+            font-size: 22px;
           }
 
           .send-area {
@@ -647,225 +625,269 @@
         </div>
     </header>
 
-    <!-- Main Content: Tell Us About Your Space Letter Section -->
-    <main class="relative z-10 flex-grow pt-20 md:pt-24 flex flex-col justify-center items-center w-full">
-        <section class="letter-section w-full">
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow pt-24 md:pt-32 pb-stack-xl flex flex-col justify-center">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-start">
+            
+            <!-- Left Info Column (Preserved from Previous Version) -->
+            <div id="page-hero" class="lg:col-span-5 flex flex-col gap-10 reveal active">
+                <div>
+                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase mb-4 block">Get In Touch</span>
+                    <h1 class="font-display-lg text-4xl sm:text-5xl md:text-6xl text-primary mb-6 leading-[1.15]">
+                        Begin Your <span class="italic font-light">Journey</span>
+                    </h1>
+                    <p class="font-body-lg text-on-surface-variant leading-relaxed">
+                        We invite you to reach out. Whether you have an architectural project in mind or simply wish to start a design dialogue, our team is here to listen.
+                    </p>
+                </div>
 
-            <div class="background-text">THE CONCEPT</div>
-
-            <div class="letter-wrapper">
-
-                <form class="letter" id="conceptForm">
-
-                    <div class="stamp">
-                        YOUR<br>SPACE
-                        <span>THE CONCEPT</span>
-                    </div>
-
-                    <div class="letter-top">
-
-                        <p class="letter-tag">
-                            START YOUR DESIGN STORY
+                <div class="flex flex-col gap-8 pt-8 border-t border-outline-variant/30">
+                    <div>
+                        <span class="input-label">Studio Address</span>
+                        <p class="font-body-md text-primary leading-relaxed">
+                            24 Savile Row, Mayfair<br>London W1S 2ES, United Kingdom
                         </p>
-
-                        <h1 class="letter-title">
-                            Tell us about<br>
-                            <em>your space.</em>
-                        </h1>
-
                     </div>
+                    <div>
+                        <span class="input-label">Direct Correspondence</span>
+                        <a class="font-body-md text-primary hover:text-secondary transition-colors" href="mailto:hello@theconcept.studio">
+                            hello@theconcept.studio
+                        </a>
+                    </div>
+                    <div>
+                        <span class="input-label">Telephone</span>
+                        <a class="font-body-md text-primary hover:text-secondary transition-colors" href="tel:+442079460000">
+                            +44 (0) 20 7946 0000
+                        </a>
+                    </div>
+                </div>
 
-                    <div class="letter-content">
+                <!-- Architectural Vignette Card -->
+                <div class="w-full h-52 rounded-2xl overflow-hidden shadow-lg relative bg-surface-container group">
+                    <img alt="Map Architectural Detail" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4OHWbiSa5coVQIO-0_GjSnO-aRRJ-tDioc50-0GV6uoko0-4fVNAr_j1DWmnAetY9cqIyN0KImDxtmXBUHernECdIxJcAN9kw6gImiHe_6JSuPBq_nKZjr10FARLvAQqDiwVXxbN3bCR2FpFXkPkLCYwXZK40qUTVImDuu-EuvJvxDcJM_Fy_TTJYdE-UZyRTQ2_YuyH56aZcyD0ljTl0rUPIA-ov-2XgtvbhD5uR3Tw6RB2OTsMp">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex items-end p-6">
+                        <span class="text-surface font-label-caps text-xs tracking-widest uppercase">London & Paris Studios</span>
+                    </div>
+                </div>
+            </div>
 
-                        <p class="dear">
-                            Dear THE CONCEPT,
-                        </p>
+            <!-- Right Column: Handwritten Architectural Letter Sheet (On 40% HD Background) -->
+            <div class="lg:col-span-7 reveal active relative">
+                <div class="letter-wrapper">
 
-                        <div class="letter-line">
+                    <form class="letter" id="conceptForm">
 
-                            <span>My name is</span>
+                        <div class="stamp">
+                            YOUR<br>SPACE
+                            <span>THE CONCEPT</span>
+                        </div>
 
-                            <input
-                                type="text"
-                                class="letter-input"
-                                name="name"
-                                placeholder="your name..."
-                                required
-                            >
+                        <div class="letter-top">
 
-                            <span>and I'm dreaming about</span>
+                            <p class="letter-tag">
+                                START YOUR DESIGN STORY
+                            </p>
 
-                            <select
-                                class="topic-select"
-                                name="project"
-                                required
-                            >
-                                <option value="">my next space...</option>
-                                <option>my dream home</option>
-                                <option>a new apartment</option>
-                                <option>my living room</option>
-                                <option>my bedroom</option>
-                                <option>my kitchen</option>
-                                <option>an office space</option>
-                                <option>a commercial project</option>
-                                <option>a complete renovation</option>
-                                <option>something unique</option>
-                            </select>
-
-                            <span>.</span>
+                            <h2 class="letter-title">
+                                Tell us about<br>
+                                <em>your space.</em>
+                            </h2>
 
                         </div>
 
-                        <div class="letter-line">
+                        <div class="letter-content">
 
-                            <span>The space is located in</span>
-
-                            <input
-                                type="text"
-                                class="letter-input"
-                                name="location"
-                                placeholder="your city..."
-                            >
-
-                            <span>and I need help with</span>
-
-                            <select
-                                class="topic-select"
-                                name="service"
-                            >
-                                <option value="">designing it...</option>
-                                <option>complete interior design</option>
-                                <option>space planning</option>
-                                <option>furniture & styling</option>
-                                <option>renovation</option>
-                                <option>turnkey execution</option>
-                                <option>consultation</option>
-                            </select>
-
-                            <span>.</span>
-
-                        </div>
-
-                        <div class="letter-line">
-
-                            <span>I'm hoping to start around</span>
-
-                            <input
-                                type="text"
-                                class="letter-input"
-                                name="timeline"
-                                placeholder="month / date..."
-                            >
-
-                            <span>and my approximate budget is</span>
-
-                            <select
-                                class="topic-select"
-                                name="budget"
-                            >
-                                <option value="">still exploring...</option>
-                                <option>under ₹5 lakh</option>
-                                <option>₹5 – ₹10 lakh</option>
-                                <option>₹10 – ₹20 lakh</option>
-                                <option>₹20 – ₹50 lakh</option>
-                                <option>₹50 lakh+</option>
-                                <option>I'd like to discuss this</option>
-                            </select>
-
-                            <span>.</span>
-
-                        </div>
-
-                        <div class="message-box">
-
-                            <label>
-                                And here is how I imagine the space...
-                            </label>
-
-                            <textarea
-                                name="message"
-                                placeholder="Tell us about your ideas, inspiration, lifestyle, colours you love, or simply the feeling you want your space to have..."
-                                required
-                            ></textarea>
-
-                        </div>
-
-                        <div class="contact-row">
+                            <p class="dear">
+                                Dear THE CONCEPT,
+                            </p>
 
                             <div class="letter-line">
 
-                                <span>You can reach me on</span>
+                                <span>My name is</span>
 
                                 <input
-                                    type="tel"
+                                    type="text"
                                     class="letter-input"
-                                    name="phone"
-                                    placeholder="your phone number..."
+                                    name="name"
+                                    placeholder="your name..."
                                     required
                                 >
 
-                                <span>or at</span>
+                                <span>and I'm dreaming about</span>
 
-                                <input
-                                    type="email"
-                                    class="letter-input"
-                                    name="email"
-                                    placeholder="your email..."
+                                <select
+                                    class="topic-select"
+                                    name="project"
+                                    required
                                 >
+                                    <option value="">my next space...</option>
+                                    <option>my dream home</option>
+                                    <option>a new apartment</option>
+                                    <option>my living room</option>
+                                    <option>my bedroom</option>
+                                    <option>my kitchen</option>
+                                    <option>an office space</option>
+                                    <option>a commercial project</option>
+                                    <option>a complete renovation</option>
+                                    <option>something unique</option>
+                                </select>
 
                                 <span>.</span>
 
                             </div>
 
+                            <div class="letter-line">
+
+                                <span>The space is located in</span>
+
+                                <input
+                                    type="text"
+                                    class="letter-input"
+                                    name="location"
+                                    placeholder="your city..."
+                                >
+
+                                <span>and I need help with</span>
+
+                                <select
+                                    class="topic-select"
+                                    name="service"
+                                >
+                                    <option value="">designing it...</option>
+                                    <option>complete interior design</option>
+                                    <option>space planning</option>
+                                    <option>furniture & styling</option>
+                                    <option>renovation</option>
+                                    <option>turnkey execution</option>
+                                    <option>consultation</option>
+                                </select>
+
+                                <span>.</span>
+
+                            </div>
+
+                            <div class="letter-line">
+
+                                <span>I'm hoping to start around</span>
+
+                                <input
+                                    type="text"
+                                    class="letter-input"
+                                    name="timeline"
+                                    placeholder="month / date..."
+                                >
+
+                                <span>and my approximate budget is</span>
+
+                                <select
+                                    class="topic-select"
+                                    name="budget"
+                                >
+                                    <option value="">still exploring...</option>
+                                    <option>under ₹5 lakh</option>
+                                    <option>₹5 – ₹10 lakh</option>
+                                    <option>₹10 – ₹20 lakh</option>
+                                    <option>₹20 – ₹50 lakh</option>
+                                    <option>₹50 lakh+</option>
+                                    <option>I'd like to discuss this</option>
+                                </select>
+
+                                <span>.</span>
+
+                            </div>
+
+                            <div class="message-box">
+
+                                <label>
+                                    And here is how I imagine the space...
+                                </label>
+
+                                <textarea
+                                    name="message"
+                                    placeholder="Tell us about your ideas, inspiration, lifestyle, colours you love, or simply the feeling you want your space to have..."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+                            <div class="contact-row">
+
+                                <div class="letter-line">
+
+                                    <span>You can reach me on</span>
+
+                                    <input
+                                        type="tel"
+                                        class="letter-input"
+                                        name="phone"
+                                        placeholder="your phone number..."
+                                        required
+                                    >
+
+                                    <span>or at</span>
+
+                                    <input
+                                        type="email"
+                                        class="letter-input"
+                                        name="email"
+                                        placeholder="your email..."
+                                    >
+
+                                    <span>.</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="closing">
+
+                                <p class="closing-text">
+                                    Looking forward to creating something beautiful,
+                                </p>
+
+                                <input
+                                    type="text"
+                                    class="signature-input"
+                                    name="signature"
+                                    placeholder="your signature..."
+                                >
+
+                            </div>
+
                         </div>
 
-                        <div class="closing">
+                        <div class="send-area">
 
-                            <p class="closing-text">
-                                Looking forward to creating something beautiful,
+                            <button type="submit" class="send-note">
+                                START MY DESIGN STORY →
+                            </button>
+
+                            <p class="small-note">
+                                Every beautiful space begins with an idea.
                             </p>
 
-                            <input
-                                type="text"
-                                class="signature-input"
-                                name="signature"
-                                placeholder="your signature..."
-                            >
+                        </div>
+
+                        <div class="success-message" id="successMessage">
+
+                            <h2>Your design story begins here.</h2>
+
+                            <p>
+                                Thank you for sharing your vision with THE CONCEPT.<br>
+                                We can't wait to imagine what your space could become.
+                            </p>
 
                         </div>
 
-                    </div>
+                    </form>
 
-                    <div class="send-area">
+                    <div class="envelope"></div>
 
-                        <button type="submit" class="send-note">
-                            START MY DESIGN STORY →
-                        </button>
-
-                        <p class="small-note">
-                            Every beautiful space begins with an idea.
-                        </p>
-
-                    </div>
-
-                    <div class="success-message" id="successMessage">
-
-                        <h2>Your design story begins here.</h2>
-
-                        <p>
-                            Thank you for sharing your vision with THE CONCEPT.<br>
-                            We can't wait to imagine what your space could become.
-                        </p>
-
-                    </div>
-
-                </form>
-
-                <div class="envelope"></div>
-
+                </div>
             </div>
-
-        </section>
+        </div>
     </main>
 
     <!-- Footer -->
