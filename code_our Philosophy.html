@@ -220,6 +220,91 @@
         .header-dark .mobile-nav-link.mobile-nav-active {
             color: #ffffff !important;
         }
+
+        /* ==========================================================================
+           FOUNDATIONS / THREE PILLARS AUTO-SCROLL SHOWCASE STYLES
+           ========================================================================== */
+        @keyframes marqueeTrack {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-infinite {
+            display: flex;
+            width: max-content;
+            animation: marqueeTrack 32s linear infinite;
+        }
+        .marquee-infinite:hover {
+            animation-play-state: paused;
+        }
+
+        /* Pillar Tab Cards */
+        .pillar-nav-btn {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: 1px solid rgba(196, 199, 199, 0.35);
+        }
+        .pillar-nav-btn:hover {
+            transform: translateY(-3px);
+            border-color: rgba(124, 87, 48, 0.45);
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+        }
+        .pillar-nav-btn.active {
+            background: #ffffff !important;
+            border-color: #7c5730 !important;
+            box-shadow: 0 16px 36px -10px rgba(124, 87, 48, 0.18), 0 0 0 1px #7c5730;
+            transform: translateY(-4px);
+        }
+        .pillar-nav-btn .pillar-timer-bar {
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #7c5730, #eebd8e);
+            transition: width 0.08s linear;
+        }
+        .pillar-nav-btn.active .pillar-num-badge {
+            background: #7c5730;
+            color: #ffffff;
+        }
+
+        /* Slide Content Transitions */
+        .pillar-content-panel {
+            display: none;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .pillar-content-panel.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image Stage Visualizer */
+        .pillar-stage-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transform: scale(1.06);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+        .pillar-stage-img.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        /* Floating Hotspot Badge Micro-Animation */
+        .spatial-hotspot {
+            animation: hotspotFloat 4s ease-in-out infinite alternate;
+        }
+        @keyframes hotspotFloat {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-6px); }
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed">
@@ -319,44 +404,328 @@
             </div>
         </section>
 
-        <!-- The Three Pillars -->
-        <section class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-24 md:mb-40">
-            <div class="text-center mb-16 reveal">
-                <span class="font-label-caps text-secondary text-xs tracking-widest uppercase">Foundations</span>
-                <h2 class="font-headline-md text-primary mt-3 text-3xl md:text-4xl">The Three Pillars</h2>
-            </div>
+        <!-- The Three Pillars (Architectural Foundations Showcase) -->
+        <section id="foundations-section" class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-24 md:mb-40 relative z-20">
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-outline-variant/30">
-                <div class="reveal p-8 rounded-2xl bg-surface-container-low hover:bg-surface transition-all duration-300">
-                    <div class="w-14 h-14 bg-secondary-fixed rounded-2xl flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-2xl text-on-secondary-container">balance</span>
-                    </div>
-                    <h3 class="font-headline-sm text-on-surface text-xl mb-4">Equilibrium</h3>
-                    <p class="text-on-surface-variant text-sm leading-relaxed">
-                        The perfect balance between the digital and the physical, ensuring that technology serves humanity rather than overwhelming it.
-                    </p>
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 reveal">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed text-[11px] font-label-caps uppercase tracking-widest mb-4">
+                    <span class="size-1.5 rounded-full bg-secondary animate-pulse"></span>
+                    <span>Foundations • Spatial Philosophy</span>
                 </div>
+                <h2 class="font-display-lg text-3xl sm:text-4xl md:text-5xl text-primary mb-6">
+                    The Three <span class="serif-italic font-normal">Immutable</span> Pillars
+                </h2>
+                <p class="font-body-lg text-on-surface-variant leading-relaxed">
+                    Every space we compose is anchored by three unyielding laws of architectural composition. These principles dictate how light enters, how authentic materials endure through decades, and how millimeter precision eliminates all visual noise.
+                </p>
+            </div>
 
-                <div class="reveal p-8 rounded-2xl bg-surface-container-low hover:bg-surface transition-all duration-300">
-                    <div class="w-14 h-14 bg-secondary-fixed rounded-2xl flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-2xl text-on-secondary-container">auto_awesome</span>
-                    </div>
-                    <h3 class="font-headline-sm text-on-surface text-xl mb-4">Authenticity</h3>
-                    <p class="text-on-surface-variant text-sm leading-relaxed">
-                        Using honest materials that age gracefully over time, gaining character and narrative through years of use and interaction.
-                    </p>
-                </div>
-
-                <div class="reveal p-8 rounded-2xl bg-surface-container-low hover:bg-surface transition-all duration-300">
-                    <div class="w-14 h-14 bg-secondary-fixed rounded-2xl flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-2xl text-on-secondary-container">architecture</span>
-                    </div>
-                    <h3 class="font-headline-sm text-on-surface text-xl mb-4">Precision</h3>
-                    <p class="text-on-surface-variant text-sm leading-relaxed">
-                        Meticulous attention to the smallest details. We believe the macro is only as strong as the micro-decisions that support it.
-                    </p>
+            <!-- Auto-Scrolling Infinite Tenets Marquee Ribbon -->
+            <div class="w-full overflow-hidden mb-12 sm:mb-14 py-3 border-y border-outline-variant/30 bg-surface-container-low/60 rounded-xl relative reveal">
+                <div class="marquee-infinite flex items-center gap-8 text-[11px] font-label-caps text-on-surface-variant/80 uppercase tracking-widest select-none">
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Harmonic Proportions</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Material Authenticity</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Shadowline Precision</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Circadian Scenography</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Zero Visual Noise</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Tactile Longevity</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Biophilic Calm</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <!-- Duplicate for infinite seamless loop -->
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Harmonic Proportions</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Material Authenticity</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Shadowline Precision</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Circadian Scenography</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Zero Visual Noise</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Tactile Longevity</span>
+                    <span class="text-outline-variant/60">•</span>
+                    <span class="inline-flex items-center gap-2"><span class="text-secondary">✦</span> Biophilic Calm</span>
+                    <span class="text-outline-variant/60">•</span>
                 </div>
             </div>
+
+            <!-- Interactive Pillar Navigation Tabs (3 Steppers with Auto-Fill Progress Timers) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10 reveal" id="pillarTabsContainer">
+                
+                <!-- Pillar Tab 01 -->
+                <button type="button" class="pillar-nav-btn active text-left p-6 rounded-2xl bg-surface-container-low transition-all duration-300 relative overflow-hidden flex flex-col justify-between group" data-pillar="0" aria-label="View Pillar 01: Equilibrium">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="pillar-num-badge font-label-caps text-xs px-2.5 py-1 rounded-md bg-surface-container-highest text-primary font-bold transition-colors">01</span>
+                            <div class="size-10 rounded-xl bg-secondary-fixed/50 flex items-center justify-center text-on-secondary-container group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-xl">balance</span>
+                            </div>
+                        </div>
+                        <h3 class="font-headline-sm text-primary text-xl font-semibold mb-1.5">Equilibrium</h3>
+                        <p class="font-body-md text-on-surface-variant text-xs leading-relaxed">
+                            Symbiosis of natural light, negative space, and quiet mass.
+                        </p>
+                    </div>
+                    <!-- Animated Progress Timer Track -->
+                    <div class="w-full bg-outline-variant/20 h-[3px] rounded-full overflow-hidden mt-5">
+                        <div class="pillar-timer-bar rounded-full" id="timerBar-0"></div>
+                    </div>
+                </button>
+
+                <!-- Pillar Tab 02 -->
+                <button type="button" class="pillar-nav-btn text-left p-6 rounded-2xl bg-surface-container-low transition-all duration-300 relative overflow-hidden flex flex-col justify-between group" data-pillar="1" aria-label="View Pillar 02: Authenticity">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="pillar-num-badge font-label-caps text-xs px-2.5 py-1 rounded-md bg-surface-container-highest text-primary font-bold transition-colors">02</span>
+                            <div class="size-10 rounded-xl bg-secondary-fixed/50 flex items-center justify-center text-on-secondary-container group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-xl">auto_awesome</span>
+                            </div>
+                        </div>
+                        <h3 class="font-headline-sm text-primary text-xl font-semibold mb-1.5">Authenticity</h3>
+                        <p class="font-body-md text-on-surface-variant text-xs leading-relaxed">
+                            Honest, living materials that age with tactile dignity and patina.
+                        </p>
+                    </div>
+                    <!-- Animated Progress Timer Track -->
+                    <div class="w-full bg-outline-variant/20 h-[3px] rounded-full overflow-hidden mt-5">
+                        <div class="pillar-timer-bar rounded-full" id="timerBar-1"></div>
+                    </div>
+                </button>
+
+                <!-- Pillar Tab 03 -->
+                <button type="button" class="pillar-nav-btn text-left p-6 rounded-2xl bg-surface-container-low transition-all duration-300 relative overflow-hidden flex flex-col justify-between group" data-pillar="2" aria-label="View Pillar 03: Precision">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="pillar-num-badge font-label-caps text-xs px-2.5 py-1 rounded-md bg-surface-container-highest text-primary font-bold transition-colors">03</span>
+                            <div class="size-10 rounded-xl bg-secondary-fixed/50 flex items-center justify-center text-on-secondary-container group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-xl">architecture</span>
+                            </div>
+                        </div>
+                        <h3 class="font-headline-sm text-primary text-xl font-semibold mb-1.5">Precision</h3>
+                        <p class="font-body-md text-on-surface-variant text-xs leading-relaxed">
+                            Millimeter architectural rigor where structural joins disappear.
+                        </p>
+                    </div>
+                    <!-- Animated Progress Timer Track -->
+                    <div class="w-full bg-outline-variant/20 h-[3px] rounded-full overflow-hidden mt-5">
+                        <div class="pillar-timer-bar rounded-full" id="timerBar-2"></div>
+                    </div>
+                </button>
+
+            </div>
+
+            <!-- Active Pillar Deep-Dive Interactive Stage (Split View) -->
+            <div id="pillarShowcaseWrapper" class="bg-surface-container-lowest rounded-3xl p-6 sm:p-8 lg:p-12 border border-outline-variant/30 shadow-2xl relative overflow-hidden reveal">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    
+                    <!-- Left: Educational Narrative & Architectural Breakdown -->
+                    <div class="lg:col-span-6 flex flex-col justify-between min-h-[420px]">
+                        
+                        <!-- Panel 0: Equilibrium -->
+                        <div class="pillar-content-panel active" id="pillarPanel-0">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-label-caps uppercase tracking-widest bg-secondary-fixed text-on-secondary-fixed font-bold">Pillar 01 of 03</span>
+                                <span class="font-label-caps text-xs text-on-surface-variant">Harmonic Volume</span>
+                            </div>
+                            <h3 class="font-display-lg text-2xl sm:text-3xl md:text-4xl text-primary mb-4 leading-snug">
+                                Spatial Equilibrium: The Art of Balanced Light &amp; Mass
+                            </h3>
+                            <p class="font-body-md text-on-surface-variant text-sm sm:text-base leading-relaxed mb-6">
+                                We treat emptiness not as an absence, but as an active architectural element. By harmonizing floor-to-ceiling natural light with solid sculpted stone volumes, a space acquires an immediate, museum-like serenity that de-stresses the senses.
+                            </p>
+
+                            <!-- 3-Point Structural Deep Dive -->
+                            <div class="space-y-4 mb-8">
+                                <div class="p-4 rounded-xl bg-surface-container-low/70 border border-outline-variant/20 flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-secondary text-xl mt-0.5">wb_sunny</span>
+                                    <div>
+                                        <h4 class="font-headline-sm text-primary text-sm font-semibold mb-1">Circadian Light Ingress</h4>
+                                        <p class="text-xs text-on-surface-variant leading-relaxed">
+                                            Calculated sun orientation angles and recessed light baffles ensure daylight animates the walls without harsh thermal glare.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-surface-container-low/70 border border-outline-variant/20 flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-secondary text-xl mt-0.5">graphic_eq</span>
+                                    <div>
+                                        <h4 class="font-headline-sm text-primary text-sm font-semibold mb-1">Sub-Surface Acoustic Calm</h4>
+                                        <p class="text-xs text-on-surface-variant leading-relaxed">
+                                            Concealed micro-perforated acoustic ceiling surfaces absorb ambient reverberation, leaving only tranquil stillness.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Spec Metrics Tags -->
+                            <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-outline-variant/25">
+                                <span class="px-3 py-1 rounded-md bg-surface-container text-primary text-[11px] font-label-caps">1:1.618 Golden Proportion</span>
+                                <span class="px-3 py-1 rounded-md bg-surface-container text-primary text-[11px] font-label-caps">Travertine &amp; Low-Iron Glass</span>
+                                <span class="px-3 py-1 rounded-md bg-surface-container text-primary text-[11px] font-label-caps">Zero Visual Clutter</span>
+                            </div>
+                        </div>
+
+                        <!-- Panel 1: Authenticity -->
+                        <div class="pillar-content-panel" id="pillarPanel-1">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-label-caps uppercase tracking-widest bg-secondary-fixed text-on-secondary-fixed font-bold">Pillar 02 of 03</span>
+                                <span class="font-label-caps text-xs text-on-surface-variant">Material Honesty</span>
+                            </div>
+                            <h3 class="font-display-lg text-2xl sm:text-3xl md:text-4xl text-primary mb-4 leading-snug">
+                                Material Authenticity: Tactile Grace &amp; Living Patina
+                            </h3>
+                            <p class="font-body-md text-on-surface-variant text-sm sm:text-base leading-relaxed mb-6">
+                                We categorically reject synthetic imitations. We compose with unlacquered brass that darkens under the touch of hands, fluted European limestones that cast delicate shadows, and smoked solid oak that develops rich warmth across generations.
+                            </p>
+
+                            <!-- 3-Point Structural Deep Dive -->
+                            <div class="space-y-4 mb-8">
+                                <div class="p-4 rounded-xl bg-surface-container-low/70 border border-outline-variant/20 flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-secondary text-xl mt-0.5">texture</span>
+                                    <div>
+                                        <h4 class="font-headline-sm text-primary text-sm font-semibold mb-1">Fluted Natural Stone Slabs</h4>
+                                        <p class="text-xs text-on-surface-variant leading-relaxed">
+                                            Custom-milled architectural stone reliefs that interact dynamically with raking light and offer rich sensory depth.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-surface-container-low/70 border border-outline-variant/20 flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-secondary text-xl mt-0.5">eco</span>
+                                    <div>
+                                        <h4 class="font-headline-sm text-primary text-sm font-semibold mb-1">Zero-VOC Organic Finishes</h4>
+                                        <p class="text-xs text-on-surface-variant leading-relaxed">
+                                            Natural beeswax sealants, breathable lime washes, and non-toxic plant oils for pristine indoor air purity.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Spec Metrics Tags -->
+                            <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-outline-variant/25">
+                                <span class="px-3 py-1 rounded-md bg-surface-container text-primary text-[11px] font-label-caps">100% Organic Sourcing</span>
+                                <span class="px-3 py-1 rounded-md bg-surface-container text-primary text-[11px] font-label-caps">Aged Brass &amp; Smoked Oak</span>
+                                <span class="px-3 py-1 rounded-md bg-surface-container text-primary text-[11px] font-label-caps">Generational Durability</span>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: Precision -->
+                        <div class="pillar-content-panel" id="pillarPanel-2">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-label-caps uppercase tracking-widest bg-secondary-fixed text-on-secondary-fixed font-bold">Pillar 03 of 03</span>
+                                <span class="font-label-caps text-xs text-on-surface-variant">Structural Rigor</span>
+                            </div>
+                            <h3 class="font-display-lg text-2xl sm:text-3xl md:text-4xl text-primary mb-4 leading-snug">
+                                Architectural Precision: Concealment &amp; Shadowline Mastery
+                            </h3>
+                            <p class="font-body-md text-on-surface-variant text-sm sm:text-base leading-relaxed mb-6">
+                                True architectural minimalism is immensely difficult to build. It requires concealing hardware, integrating climate diffusers into hairline shadowlines, and executing flush pivot doors with sub-millimeter tolerances so spaces feel seamless.
+                            </p>
+
+                            <!-- 3-Point Structural Deep Dive -->
+                            <div class="space-y-4 mb-8">
+                                <div class="p-4 rounded-xl bg-surface-container-low/70 border border-outline-variant/20 flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-secondary text-xl mt-0.5">border_clear</span>
+                                    <div>
+                                        <h4 class="font-headline-sm text-primary text-sm font-semibold mb-1">5mm Reglet Shadowline Reveals</h4>
+                                        <p class="text-xs text-on-surface-variant leading-relaxed">
+                                            Skirting boards and architraves are eliminated in favor of continuous 5mm recessed shadowline channels along floor and ceiling planes.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-surface-container-low/70 border border-outline-variant/20 flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-secondary text-xl mt-0.5">sensor_door</span>
+                                    <div>
+                                        <h4 class="font-headline-sm text-primary text-sm font-semibold mb-1">Flush Concealed Pivot Architecture</h4>
+                                        <p class="text-xs text-on-surface-variant leading-relaxed">
+                                            Floor-to-ceiling 3-meter pivot doors align flush with partition walls, creating uninterrupted vistas when closed.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Spec Metrics Tags -->
+                            <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-outline-variant/25">
+                                <span class="px-3 py-1 rounded-md bg-surface-container text-primary text-[11px] font-label-caps">±0.5mm Tolerance Standard</span>
+                                <span class="px-3 py-1 rounded-md bg-surface-container text-primary text-[11px] font-label-caps">Flush Hidden Pivots</span>
+                                <span class="px-3 py-1 rounded-md bg-surface-container text-primary text-[11px] font-label-caps">Linear Architectural Air Diffusers</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Cinematic Architectural Visualizer Showcase -->
+                    <div class="lg:col-span-6">
+                        <div class="relative w-full aspect-[16/11] rounded-2xl overflow-hidden shadow-2xl bg-surface-container">
+                            
+                            <!-- Slide Image 0 (Equilibrium) -->
+                            <img src="assets/pillar_equilibrium.jpg" alt="Equilibrium - Spatial Architecture" class="pillar-stage-img active" id="pillarImg-0">
+                            
+                            <!-- Slide Image 1 (Authenticity) -->
+                            <img src="assets/pillar_authenticity.jpg" alt="Authenticity - Natural Materials" class="pillar-stage-img" id="pillarImg-1">
+                            
+                            <!-- Slide Image 2 (Precision) -->
+                            <img src="assets/pillar_precision.jpg" alt="Precision - Seamless Detailing" class="pillar-stage-img" id="pillarImg-2">
+
+                            <!-- Gradient Overlays for High-End Depth -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-transparent pointer-events-none"></div>
+
+                            <!-- Floating Spatial Annotation Tag 0 (Active on Slide 0) -->
+                            <div class="spatial-hotspot absolute top-6 left-6 z-10 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface/90 backdrop-blur-md border border-white/40 shadow-xl text-[11px] font-label-caps text-primary" id="hotspot-0">
+                                <span class="size-2 rounded-full bg-secondary"></span>
+                                <span>Honed Travertine &amp; Panoramic Light</span>
+                            </div>
+
+                            <!-- Floating Spatial Annotation Tag 1 (Active on Slide 1) -->
+                            <div class="spatial-hotspot absolute top-6 left-6 z-10 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface/90 backdrop-blur-md border border-white/40 shadow-xl text-[11px] font-label-caps text-primary" id="hotspot-1" style="display: none;">
+                                <span class="size-2 rounded-full bg-secondary"></span>
+                                <span>Fluted Limestone &amp; Smoked Oak</span>
+                            </div>
+
+                            <!-- Floating Spatial Annotation Tag 2 (Active on Slide 2) -->
+                            <div class="spatial-hotspot absolute top-6 left-6 z-10 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface/90 backdrop-blur-md border border-white/40 shadow-xl text-[11px] font-label-caps text-primary" id="hotspot-2" style="display: none;">
+                                <span class="size-2 rounded-full bg-secondary"></span>
+                                <span>5mm Shadowline &amp; Recessed Cove</span>
+                            </div>
+
+                            <!-- Bottom Floating Stage Controls -->
+                            <div class="absolute bottom-6 left-6 right-6 z-10 flex items-center justify-between">
+                                <!-- Status Indicator Pill -->
+                                <div class="px-4 py-2 rounded-full bg-primary/85 backdrop-blur-md text-white border border-white/20 text-xs font-label-caps flex items-center gap-2 shadow-lg">
+                                    <span class="size-1.5 rounded-full bg-secondary-fixed animate-ping"></span>
+                                    <span id="pillarCounter">01 / 03</span>
+                                    <span class="text-white/40">|</span>
+                                    <span class="text-white/80 font-normal" id="pillarLabelShort">Equilibrium</span>
+                                </div>
+
+                                <!-- Play/Pause & Scrub Controls -->
+                                <div class="flex items-center gap-2 bg-primary/85 backdrop-blur-md p-1.5 rounded-full border border-white/20 shadow-lg text-white">
+                                    <button type="button" id="pillarPrevBtn" class="size-8 rounded-full hover:bg-white/20 flex items-center justify-center transition-colors focus:outline-none" aria-label="Previous Pillar">
+                                        <span class="material-symbols-outlined text-lg">chevron_left</span>
+                                    </button>
+                                    <button type="button" id="pillarPauseBtn" class="size-8 rounded-full hover:bg-white/20 flex items-center justify-center transition-colors focus:outline-none" aria-label="Pause Auto Cycle" title="Pause / Play Auto Rotation">
+                                        <span class="material-symbols-outlined text-lg" id="pauseIcon">pause</span>
+                                    </button>
+                                    <button type="button" id="pillarNextBtn" class="size-8 rounded-full hover:bg-white/20 flex items-center justify-center transition-colors focus:outline-none" aria-label="Next Pillar">
+                                        <span class="material-symbols-outlined text-lg">chevron_right</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
         </section>
 
         <!-- Studio Atmosphere -->
@@ -723,6 +1092,147 @@
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', toggleMobileMenu);
         }
+
+        // ==========================================
+        // Foundations - Three Pillars Auto-Advance Showcase Controller
+        // ==========================================
+        (function initPillarsShowcase() {
+            const tabs = document.querySelectorAll('.pillar-nav-btn');
+            const panels = document.querySelectorAll('.pillar-content-panel');
+            const images = document.querySelectorAll('.pillar-stage-img');
+            const hotspots = [document.getElementById('hotspot-0'), document.getElementById('hotspot-1'), document.getElementById('hotspot-2')];
+            const timerBars = [document.getElementById('timerBar-0'), document.getElementById('timerBar-1'), document.getElementById('timerBar-2')];
+            const counter = document.getElementById('pillarCounter');
+            const labelShort = document.getElementById('pillarLabelShort');
+            const prevBtn = document.getElementById('pillarPrevBtn');
+            const nextBtn = document.getElementById('pillarNextBtn');
+            const pauseBtn = document.getElementById('pillarPauseBtn');
+            const pauseIcon = document.getElementById('pauseIcon');
+            const wrapper = document.getElementById('foundations-section');
+
+            if (!tabs.length) return;
+
+            const pillarNames = ['Equilibrium', 'Authenticity', 'Precision'];
+            const CYCLE_DURATION = 5500; // 5.5s per pillar
+            const UPDATE_INTERVAL = 40;  // 25fps progress updates
+
+            let currentIdx = 0;
+            let progressTime = 0;
+            let isPaused = false;
+            let isUserInteracting = false;
+            let timerInterval = null;
+
+            function showPillar(idx, resetProgress = true) {
+                currentIdx = (idx + tabs.length) % tabs.length;
+                if (resetProgress) progressTime = 0;
+
+                // Update tabs
+                tabs.forEach((tab, i) => {
+                    if (i === currentIdx) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                        if (timerBars[i]) timerBars[i].style.width = '0%';
+                    }
+                });
+
+                // Update panels
+                panels.forEach((panel, i) => {
+                    if (i === currentIdx) {
+                        panel.classList.add('active');
+                    } else {
+                        panel.classList.remove('active');
+                    }
+                });
+
+                // Update images
+                images.forEach((img, i) => {
+                    if (i === currentIdx) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                });
+
+                // Update hotspots
+                hotspots.forEach((spot, i) => {
+                    if (!spot) return;
+                    if (i === currentIdx) {
+                        spot.style.display = 'flex';
+                    } else {
+                        spot.style.display = 'none';
+                    }
+                });
+
+                // Update badge text
+                if (counter) counter.textContent = `0${currentIdx + 1} / 0${tabs.length}`;
+                if (labelShort) labelShort.textContent = pillarNames[currentIdx];
+            }
+
+            function startTimer() {
+                if (timerInterval) clearInterval(timerInterval);
+                timerInterval = setInterval(() => {
+                    if (isPaused || isUserInteracting) return;
+
+                    progressTime += UPDATE_INTERVAL;
+                    const pct = Math.min(100, (progressTime / CYCLE_DURATION) * 100);
+                    
+                    if (timerBars[currentIdx]) {
+                        timerBars[currentIdx].style.width = `${pct}%`;
+                    }
+
+                    if (progressTime >= CYCLE_DURATION) {
+                        progressTime = 0;
+                        if (timerBars[currentIdx]) timerBars[currentIdx].style.width = '0%';
+                        showPillar(currentIdx + 1);
+                    }
+                }, UPDATE_INTERVAL);
+            }
+
+            // Tab Click handlers
+            tabs.forEach((tab, idx) => {
+                tab.addEventListener('click', () => {
+                    showPillar(idx, true);
+                });
+            });
+
+            // Prev/Next handlers
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showPillar(currentIdx - 1, true);
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showPillar(currentIdx + 1, true);
+                });
+            }
+
+            // Pause/Play toggle
+            if (pauseBtn && pauseIcon) {
+                pauseBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    isPaused = !isPaused;
+                    if (isPaused) {
+                        pauseIcon.textContent = 'play_arrow';
+                    } else {
+                        pauseIcon.textContent = 'pause';
+                    }
+                });
+            }
+
+            // Hover pause on wrapper
+            if (wrapper) {
+                wrapper.addEventListener('mouseenter', () => { isUserInteracting = true; });
+                wrapper.addEventListener('mouseleave', () => { isUserInteracting = false; });
+            }
+
+            // Initialize
+            showPillar(0, true);
+            startTimer();
+        })();
     </script>
 </body>
 </html>
