@@ -9,8 +9,8 @@
     <!-- Google Fonts & Material Symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -105,102 +105,32 @@
             }
         }
     </script>
-        /* Architectural Sketchbook Paper Note Styling */
-        .font-handwriting {
-            font-family: 'Caveat', cursive;
-        }
-        .enquiry-paper {
-            background:
-                repeating-linear-gradient(
-                    to bottom,
-                    transparent 0,
-                    transparent 42px,
-                    rgba(124, 87, 48, 0.09) 43px,
-                    transparent 44px
-                ),
-                #fbf8f2;
-            position: relative;
-            transform: rotate(-0.8deg);
-            box-shadow:
-                16px 18px 0 rgba(27, 25, 23, 0.08),
-                0 24px 60px rgba(27, 25, 23, 0.18);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        @media (min-width: 1024px) {
-            .enquiry-paper:hover {
-                transform: rotate(0deg);
-                box-shadow:
-                    20px 22px 0 rgba(27, 25, 23, 0.1),
-                    0 28px 70px rgba(27, 25, 23, 0.22);
-            }
-        }
-        @media (max-width: 950px) {
-            .enquiry-paper {
-                transform: none !important;
-            }
-        }
-        .enquiry-paper::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 54px;
-            width: 2px;
-            height: 100%;
-            background: rgba(180, 105, 75, 0.2);
-            pointer-events: none;
-        }
-        .paper-holes {
-            position: absolute;
-            left: 0;
-            top: 60px;
-            bottom: 60px;
-            width: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            pointer-events: none;
-        }
-        .paper-holes span {
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
-            background: #dad4c8;
-            margin-left: -6.5px;
-            box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.22);
-        }
-        .paper-stamp {
-            border: 2px dashed rgba(124, 87, 48, 0.65);
-            transform: rotate(10deg);
-            background: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 12px rgba(124, 87, 48, 0.08);
-        }
-        .note-input,
-        .note-select,
-        .note-textarea {
-            font-family: 'Caveat', cursive;
+    <style>
+        .input-field {
+            width: 100%;
             background: transparent;
-            border: none;
-            border-bottom: 2px solid rgba(40, 55, 65, 0.32);
-            outline: none;
+            border: 0;
+            border-bottom: 1px solid #181919;
             color: #1a1c1b;
-            padding: 2px 6px;
-            transition: border-color 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            padding: 14px 0;
+            outline: none;
+            transition: all 0.3s ease;
         }
-        .note-input::placeholder,
-        .note-textarea::placeholder {
-            color: rgba(68, 71, 72, 0.45);
+        .input-field:focus {
+            border-bottom: 2px solid #7c5730;
+            padding-left: 4px;
         }
-        .note-input:focus,
-        .note-select:focus,
-        .note-textarea:focus {
-            border-bottom-color: #7c5730;
-        }
-        .architect-side-note {
-            transform: rotate(3deg);
-            transition: transform 0.3s ease;
-        }
-        .architect-side-note:hover {
-            transform: rotate(0deg) scale(1.02);
+        .input-label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #444748;
+            margin-bottom: 6px;
         }
         .reveal {
             opacity: 0;
@@ -353,198 +283,116 @@
         </div>
     </header>
 
-    <!-- Main Content: Architectural Sketchbook Note Enquiry Section -->
-    <main class="relative z-10 flex-grow pt-24 md:pt-32 pb-20 flex flex-col justify-center items-center">
-        <div class="max-w-container-max mx-auto px-4 sm:px-6 md:px-margin-desktop w-full flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 relative">
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow pt-24 md:pt-32 pb-stack-xl flex flex-col justify-center">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-start">
             
-            <!-- Left Architectural Side Note & Atelier Details -->
-            <div class="w-full lg:w-72 flex flex-col gap-6 order-2 lg:order-1 text-center lg:text-left">
-                
-                <!-- Side Scribble Note -->
-                <div class="architect-side-note hidden lg:block p-6 rounded-2xl bg-surface-container-lowest/85 backdrop-blur-md border border-outline-variant/30 shadow-md">
-                    <span class="scribble-arrow block font-handwriting text-5xl text-secondary leading-none mb-2">↘</span>
-                    <p class="font-handwriting text-2xl sm:text-3xl text-primary leading-tight">
-                        No sterile forms.<br>
-                        Just write your spatial vision like a sketchbook note.
+            <!-- Left Info Column -->
+            <div id="page-hero" class="lg:col-span-5 flex flex-col gap-10 reveal active">
+                <div>
+                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase mb-4 block">Get In Touch</span>
+                    <h1 class="font-display-lg text-4xl sm:text-5xl md:text-6xl text-primary mb-6 leading-[1.15]">
+                        Begin Your <span class="italic font-light">Journey</span>
+                    </h1>
+                    <p class="font-body-lg text-on-surface-variant leading-relaxed">
+                        We invite you to reach out. Whether you have an architectural project in mind or simply wish to start a design dialogue, our team is here to listen.
                     </p>
-                    <span class="block font-label-caps text-[10px] uppercase tracking-widest text-secondary mt-3 font-bold">The Concept Studio</span>
                 </div>
 
-                <!-- Studio Direct Lines Card -->
-                <div class="p-6 rounded-2xl bg-surface-container-lowest/85 backdrop-blur-md border border-outline-variant/30 shadow-sm flex flex-col gap-4 text-xs">
+                <div class="flex flex-col gap-8 pt-8 border-t border-outline-variant/30">
                     <div>
-                        <span class="font-label-caps text-secondary text-[10px] tracking-widest uppercase block mb-1">Direct Correspondence</span>
-                        <a href="mailto:hello@theconcept.studio" class="font-body-md text-primary font-bold hover:text-secondary transition-colors text-sm">hello@theconcept.studio</a>
+                        <span class="input-label">Studio Address</span>
+                        <p class="font-body-md text-primary leading-relaxed">
+                            24 Savile Row, Mayfair<br>London W1S 2ES, United Kingdom
+                        </p>
                     </div>
                     <div>
-                        <span class="font-label-caps text-secondary text-[10px] tracking-widest uppercase block mb-1">Direct Telephone</span>
-                        <a href="tel:+442079460000" class="font-body-md text-primary font-bold hover:text-secondary transition-colors text-sm">+44 (0) 20 7946 0000</a>
+                        <span class="input-label">Direct Correspondence</span>
+                        <a class="font-body-md text-primary hover:text-secondary transition-colors" href="mailto:hello@theconcept.studio">
+                            hello@theconcept.studio
+                        </a>
                     </div>
                     <div>
-                        <span class="font-label-caps text-secondary text-[10px] tracking-widest uppercase block mb-1">Mayfair Atelier</span>
-                        <p class="font-body-md text-on-surface-variant text-xs leading-relaxed">24 Savile Row, Mayfair, London W1S 2ES</p>
+                        <span class="input-label">Telephone</span>
+                        <a class="font-body-md text-primary hover:text-secondary transition-colors" href="tel:+442079460000">
+                            +44 (0) 20 7946 0000
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Architectural Vignette Card -->
+                <div class="w-full h-52 rounded-2xl overflow-hidden shadow-lg relative bg-surface-container group">
+                    <img alt="Map Architectural Detail" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4OHWbiSa5coVQIO-0_GjSnO-aRRJ-tDioc50-0GV6uoko0-4fVNAr_j1DWmnAetY9cqIyN0KImDxtmXBUHernECdIxJcAN9kw6gImiHe_6JSuPBq_nKZjr10FARLvAQqDiwVXxbN3bCR2FpFXkPkLCYwXZK40qUTVImDuu-EuvJvxDcJM_Fy_TTJYdE-UZyRTQ2_YuyH56aZcyD0ljTl0rUPIA-ov-2XgtvbhD5uR3Tw6RB2OTsMp">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex items-end p-6">
+                        <span class="text-surface font-label-caps text-xs tracking-widest uppercase">London & Paris Studios</span>
                     </div>
                 </div>
             </div>
 
-            <!-- The Architectural Project Note Sheet (Centerpiece) -->
-            <div class="w-full max-w-3xl order-1 lg:order-2">
-                <div class="enquiry-paper relative bg-[#fbf8f2] rounded-xl shadow-2xl p-7 sm:p-12 md:p-14 border border-[#e5dfd3]">
-                    
-                    <!-- Paper Holes (Left Edge) -->
-                    <div class="paper-holes">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <!-- Paper Header -->
-                    <div class="paper-header flex justify-between items-start gap-4 pb-6 mb-6 border-b border-[#28373c]/15">
+            <!-- Right Form Column (Glassmorphism on top of 40% bg) -->
+            <div class="lg:col-span-7 bg-surface-container-lowest/85 backdrop-blur-md p-8 sm:p-12 md:p-14 rounded-3xl relative shadow-2xl reveal border border-outline-variant/40">
+                <form id="contactForm" class="flex flex-col gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                            <span class="paper-label block font-label-caps text-[11px] text-secondary tracking-[0.25em] font-bold uppercase mb-2">The Concept • Architectural Studio</span>
-                            <h1 class="font-display-lg text-3xl sm:text-4xl md:text-5xl text-primary font-bold leading-tight">
-                                Let's talk <span class="italic font-normal text-secondary">about your space.</span>
-                            </h1>
+                            <label class="input-label" for="firstName">First Name *</label>
+                            <input class="input-field" id="firstName" name="firstName" placeholder="Eleanor" required type="text">
                         </div>
-
-                        <!-- Architectural Circular Studio Stamp -->
-                        <div class="paper-stamp flex-shrink-0 size-20 sm:size-24 rounded-full border-2 border-dashed border-[#7c5730]/60 flex flex-col items-center justify-center text-center rotate-12 p-2">
-                            <span class="font-label-caps text-[8px] sm:text-[9px] uppercase tracking-wider text-secondary font-bold leading-tight">THE CONCEPT</span>
-                            <span class="font-handwriting text-sm text-primary leading-none my-0.5">Project</span>
-                            <span class="font-label-caps text-[7px] sm:text-[8px] uppercase tracking-widest text-[#66808b]">BRIEF NOTE</span>
+                        <div>
+                            <label class="input-label" for="lastName">Last Name *</label>
+                            <input class="input-field" id="lastName" name="lastName" placeholder="Vance" required type="text">
                         </div>
                     </div>
 
-                    <!-- Intro line -->
-                    <p class="font-handwriting text-2xl sm:text-3xl text-[#43575f] mb-6">
-                        No complicated questionnaires. Just leave us your design brief...
-                    </p>
+                    <div>
+                        <label class="input-label" for="email">Email Address *</label>
+                        <input class="input-field" id="email" name="email" placeholder="eleanor@example.com" required type="email">
+                    </div>
 
-                    <!-- The Note Form -->
-                    <form id="smileNoteForm" class="smile-note-form flex flex-col gap-4">
-                        
-                        <!-- Row 1: Name -->
-                        <div class="note-field flex items-baseline gap-2 flex-wrap">
-                            <label for="name" class="font-handwriting text-2xl sm:text-3xl text-primary whitespace-nowrap">My name is</label>
-                            <input type="text" id="name" name="name" placeholder="write your name here..." required class="note-input font-handwriting text-xl sm:text-2xl text-primary flex-1 min-w-[200px] border-b border-[#3c5058]/35 bg-transparent outline-none focus:border-secondary py-1">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="input-label" for="subject">Inquiry Type</label>
+                            <select class="input-field appearance-none bg-transparent cursor-pointer" id="subject" name="subject">
+                                <option value="residential">Private Residence</option>
+                                <option value="commercial">Commercial / Retail</option>
+                                <option value="curation">Art & Material Curation</option>
+                                <option value="press">Press &amp; Media</option>
+                                <option value="other">General Conversation</option>
+                            </select>
                         </div>
-
-                        <!-- Row 2: Phone & Email -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="note-field flex items-baseline gap-2 flex-wrap">
-                                <label for="phone" class="font-handwriting text-2xl sm:text-3xl text-primary whitespace-nowrap">You can reach me on</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+44 .........." required class="note-input font-handwriting text-xl sm:text-2xl text-primary flex-1 min-w-[160px] border-b border-[#3c5058]/35 bg-transparent outline-none focus:border-secondary py-1">
-                            </div>
-                            <div class="note-field flex items-baseline gap-2 flex-wrap">
-                                <label for="email" class="font-handwriting text-2xl sm:text-3xl text-primary whitespace-nowrap">Or email me at</label>
-                                <input type="email" id="email" name="email" placeholder="hello@example.com" required class="note-input font-handwriting text-xl sm:text-2xl text-primary flex-1 min-w-[160px] border-b border-[#3c5058]/35 bg-transparent outline-none focus:border-secondary py-1">
-                            </div>
+                        <div>
+                            <label class="input-label" for="location">Project Location</label>
+                            <input class="input-field" id="location" name="location" placeholder="City / Country" type="text">
                         </div>
+                    </div>
 
-                        <!-- Row 3: Location & Property Type -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="note-field flex items-baseline gap-2 flex-wrap">
-                                <label for="location" class="font-handwriting text-2xl sm:text-3xl text-primary whitespace-nowrap">My project is located in</label>
-                                <input type="text" id="location" name="location" placeholder="City or Country..." required class="note-input font-handwriting text-xl sm:text-2xl text-primary flex-1 min-w-[150px] border-b border-[#3c5058]/35 bg-transparent outline-none focus:border-secondary py-1">
-                            </div>
-                            <div class="note-field flex items-baseline gap-2 flex-wrap">
-                                <label for="propertyType" class="font-handwriting text-2xl sm:text-3xl text-primary whitespace-nowrap">I'm designing a</label>
-                                <select id="propertyType" name="propertyType" required class="note-select font-handwriting text-xl sm:text-2xl text-primary flex-1 min-w-[180px] border-b border-[#3c5058]/35 bg-transparent outline-none focus:border-secondary py-1 cursor-pointer">
-                                    <option value="" selected disabled>choose space type...</option>
-                                    <option>Private Luxury Villa / Bungalow</option>
-                                    <option>Penthouse / Apartment</option>
-                                    <option>Boutique Office / Studio</option>
-                                    <option>Luxury Retail / Showroom</option>
-                                    <option>Hospitality / Restaurant / Cafe</option>
-                                    <option>Full Home Remodel</option>
-                                    <option>Something Else</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div>
+                        <label class="input-label" for="message">Project Vision *</label>
+                        <textarea class="input-field resize-none" id="message" name="message" placeholder="Tell us about the scope, architectural ambitions, and timeline..." required rows="4"></textarea>
+                    </div>
 
-                        <!-- Row 4: Carpet Area & Budget Tier -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="note-field flex items-baseline gap-2 flex-wrap">
-                                <label for="carpetArea" class="font-handwriting text-2xl sm:text-3xl text-primary whitespace-nowrap">With an approximate area of</label>
-                                <select id="carpetArea" name="carpetArea" required class="note-select font-handwriting text-xl sm:text-2xl text-primary flex-1 min-w-[160px] border-b border-[#3c5058]/35 bg-transparent outline-none focus:border-secondary py-1 cursor-pointer">
-                                    <option value="" selected disabled>carpet area...</option>
-                                    <option>Under 1,000 sq.ft</option>
-                                    <option>1,000 – 2,500 sq.ft</option>
-                                    <option>2,500 – 5,000 sq.ft</option>
-                                    <option>5,000+ sq.ft (Estate)</option>
-                                </select>
-                            </div>
-                            <div class="note-field flex items-baseline gap-2 flex-wrap">
-                                <label for="budgetRange" class="font-handwriting text-2xl sm:text-3xl text-primary whitespace-nowrap">Target budget tier</label>
-                                <select id="budgetRange" name="budgetRange" required class="note-select font-handwriting text-xl sm:text-2xl text-primary flex-1 min-w-[160px] border-b border-[#3c5058]/35 bg-transparent outline-none focus:border-secondary py-1 cursor-pointer">
-                                    <option value="" selected disabled>budget estimate...</option>
-                                    <option>Standard Luxury Tier</option>
-                                    <option>Premium Luxe Tier</option>
-                                    <option>Ultra-Luxury Bespoke</option>
-                                    <option>Seeking Budget Guidance</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Row 5: Services & Timeline -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="note-field flex items-baseline gap-2 flex-wrap">
-                                <label for="scope" class="font-handwriting text-2xl sm:text-3xl text-primary whitespace-nowrap">Scope of services</label>
-                                <select id="scope" name="scope" required class="note-select font-handwriting text-xl sm:text-2xl text-primary flex-1 min-w-[160px] border-b border-[#3c5058]/35 bg-transparent outline-none focus:border-secondary py-1 cursor-pointer">
-                                    <option value="" selected disabled>choose service...</option>
-                                    <option>Full Turnkey Design &amp; Execution</option>
-                                    <option>3D Architectural Spatial Design</option>
-                                    <option>Complete Renovation &amp; Remodeling</option>
-                                    <option>Bespoke Furniture &amp; Art Curation</option>
-                                </select>
-                            </div>
-                            <div class="note-field flex items-baseline gap-2 flex-wrap">
-                                <label for="timeline" class="font-handwriting text-2xl sm:text-3xl text-primary whitespace-nowrap">Target timeline</label>
-                                <select id="timeline" name="timeline" required class="note-select font-handwriting text-xl sm:text-2xl text-primary flex-1 min-w-[160px] border-b border-[#3c5058]/35 bg-transparent outline-none focus:border-secondary py-1 cursor-pointer">
-                                    <option value="" selected disabled>possession timeline...</option>
-                                    <option>Ready to start immediately</option>
-                                    <option>Within 1 – 3 Months</option>
-                                    <option>3 – 6 Months</option>
-                                    <option>Planning Stage (6+ Months)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Row 6: Note Message / Spatial Vision -->
-                        <div class="note-field note-message mt-3">
-                            <label for="message" class="block font-handwriting text-2xl sm:text-3xl text-primary mb-2">And here's my design vision &amp; inspirations...</label>
-                            <textarea id="message" name="message" placeholder="Tell us anything about your aesthetic preferences, materials (travertine, warm oak, brass), layout requirements, or inspirations..." required class="note-textarea w-full min-h-[110px] font-handwriting text-xl sm:text-2xl text-primary bg-transparent border-b border-[#3c5058]/35 outline-none focus:border-secondary resize-y leading-relaxed p-1"></textarea>
-                        </div>
-
-                        <!-- Footer / Signature & Send Button -->
-                        <div class="note-footer flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mt-6 pt-4 border-t border-[#28373c]/15">
-                            <div class="signature flex flex-col gap-0.5">
-                                <span class="font-label-caps text-[10px] uppercase tracking-widest text-secondary font-bold">Drafted for:</span>
-                                <strong class="font-handwriting text-2xl sm:text-3xl text-primary font-normal">The Concept Studio ✦</strong>
-                            </div>
-
-                            <button type="submit" class="send-note-btn bg-primary text-white hover:bg-secondary transition-all px-8 py-4 rounded-full font-label-caps text-xs uppercase tracking-widest flex items-center gap-3 shadow-lg hover:shadow-xl group cursor-pointer font-bold">
-                                <span>SEND MY DESIGN NOTE</span>
-                                <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                            </button>
-                        </div>
-                    </form>
-
-                    <!-- Success Confirmation -->
-                    <div id="formSuccess" class="form-success hidden text-center py-10">
-                        <div class="w-16 h-16 bg-secondary-fixed rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner">
-                            <span class="material-symbols-outlined text-3xl text-on-secondary-container">done_all</span>
-                        </div>
-                        <h3 class="font-handwriting text-4xl text-primary mb-2">Your design note is on its way! ✦</h3>
-                        <p class="font-body-md text-on-surface-variant max-w-md mx-auto text-sm leading-relaxed mb-6">
-                            Thank you for sharing your vision with The Concept Studio. Our architectural team will review your spatial brief and respond with a quotation roadmap within 24 business hours.
-                        </p>
-                        <button onclick="resetNoteForm()" class="border border-primary text-primary px-7 py-3 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all font-bold">
-                            Write Another Note
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <button class="w-full sm:w-auto bg-primary text-on-primary font-label-caps text-xs uppercase tracking-widest px-10 py-5 rounded-full hover:bg-secondary transition-all flex items-center justify-center gap-3 shadow-lg group cursor-pointer" type="submit">
+                            <span>Submit Inquiry</span>
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </button>
+                        <span class="text-on-surface-variant text-[11px] font-label-caps">Strict client confidentiality assured</span>
                     </div>
+                </form>
+
+                <!-- Success Confirmation Message (Hidden by default) -->
+                <div id="formSuccess" class="hidden absolute inset-0 bg-surface-container-low/98 backdrop-blur-md rounded-3xl p-10 flex flex-col items-center justify-center text-center">
+                    <div class="w-16 h-16 bg-secondary-fixed rounded-full flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-3xl text-on-secondary-container">check</span>
+                    </div>
+                    <h3 class="font-headline-md text-2xl text-primary mb-3">Inquiry Received</h3>
+                    <p class="font-body-md text-on-surface-variant max-w-md mb-8 leading-relaxed">
+                        Thank you for sharing your vision. Our architectural partners will review your project brief and respond within 24 business hours.
+                    </p>
+                    <button onclick="resetForm()" class="border border-primary text-primary px-8 py-3 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all">
+                        Send Another Note
+                    </button>
                 </div>
             </div>
         </div>
@@ -566,8 +414,6 @@
                 </div>
 
                 <p class="font-label-caps text-[10px] text-on-surface-variant">© 2024 The Concept Studio. All rights reserved.</p>
-            </div>
-        </div>
     </footer>
 
     <!-- Floating Luxury Call Button (Bottom Right Corner) -->
@@ -676,25 +522,19 @@
         }
 
         // Form submission handling
-        const smileNoteForm = document.getElementById('smileNoteForm');
+        const contactForm = document.getElementById('contactForm');
         const formSuccess = document.getElementById('formSuccess');
 
-        if (smileNoteForm) {
-            smileNoteForm.addEventListener('submit', (e) => {
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                smileNoteForm.classList.add('hidden');
                 formSuccess.classList.remove('hidden');
             });
         }
 
-        function resetNoteForm() {
-            if (smileNoteForm) {
-                smileNoteForm.reset();
-                smileNoteForm.classList.remove('hidden');
-            }
-            if (formSuccess) {
-                formSuccess.classList.add('hidden');
-            }
+        function resetForm() {
+            contactForm.reset();
+            formSuccess.classList.add('hidden');
         }
     </script>
 </body>
