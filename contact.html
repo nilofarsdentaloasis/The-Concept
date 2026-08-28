@@ -241,35 +241,47 @@
         }
 
         /* ================================================= */
-        /* Architectural Letter Form (Right Column Sheet)   */
+        /* Architectural Letter Form (Tilted & Seamless)    */
         /* ================================================= */
         .letter-wrapper {
           width: 100%;
           position: relative;
           z-index: 10;
+          perspective: 1000px;
         }
 
         .letter {
-          background: #fbf8f3;
+          background: rgba(249, 249, 247, 0.45);
           padding: 55px 7%;
           box-shadow:
-            0 25px 60px rgba(27, 25, 23, 0.15),
-            0 8px 20px rgba(27, 25, 23, 0.06),
-            10px 10px 0 rgba(124, 87, 48, 0.08);
+            0 25px 60px rgba(27, 25, 23, 0.12),
+            0 8px 20px rgba(27, 25, 23, 0.05),
+            12px 14px 0 rgba(124, 87, 48, 0.06);
           position: relative;
           border-radius: 6px;
-          border: 1px solid rgba(196, 199, 199, 0.45);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
+          border: 1px dashed rgba(124, 87, 48, 0.35);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transform: rotate(-5deg);
+          transform-origin: center center;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+
+        .letter:hover {
+          transform: rotate(-4deg) translateY(-3px);
+          box-shadow:
+            0 30px 70px rgba(27, 25, 23, 0.16),
+            0 12px 28px rgba(27, 25, 23, 0.08),
+            14px 16px 0 rgba(124, 87, 48, 0.08);
         }
 
         .letter::before {
           content: "";
           position: absolute;
-          inset: 12px;
-          border: 1px solid rgba(110, 95, 75, 0.16);
+          inset: 10px;
+          border: 1px solid rgba(110, 95, 75, 0.18);
           pointer-events: none;
-          border-radius: 3px;
+          border-radius: 4px;
         }
 
         .stamp {
@@ -284,19 +296,20 @@
           align-items: center;
           justify-content: center;
           color: #756858;
-          transform: rotate(6deg);
+          transform: rotate(8deg);
           font-family: "Caveat", cursive;
           font-size: 20px;
           line-height: 1.1;
           text-align: center;
-          background: rgba(251, 248, 243, 0.95);
+          background: transparent;
         }
 
         .stamp span {
           font-family: "DM Sans", sans-serif;
-          font-size: 7px;
+          font-size: 7.5px;
           letter-spacing: 1.5px;
           margin-top: 8px;
+          text-transform: lowercase;
         }
 
         .letter-top {
@@ -330,12 +343,12 @@
         .letter-content {
           font-family: "Caveat", cursive;
           color: #443d35;
-          font-size: 25px;
+          font-size: 26px;
           line-height: 1.65;
         }
 
         .dear {
-          font-size: 30px;
+          font-size: 32px;
           margin-bottom: 16px;
           color: #39332c;
         }
@@ -354,7 +367,7 @@
           background: transparent;
           outline: none;
           font-family: "Caveat", cursive;
-          font-size: 25px;
+          font-size: 26px;
           color: #756858;
           padding: 0 4px 2px;
           min-width: 130px;
@@ -367,7 +380,7 @@
         }
 
         .letter-input::placeholder {
-          color: rgba(100, 85, 70, 0.35);
+          color: rgba(100, 85, 70, 0.4);
         }
 
         .topic-select {
@@ -376,7 +389,7 @@
           background: transparent;
           outline: none;
           font-family: "Caveat", cursive;
-          font-size: 25px;
+          font-size: 26px;
           color: #756858;
           padding: 0 4px 2px;
           cursor: pointer;
@@ -404,24 +417,24 @@
               to bottom,
               transparent 0,
               transparent 40px,
-              rgba(100, 85, 70, 0.15) 41px,
+              rgba(100, 85, 70, 0.16) 41px,
               transparent 42px
             );
           font-family: "Caveat", cursive;
-          font-size: 25px;
+          font-size: 26px;
           line-height: 1.65;
           color: #756858;
           padding: 4px 6px;
         }
 
         .message-box textarea::placeholder {
-          color: rgba(100, 85, 70, 0.35);
+          color: rgba(100, 85, 70, 0.4);
         }
 
         .contact-row {
           margin-top: 18px;
           padding-top: 18px;
-          border-top: 1px dashed rgba(100, 85, 70, 0.20);
+          border-top: 1px dashed rgba(100, 85, 70, 0.22);
         }
 
         .closing {
@@ -432,7 +445,7 @@
         }
 
         .closing-text {
-          font-size: 25px;
+          font-size: 26px;
           margin-bottom: 6px;
         }
 
@@ -442,7 +455,7 @@
           background: transparent;
           outline: none;
           font-family: "Caveat", cursive;
-          font-size: 28px;
+          font-size: 30px;
           color: #756858;
           padding: 0 4px;
           width: min(300px, 100%);
@@ -480,7 +493,7 @@
 
         .small-note {
           font-family: "Caveat", cursive;
-          font-size: 21px;
+          font-size: 22px;
           color: #8a7b6c;
           transform: rotate(-2deg);
         }
@@ -491,10 +504,10 @@
           position: absolute;
           right: -25px;
           bottom: -20px;
-          border: 2px solid rgba(138, 123, 108, 0.3);
+          border: 2px solid rgba(138, 123, 108, 0.35);
           transform: rotate(8deg);
           pointer-events: none;
-          background: rgba(251, 248, 243, 0.7);
+          background: transparent;
         }
 
         .envelope::before,
@@ -503,7 +516,7 @@
           position: absolute;
           width: 65px;
           height: 1.5px;
-          background: rgba(138, 123, 108, 0.3);
+          background: rgba(138, 123, 108, 0.35);
           top: 28px;
         }
 
@@ -542,7 +555,7 @@
         @media (max-width: 700px) {
           .letter {
             padding: 45px 18px 35px;
-            transform: none;
+            transform: rotate(-2deg);
           }
 
           .stamp {
@@ -680,8 +693,8 @@
                     <form class="letter" id="conceptForm">
 
                         <div class="stamp">
-                            YOUR<br>SPACE
-                            <span>THE CONCEPT</span>
+                            your<br>space
+                            <span>the concept</span>
                         </div>
 
                         <div class="letter-top">
@@ -700,7 +713,7 @@
                         <div class="letter-content">
 
                             <p class="dear">
-                                Dear THE CONCEPT,
+                                dear the concept,
                             </p>
 
                             <div class="letter-line">
