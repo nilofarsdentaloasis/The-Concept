@@ -306,6 +306,228 @@
             height: 100vh;
             overflow: hidden;
         }
+
+        /* Sparkle Button (Luxury Hero Palette Edition) */
+        .sparkle-button {
+            --active: 0;
+            --transition: 0.35s;
+            --spark: 1.8s;
+            --cut: 0.08em;
+            --bg: radial-gradient(
+                    45% 60% at center 100%,
+                    hsl(38 calc(var(--active) * 85%) 60% / calc(var(--active) * 0.45)),
+                    transparent
+                ),
+                radial-gradient(
+                    90% 120% at center 120%,
+                    hsl(30 calc(var(--active) * 65%) 40% / calc(var(--active) * 0.35)),
+                    transparent
+                ),
+                hsl(0 0% 11% / 0.95);
+            background: var(--bg);
+            border: 0;
+            cursor: pointer;
+            padding: 0.85em 2.2em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5em;
+            white-space: nowrap;
+            border-radius: 100px;
+            position: relative;
+            text-decoration: none !important;
+            box-shadow: 0 0 calc(var(--active) * 2.5em) calc(var(--active) * 0.8em) hsl(38 85% 55% / 0.35),
+                        0 0em 0 0 hsl(38 calc(var(--active) * 60%) 40%) inset,
+                        0 -0.05em 0 0 hsl(38 calc(var(--active) * 50%) 30%) inset;
+            transform: scale(calc(1 + (var(--active) * 0.06)));
+            transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+        }
+
+        .sparkle-button:hover,
+        .sparkle-button:focus-visible {
+            --active: 1;
+            --play-state: running;
+        }
+
+        .sparkle-button:active {
+            transform: scale(0.98);
+            transition: 0.15s;
+        }
+
+        .sparkle-button .sparkle {
+            inline-size: 1.15em;
+            height: 1.15em;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sparkle-button .sparkle path {
+            color: hsl(38 90% calc((var(--active, 0) * 40%) + 55%));
+            transform-box: fill-box;
+            transform-origin: center;
+            fill: currentColor;
+            stroke: currentColor;
+            animation-delay: calc((var(--transition) * 1.5) + (var(--delay, 0) * 1s));
+            animation-duration: 0.6s;
+            transition: color var(--transition);
+        }
+
+        .sparkle-button:is(:hover, :focus-visible) .sparkle path {
+            animation-name: sparkle-bounce;
+        }
+
+        @keyframes sparkle-bounce {
+            35%, 65% {
+                transform: scale(var(--scale, 1));
+            }
+        }
+
+        .sparkle-button .sparkle path:nth-of-type(1) {
+            --scale: 0.6;
+            --delay: 0.1;
+        }
+
+        .sparkle-button .sparkle path:nth-of-type(2) {
+            --scale: 1.35;
+            --delay: 0.2;
+        }
+
+        .sparkle-button .sparkle path:nth-of-type(3) {
+            --scale: 1.8;
+            --delay: 0.35;
+        }
+
+        .sparkle-button:before {
+            content: "";
+            position: absolute;
+            inset: -0.15em;
+            z-index: -1;
+            border: 0.18em solid hsl(38 85% 60% / 0.5);
+            border-radius: 100px;
+            opacity: var(--active, 0);
+            transition: opacity var(--transition);
+        }
+
+        .sparkle-button .spark {
+            position: absolute;
+            inset: 0;
+            border-radius: 100px;
+            rotate: 0deg;
+            overflow: hidden;
+            -webkit-mask: linear-gradient(white, transparent 50%);
+            mask: linear-gradient(white, transparent 50%);
+            animation: spark-flip calc(var(--spark) * 2) infinite steps(2, end);
+        }
+
+        @keyframes spark-flip {
+            to {
+                rotate: 360deg;
+            }
+        }
+
+        .sparkle-button .spark:before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            aspect-ratio: 1;
+            top: 0%;
+            left: 50%;
+            z-index: -1;
+            translate: -50% -15%;
+            rotate: 0;
+            transform: rotate(-90deg);
+            opacity: calc(var(--active) + 0.35);
+            background: conic-gradient(
+                from 0deg,
+                transparent 0 330deg,
+                hsl(38 90% 75%) 350deg,
+                white 360deg
+            );
+            transition: opacity var(--transition);
+            animation: spark-rotate var(--spark) linear infinite both;
+        }
+
+        .sparkle-button .spark:after {
+            content: "";
+            position: absolute;
+            inset: var(--cut);
+            border-radius: 100px;
+        }
+
+        .sparkle-button .backdrop {
+            position: absolute;
+            inset: var(--cut);
+            background: var(--bg);
+            border-radius: 100px;
+            transition: background var(--transition);
+            z-index: 0;
+        }
+
+        @keyframes spark-rotate {
+            to {
+                transform: rotate(90deg);
+            }
+        }
+
+        .sparkle-button .particle-pen {
+            position: absolute;
+            width: 200%;
+            aspect-ratio: 1;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            -webkit-mask: radial-gradient(white, transparent 65%);
+            mask: radial-gradient(white, transparent 65%);
+            z-index: -1;
+            opacity: var(--active, 0);
+            transition: opacity var(--transition);
+            pointer-events: none;
+        }
+
+        .sparkle-button .particle {
+            fill: white;
+            width: calc(var(--size, 0.25) * 1rem);
+            aspect-ratio: 1;
+            position: absolute;
+            top: calc(var(--y) * 1%);
+            left: calc(var(--x) * 1%);
+            opacity: var(--alpha, 1);
+            animation: float-out calc(var(--duration, 1.8) * 1s) calc(var(--delay, 0) * -1s) infinite linear;
+            transform-origin: var(--origin-x, 1000%) var(--origin-y, 1000%);
+            z-index: -1;
+            animation-play-state: var(--play-state, paused);
+        }
+
+        .sparkle-button .particle path {
+            fill: hsl(38 90% 85%);
+            stroke: none;
+        }
+
+        .sparkle-button .particle:nth-of-type(even) {
+            animation-direction: reverse;
+        }
+
+        @keyframes float-out {
+            to {
+                rotate: 360deg;
+            }
+        }
+
+        .sparkle-button .text {
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, hsl(0 0% calc((var(--active) * 20%) + 85%)), hsl(38 calc(var(--active) * 40%) calc((var(--active) * 15%) + 80%)));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #ffffff;
+            transition: background var(--transition);
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed">
@@ -369,8 +591,27 @@
                             <span class="inline-block overflow-hidden py-1 -my-1"><span class="hero-word italic font-bold inline-block opacity-0" style="transform: translateY(115%); will-change: transform, opacity;">reality</span></span>
                         </h1>
                         <div id="hero-btn-wrap" class="flex items-center opacity-0 pointer-events-none" style="transform: translateY(20px); will-change: transform, opacity;">
-                            <a href="spaces.html" class="inline-flex items-center justify-center bg-primary text-on-primary px-7 py-3.5 sm:px-8 sm:py-3.5 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-secondary transition-all shadow-lg hover:shadow-xl font-bold">
-                                View Portfolio
+                            <a href="spaces.html" class="sparkle-button group" title="View Our Portfolio">
+                                <span class="spark"></span>
+                                <span class="backdrop"></span>
+                                
+                                <!-- Sparkle SVG with animated stars -->
+                                <svg class="sparkle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.187 8.096L15 5.25L15.813 8.096C16.0231 8.83114 16.4171 9.50062 16.9577 10.0413C17.4984 10.5819 18.1679 10.9759 18.903 11.186L21.75 12L18.904 12.813C18.1689 13.0231 17.4994 13.4171 16.9587 13.9577C16.4181 14.4984 16.0241 15.1679 15.814 15.903L15 18.75L14.187 15.904C13.9769 15.1689 13.5829 14.4994 13.0423 13.9587C12.5016 13.4181 11.8321 13.0241 11.097 12.814L8.25 12L11.096 11.187C11.8311 10.9769 12.5006 10.5829 13.0413 10.0423C13.5819 9.50162 13.9759 8.83214 14.186 8.097L14.187 8.096Z" fill="currentColor"/>
+                                    <path d="M6 14.25L6.5 12.5L7 14.25L8.75 14.75L7 15.25L6.5 17L6 15.25L4.25 14.75L6 14.25Z" fill="currentColor"/>
+                                    <path d="M18 3.75L18.35 2.5L18.7 3.75L19.95 4.1L18.7 4.45L18.35 5.7L18 4.45L16.75 4.1L18 3.75Z" fill="currentColor"/>
+                                </svg>
+                                
+                                <span class="text">View Portfolio</span>
+
+                                <!-- Floating Particle Field on Hover -->
+                                <div class="particle-pen pointer-events-none">
+                                    <svg class="particle" style="--x: 20; --y: 25; --size: 0.28; --duration: 1.6; --delay: 0.1;" viewBox="0 0 15 15"><path d="M7.5 0L9.5 5.5L15 7.5L9.5 9.5L7.5 15L5.5 9.5L0 7.5L5.5 5.5L7.5 0Z"/></svg>
+                                    <svg class="particle" style="--x: 80; --y: 20; --size: 0.35; --duration: 2.1; --delay: 0.4;" viewBox="0 0 15 15"><path d="M7.5 0L9.5 5.5L15 7.5L9.5 9.5L7.5 15L5.5 9.5L0 7.5L5.5 5.5L7.5 0Z"/></svg>
+                                    <svg class="particle" style="--x: 35; --y: 80; --size: 0.22; --duration: 1.8; --delay: 0.7;" viewBox="0 0 15 15"><path d="M7.5 0L9.5 5.5L15 7.5L9.5 9.5L7.5 15L5.5 9.5L0 7.5L5.5 5.5L7.5 0Z"/></svg>
+                                    <svg class="particle" style="--x: 85; --y: 75; --size: 0.32; --duration: 2.4; --delay: 0.2;" viewBox="0 0 15 15"><path d="M7.5 0L9.5 5.5L15 7.5L9.5 9.5L7.5 15L5.5 9.5L0 7.5L5.5 5.5L7.5 0Z"/></svg>
+                                    <svg class="particle" style="--x: 50; --y: 10; --size: 0.25; --duration: 1.9; --delay: 0.5;" viewBox="0 0 15 15"><path d="M7.5 0L9.5 5.5L15 7.5L9.5 9.5L7.5 15L5.5 9.5L0 7.5L5.5 5.5L7.5 0Z"/></svg>
+                                </div>
                             </a>
                         </div>
                     </div>
