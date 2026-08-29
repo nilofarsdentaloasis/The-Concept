@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Outfit:wght@300;400;500;600;700&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     
     <!-- Tailwind CSS -->
@@ -89,7 +89,8 @@
               "body-md": ["Montserrat", "sans-serif"],
               "headline-md": ["Playfair Display", "serif"],
               "headline-sm": ["Playfair Display", "serif"],
-              "label-caps": ["Montserrat", "sans-serif"]
+              "label-caps": ["Montserrat", "sans-serif"],
+              "outfit": ["Outfit", "sans-serif"]
             },
             "fontSize": {
               "body-lg": ["18px", { "lineHeight": "1.8", "letterSpacing": "0.01em", "fontWeight": "300" }],
@@ -117,6 +118,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+
         /* 3D Transparent Glass Effect - Light Mode (Matte Ivory Frosted Glass) */
         .glass-3d {
             background: rgba(250, 248, 245, 0.78);
@@ -214,6 +216,230 @@
         .header-dark .mobile-nav-link.mobile-nav-active {
             color: #ffffff !important;
         }
+
+        /* =========================================
+           INTERACTIVE LAMP & PORTAL STYLING
+           ========================================= */
+        .lamp-room-container {
+            background-color: #050505;
+            transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .lamp-room-container.on {
+            background-color: #111111;
+        }
+
+        .ambient-light-glow {
+            position: absolute;
+            top: -20%;
+            left: 5%;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(255, 220, 100, 0.16) 0%, rgba(255, 214, 0, 0.05) 35%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .lamp-room-container.on .ambient-light-glow {
+            opacity: 1;
+            transform: scale(1.4);
+        }
+
+        /* Glassmorphism for Lamp Portal Card */
+        .lamp-glass {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px) saturate(140%);
+            -webkit-backdrop-filter: blur(20px) saturate(140%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+        }
+
+        /* Lamp Component Hierarchy */
+        .lamp-stage-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+            transform: scale(1.1);
+            -webkit-tap-highlight-color: transparent;
+        }
+        @media (max-width: 768px) {
+            .lamp-stage-container {
+                transform: scale(0.85);
+            }
+        }
+
+        .lamp-head {
+            width: 140px;
+            height: 50px;
+            background: #151515;
+            border-radius: 140px 140px 4px 4px;
+            box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.1), 0 10px 20px rgba(0, 0, 0, 0.9);
+            position: relative;
+            z-index: 6;
+            transition: box-shadow 0.4s ease;
+            border-bottom: 2px solid #050505;
+        }
+        .lamp-room-container.on .lamp-head {
+            box-shadow: inset 0 -3px 10px rgba(255, 220, 150, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.1);
+        }
+
+        .lamp-glow {
+            position: absolute;
+            top: 40px;
+            width: 90px;
+            height: 20px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 40px 20px rgba(255, 230, 150, 0.9), 0 0 80px 40px rgba(255, 200, 100, 0.6);
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .lamp-room-container.on .lamp-glow {
+            opacity: 1;
+        }
+
+        .light-beam {
+            position: absolute;
+            top: 45px;
+            width: 520px;
+            height: 360px;
+            clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
+            background: linear-gradient(to bottom, rgba(255, 230, 140, 0.82) 0%, rgba(255, 200, 80, 0.22) 60%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            z-index: 3;
+            pointer-events: none;
+            filter: blur(8px);
+        }
+        .lamp-room-container.on .light-beam {
+            opacity: 1;
+        }
+
+        .lamp-stem {
+            width: 6px;
+            height: 290px;
+            background: linear-gradient(to right, #050505 0%, #2a2a2a 50%, #050505 100%);
+            position: relative;
+            z-index: 4;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+        }
+        .lamp-room-container.on .lamp-stem {
+            background: linear-gradient(to right, #050505 0%, #2a2010 50%, #050505 100%);
+            box-shadow: 0 0 10px rgba(255, 200, 100, 0.15);
+        }
+
+        .lamp-base {
+            width: 100px;
+            height: 16px;
+            background: #151515;
+            border-radius: 30px 30px 4px 4px;
+            box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.1), 0 10px 20px rgba(0, 0, 0, 0.9);
+            position: relative;
+            z-index: 5;
+            transition: box-shadow 0.4s ease;
+            border-bottom: 2px solid #050505;
+        }
+        .lamp-room-container.on .lamp-base {
+            box-shadow: inset 0 2px 6px rgba(255, 220, 150, 0.3), 0 10px 20px rgba(0, 0, 0, 0.9);
+        }
+
+        .desk-surface {
+            position: absolute;
+            bottom: -40px;
+            width: 550px;
+            height: 100px;
+            background: radial-gradient(ellipse at center, rgba(255, 220, 120, 0.28) 0%, rgba(255, 180, 50, 0.06) 50%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .lamp-room-container.on .desk-surface {
+            opacity: 1;
+        }
+
+        /* String Cord & Handle Knob */
+        .string-handle-knob {
+            position: absolute;
+            top: 125px;
+            left: 50%;
+            margin-left: 49px;
+            width: 12px;
+            height: 22px;
+            background: linear-gradient(to bottom, #ebd17a, #aa8529);
+            border-radius: 6px;
+            box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.6), 0 3px 6px rgba(0, 0, 0, 0.8);
+            cursor: grab;
+            z-index: 7;
+            touch-action: none;
+            user-select: none;
+            transition: filter 0.2s, box-shadow 0.2s;
+        }
+        .string-handle-knob:hover {
+            filter: brightness(1.25);
+            box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.8), 0 0 14px rgba(255, 220, 100, 0.7);
+        }
+        .string-handle-knob.grabbing {
+            cursor: grabbing;
+        }
+
+        /* Prompt guide hint */
+        .lamp-hint-prompt {
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .lamp-room-container.on .lamp-hint-prompt {
+            opacity: 0 !important;
+            transform: translateY(-24px) !important;
+            pointer-events: none !important;
+        }
+
+        /* Login Portal Card Animation */
+        .portal-card {
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .lamp-room-container:not(.on) .portal-card {
+            opacity: 0;
+            transform: translateX(40px);
+            filter: blur(12px);
+            pointer-events: none;
+        }
+        .lamp-room-container.on .portal-card {
+            opacity: 1;
+            transform: translateX(0);
+            filter: blur(0px);
+            pointer-events: auto;
+        }
+
+        /* Custom portal inputs */
+        .portal-input {
+            width: 100%;
+            padding: 13px 16px 13px 44px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.45);
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Outfit', sans-serif;
+        }
+        .portal-input:focus {
+            border-color: rgba(255, 214, 0, 0.6);
+            box-shadow: 0 0 15px rgba(255, 214, 0, 0.15), inset 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .portal-input::placeholder {
+            color: #888888;
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed min-h-screen flex flex-col">
@@ -255,9 +481,127 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow pt-24 md:pt-32 pb-stack-xl">
+    <main class="flex-grow pb-stack-xl">
+        
+        <!-- =========================================================================
+             SECTION: INTERACTIVE LAMP LOGIN & ACCESS HERO
+             ========================================================================= -->
+        <section id="lamp-hero-section" class="lamp-room-container relative w-full min-h-[92vh] lg:min-h-screen flex items-center overflow-hidden pt-28 pb-16 md:pt-32 md:pb-24 border-b border-stone-900" data-theme="dark">
+            
+            <!-- Ambient Room Light (Expands when Lamp turns ON) -->
+            <div class="ambient-light-glow"></div>
+
+            <!-- Fireflies (Jugnu) Particle Overlay -->
+            <div id="fireflies-container" class="absolute inset-0 pointer-events-none z-10 overflow-hidden opacity-0 transition-opacity duration-700"></div>
+
+            <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-8 relative z-20">
+                
+                <!-- Left Side: Interactive Lamp (Cols 1-6) -->
+                <div class="lg:col-span-6 w-full flex flex-col items-center justify-center relative py-6 md:py-8">
+                    
+                    <!-- Floating Hint Prompt -->
+                    <div class="lamp-hint-prompt absolute -top-8 md:-top-4 left-1/2 -translate-x-1/2 text-stone-400 font-label-caps text-[11px] tracking-widest uppercase flex flex-col items-center gap-2 pointer-events-none text-center">
+                        <span class="bg-stone-950/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 shadow-lg text-stone-300">Pull string to illuminate space</span>
+                        <div class="w-0.5 h-6 bg-gradient-to-b from-stone-400 to-transparent animate-bounce"></div>
+                    </div>
+
+                    <!-- Lamp Assembly -->
+                    <div class="lamp-stage-container mt-8 md:mt-4">
+                        <div class="lamp-glow"></div>
+                        <div class="lamp-head"></div>
+                        <div class="light-beam"></div>
+                        <div class="lamp-stem"></div>
+                        <div class="lamp-base"></div>
+                        <div class="desk-surface"></div>
+
+                        <!-- Dynamic SVG Pull String Cord -->
+                        <svg class="absolute top-[45px] left-1/2 ml-[55px] w-[2px] h-[2px] overflow-visible z-[5] pointer-events-none">
+                            <path id="lamp-cord-path" d="M 0 0 L 0 80" stroke="#333333" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+
+                        <!-- Draggable / Clickable Handle Knob -->
+                        <div id="lamp-handle-knob" class="string-handle-knob" title="Pull or click to switch lamp"></div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Luxury Glassmorphism Portal / Access Card (Cols 7-12) -->
+                <div class="lg:col-span-6 w-full flex items-center justify-center lg:justify-end">
+                    <div class="portal-card lamp-glass p-8 sm:p-10 rounded-3xl w-full max-w-[440px] flex flex-col gap-5 relative overflow-hidden shadow-2xl">
+                        <!-- Glass Top Reflection Accent -->
+                        <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+
+                        <!-- Card Header -->
+                        <div class="text-center font-outfit">
+                            <span class="font-label-caps text-secondary-fixed text-[10px] tracking-widest uppercase block mb-1.5 font-semibold">Private Client Access</span>
+                            <h2 class="font-display-lg text-2xl sm:text-3xl text-white font-normal mb-1">Welcome Back</h2>
+                            <p class="text-stone-400 text-xs font-light">Enter your details to access your curated spaces</p>
+                        </div>
+
+                        <!-- Form Inputs -->
+                        <form class="flex flex-col gap-3.5" onsubmit="event.preventDefault();">
+                            <!-- Username -->
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-lg pointer-events-none">person</span>
+                                <input type="text" placeholder="Username" class="portal-input" autocomplete="username">
+                            </div>
+
+                            <!-- Email -->
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-lg pointer-events-none">mail</span>
+                                <input type="email" placeholder="Email Address" class="portal-input" autocomplete="email">
+                            </div>
+
+                            <!-- Password -->
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-lg pointer-events-none">lock</span>
+                                <input type="password" placeholder="Password" class="portal-input" autocomplete="current-password">
+                            </div>
+
+                            <!-- Sign In Button -->
+                            <button type="submit" class="mt-2 w-full py-3.5 px-6 rounded-xl bg-[#ffd600] text-black font-label-caps text-xs uppercase tracking-widest font-bold shadow-[0_0_24px_rgba(255,214,0,0.35)] hover:bg-[#ffdc64] hover:shadow-[0_0_30px_rgba(255,220,100,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
+                                Sign In
+                            </button>
+                        </form>
+
+                        <!-- Divider -->
+                        <div class="flex items-center gap-3 my-0.5">
+                            <div class="flex-1 h-[1px] bg-white/10"></div>
+                            <span class="text-[10px] font-label-caps tracking-widest text-stone-500 uppercase font-semibold">Or Continue With</span>
+                            <div class="flex-1 h-[1px] bg-white/10"></div>
+                        </div>
+
+                        <!-- Social Buttons -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <button type="button" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-white/10 bg-white/5 text-white text-xs font-medium hover:bg-white/15 hover:border-white/20 active:scale-95 transition-all duration-200 cursor-pointer">
+                                <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none">
+                                    <path d="M22.56 12.25C22.56 11.47 22.49 10.72 22.36 10H12V14.26H17.92C17.66 15.63 16.88 16.8 15.71 17.58V20.35H19.28C21.36 18.43 22.56 15.6 22.56 12.25Z" fill="#4285F4"/>
+                                    <path d="M12 23C14.97 23 17.46 22.02 19.28 20.35L15.71 17.58C14.73 18.24 13.47 18.64 12 18.64C9.16 18.64 6.75 16.73 5.88 14.15H2.21V17C4.01 20.57 7.72 23 12 23Z" fill="#34A853"/>
+                                    <path d="M5.88 14.15C5.66 13.49 5.53 12.77 5.53 12C5.53 11.23 5.66 10.51 5.88 9.85V7H2.21C1.47 8.47 1.05 10.17 1.05 12C1.05 13.83 1.47 15.53 2.21 17L5.88 14.15Z" fill="#FBBC05"/>
+                                    <path d="M12 5.36C13.62 5.36 15.07 5.92 16.22 7.01L19.36 3.87C17.45 2.09 14.97 1 12 1C7.72 1 4.01 3.43 2.21 7L5.88 9.85C6.75 7.27 9.16 5.36 12 5.36Z" fill="#EA4335"/>
+                                </svg>
+                                <span>Google</span>
+                            </button>
+                            <button type="button" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-white/10 bg-white/5 text-white text-xs font-medium hover:bg-white/15 hover:border-white/20 active:scale-95 transition-all duration-200 cursor-pointer">
+                                <svg class="size-4 shrink-0 fill-white" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12C2 16.418 4.865 20.166 8.839 21.49C9.339 21.582 9.52 21.273 9.52 21.008C9.52 20.77 9.511 20.148 9.506 19.308C6.727 19.911 6.14 17.965 6.14 17.965C5.686 16.812 5.032 16.505 5.032 16.505C4.126 15.886 5.101 15.899 5.101 15.899C6.104 15.969 6.631 16.929 6.631 16.929C7.522 18.456 8.966 18.016 9.539 17.761C9.629 17.11 9.891 16.671 10.181 16.422C7.964 16.169 5.632 15.312 5.632 11.478C5.632 10.386 6.022 9.492 6.657 8.791C6.555 8.539 6.216 7.525 6.755 6.146C6.755 6.146 7.59 5.879 9.502 7.172C10.294 6.952 11.15 6.843 12 6.839C12.85 6.843 13.706 6.952 14.499 7.172C16.41 5.879 17.244 6.146 17.244 6.146C17.784 7.525 17.445 8.539 17.343 8.791C17.98 9.492 18.367 10.386 18.367 11.478C18.367 15.324 16.031 16.165 13.808 16.411C14.17 16.723 14.492 17.337 14.492 18.283C14.492 19.64 14.48 20.732 14.48 21.008C14.48 21.276 14.66 21.588 15.168 21.488C19.138 20.163 22 16.416 22 12C22 6.477 17.523 2 12 2Z"/>
+                                </svg>
+                                <span>GitHub</span>
+                            </button>
+                        </div>
+
+                        <p class="text-center text-stone-500 text-[11px] mt-1 font-outfit">
+                            Need bespoke representation? <a href="contact.html" class="text-secondary-fixed hover:underline">Request Consult</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================================
+             PORTFOLIO GALLERY SECTION
+             ========================================================================= -->
         <!-- Hero Title Section -->
-        <header id="page-hero" class="px-6 md:px-margin-desktop max-w-container-max mx-auto mb-16 md:mb-24">
+        <header id="page-hero" class="px-6 md:px-margin-desktop max-w-container-max mx-auto pt-20 md:pt-28 mb-16 md:mb-24">
             <div class="grid grid-cols-12 gap-gutter">
                 <div class="col-span-12 md:col-span-8 lg:col-span-7 reveal active">
                     <span class="font-label-caps text-secondary text-xs tracking-widest uppercase mb-4 block">Portfolio</span>
@@ -377,6 +721,8 @@
                 <li><a class="hover:text-primary transition-colors" href="contact.html">Contact</a></li>
                 <li><a class="hover:text-primary transition-colors" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
                 <li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+            </ul>
+        </div>
     </footer>
 
     <!-- Floating Luxury Call Button (Bottom Right Corner) -->
@@ -409,6 +755,7 @@
                 }
             });
         }
+
         // Strict logo & header theme contrast detection
         const mainHeader = document.getElementById('main-header');
         const headerLogo = document.getElementById('header-logo');
@@ -424,7 +771,7 @@
             const navCheckY = navRect.top + (navRect.height / 2);
 
             // Query all dark background elements on page
-            const darkElements = document.querySelectorAll('section.bg-primary, div.bg-primary, footer.bg-primary, .bg-stone-900, .bg-black, [data-theme="dark"]');
+            const darkElements = document.querySelectorAll('section.bg-primary, div.bg-primary, footer.bg-primary, .bg-stone-900, .bg-black, [data-theme="dark"], .lamp-room-container');
 
             let isLogoOverDark = false;
             let isNavOverDark = false;
@@ -457,6 +804,7 @@
                 }
             }
         }
+
         window.addEventListener("scroll", () => {
             reveal();
             updateHeaderTheme();
@@ -482,6 +830,173 @@
         }
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        // =========================================
+        // INTERACTIVE LAMP CONTROLLER & PHYSICS
+        // =========================================
+        const lampSection = document.getElementById('lamp-hero-section');
+        const handleKnob = document.getElementById('lamp-handle-knob');
+        const cordPath = document.getElementById('lamp-cord-path');
+        const firefliesContainer = document.getElementById('fireflies-container');
+
+        let isLampOn = false;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let curX = 0;
+        let curY = 0;
+        let springAnimId = null;
+
+        // Toggle Lamp function
+        function toggleLamp(forceState) {
+            isLampOn = forceState !== undefined ? forceState : !isLampOn;
+            if (isLampOn) {
+                lampSection.classList.add('on');
+                initFireflies();
+            } else {
+                lampSection.classList.remove('on');
+            }
+            updateHeaderTheme();
+        }
+
+        // Update cord and handle position
+        function updateCordPosition(x, y) {
+            curX = x;
+            curY = y;
+            handleKnob.style.transform = `translate(${x}px, ${y}px)`;
+            cordPath.setAttribute('d', `M 0 0 L ${x} ${80 + y}`);
+        }
+
+        // Spring rebound physics
+        function springRebound(fromX, fromY) {
+            if (springAnimId) cancelAnimationFrame(springAnimId);
+            
+            let posX = fromX;
+            let posY = fromY;
+            let velX = 0;
+            let velY = 0;
+            const stiffness = 0.28;
+            const damping = 0.72;
+
+            function step() {
+                const forceX = -stiffness * posX;
+                const forceY = -stiffness * posY;
+                velX = (velX + forceX) * damping;
+                velY = (velY + forceY) * damping;
+                posX += velX;
+                posY += velY;
+
+                updateCordPosition(posX, posY);
+
+                if (Math.abs(posX) > 0.1 || Math.abs(posY) > 0.1 || Math.abs(velX) > 0.1 || Math.abs(velY) > 0.1) {
+                    springAnimId = requestAnimationFrame(step);
+                } else {
+                    updateCordPosition(0, 0);
+                    springAnimId = null;
+                }
+            }
+            springAnimId = requestAnimationFrame(step);
+        }
+
+        // Pointer event listeners for handle dragging & clicking
+        if (handleKnob) {
+            handleKnob.addEventListener('pointerdown', (e) => {
+                if (springAnimId) cancelAnimationFrame(springAnimId);
+                isDragging = true;
+                handleKnob.setPointerCapture(e.pointerId);
+                handleKnob.classList.add('grabbing');
+                startX = e.clientX;
+                startY = e.clientY;
+            });
+
+            handleKnob.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                const dy = Math.max(0, e.clientY - startY);
+                // Apply slight elastic resistance when dragging down
+                const resistanceY = dy > 60 ? 60 + (dy - 60) * 0.4 : dy;
+                const dx = (e.clientX - startX) * 0.25;
+                updateCordPosition(dx, resistanceY);
+            });
+
+            const onPointerEnd = (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                handleKnob.classList.remove('grabbing');
+                try {
+                    handleKnob.releasePointerCapture(e.pointerId);
+                } catch(err) {}
+
+                // If pulled down far enough (> 25px), toggle the lamp!
+                if (curY > 25) {
+                    toggleLamp();
+                } else if (curY <= 5 && Math.abs(curX) <= 5) {
+                    // Direct tap / quick click
+                    toggleLamp();
+                }
+
+                springRebound(curX, curY);
+            };
+
+            handleKnob.addEventListener('pointerup', onPointerEnd);
+            handleKnob.addEventListener('pointercancel', onPointerEnd);
+        }
+
+        // =========================================
+        // FIREFLIES (JUGNU) PARTICLES SYSTEM
+        // =========================================
+        let firefliesInitialized = false;
+
+        function initFireflies() {
+            if (firefliesInitialized || !firefliesContainer) return;
+            firefliesInitialized = true;
+            firefliesContainer.innerHTML = '';
+
+            const count = 18;
+            for (let i = 0; i < count; i++) {
+                const fly = document.createElement('div');
+                const size = (Math.random() * 4 + 3).toFixed(1);
+                const delay = (Math.random() * 3).toFixed(1);
+                const duration = (Math.random() * 25 + 35).toFixed(1);
+                
+                // Keyframe generation for wandering path
+                const x1 = Math.floor(Math.random() * 90) + 'vw';
+                const y1 = Math.floor(Math.random() * 85) + 'vh';
+                const x2 = Math.floor(Math.random() * 90) + 'vw';
+                const y2 = Math.floor(Math.random() * 85) + 'vh';
+                const x3 = Math.floor(Math.random() * 90) + 'vw';
+                const y3 = Math.floor(Math.random() * 85) + 'vh';
+                const x4 = Math.floor(Math.random() * 90) + 'vw';
+                const y4 = Math.floor(Math.random() * 85) + 'vh';
+
+                const animName = `fireflyDrift_${i}`;
+                const keyframes = `
+                    @keyframes ${animName} {
+                        0% { transform: translate(${x1}, ${y1}); opacity: 0.4; }
+                        25% { transform: translate(${x2}, ${y2}); opacity: 1; }
+                        50% { transform: translate(${x3}, ${y3}); opacity: 0.6; }
+                        75% { transform: translate(${x4}, ${y4}); opacity: 0.95; }
+                        100% { transform: translate(${x1}, ${y1}); opacity: 0.4; }
+                    }
+                `;
+                const styleSheet = document.createElement('style');
+                styleSheet.textContent = keyframes;
+                document.head.appendChild(styleSheet);
+
+                fly.style.cssText = `
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background-color: #FFEA00;
+                    border-radius: 50%;
+                    box-shadow: 0 0 10px 3px rgba(255, 234, 0, 0.9), 0 0 20px rgba(255, 179, 0, 0.6);
+                    pointer-events: none;
+                    animation: ${animName} ${duration}s ease-in-out ${delay}s infinite;
+                `;
+                firefliesContainer.appendChild(fly);
+            }
         }
     </script>
 </body>

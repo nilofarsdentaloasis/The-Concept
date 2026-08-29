@@ -11,6 +11,11 @@ $RECYCLE.BIN/
 *.swp
 *.swo
 
+# Dependency & build directories
+node_modules/
+dist/
+build/
+
 # Temporary and local agent artifacts
 .agents/
 .system_generated/
