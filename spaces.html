@@ -310,13 +310,19 @@
             top: 45px;
             width: 520px;
             height: 360px;
-            clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
             background: linear-gradient(to bottom, rgba(255, 230, 140, 0.82) 0%, rgba(255, 200, 80, 0.22) 60%, transparent 100%);
+            /* Mask: cone shape with fully faded/soft side edges */
+            -webkit-mask-image: radial-gradient(ellipse 52% 100% at 50% 0%, black 0%, black 30%, transparent 100%),
+                                linear-gradient(to bottom, black 0%, transparent 100%);
+            -webkit-mask-composite: destination-in;
+            mask-image: radial-gradient(ellipse 52% 100% at 50% 0%, black 0%, black 30%, transparent 100%),
+                        linear-gradient(to bottom, black 0%, transparent 100%);
+            mask-composite: intersect;
             opacity: 0;
             transition: opacity 0.4s ease-in-out;
             z-index: 3;
             pointer-events: none;
-            filter: blur(8px);
+            filter: blur(12px);
         }
         .lamp-room-container.on .light-beam {
             opacity: 1;
@@ -505,7 +511,7 @@
                 <div class="lg:col-span-6 w-full flex flex-col items-center justify-center relative py-6 md:py-8">
                     
                     <!-- Floating Hint Prompt -->
-                    <div class="lamp-hint-prompt absolute -top-8 md:-top-4 left-1/2 -translate-x-1/2 text-stone-400 font-label-caps text-[11px] tracking-widest uppercase flex flex-col items-center gap-2 pointer-events-none text-center">
+                    <div class="lamp-hint-prompt absolute -top-20 md:-top-16 left-1/2 -translate-x-1/2 text-stone-400 font-label-caps text-[11px] tracking-widest uppercase flex flex-col items-center gap-2 pointer-events-none text-center">
                         <span class="bg-stone-950/80 backdrop-blur-md px-5 py-2 rounded-full border border-white/15 shadow-xl text-stone-200 font-medium">Pull string to illuminate &amp; reveal spaces</span>
                         <div class="w-0.5 h-6 bg-gradient-to-b from-stone-400 to-transparent animate-bounce"></div>
                     </div>
