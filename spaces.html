@@ -223,6 +223,7 @@
         .lamp-room-container {
             background-color: #050505;
             transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            min-height: 100vh;
         }
         .lamp-room-container.on {
             background-color: #111111;
@@ -247,7 +248,7 @@
             transform: scale(1.4);
         }
 
-        /* Glassmorphism for Lamp Portal Card */
+        /* Glassmorphism for Spaces Showcase Card */
         .lamp-glass {
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(20px) saturate(140%);
@@ -400,7 +401,7 @@
             pointer-events: none !important;
         }
 
-        /* Login Portal Card Animation */
+        /* Spaces Showcase Card Animation */
         .portal-card {
             transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
                         transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
@@ -419,30 +420,34 @@
             pointer-events: auto;
         }
 
-        /* Custom portal inputs */
-        .portal-input {
-            width: 100%;
-            padding: 13px 16px 13px 44px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(0, 0, 0, 0.45);
-            color: #ffffff;
-            font-size: 14px;
-            outline: none;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-            font-family: 'Outfit', sans-serif;
+        /* =========================================
+           CONDITIONAL REVEAL OF REMAINING PAGE
+           ========================================= */
+        .spaces-content-wrapper {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                        max-height 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .portal-input:focus {
-            border-color: rgba(255, 214, 0, 0.6);
-            box-shadow: 0 0 15px rgba(255, 214, 0, 0.15), inset 0 2px 4px rgba(0, 0, 0, 0.5);
+        .spaces-content-wrapper.revealed {
+            opacity: 1;
+            max-height: 50000px;
+            overflow: visible;
+            visibility: visible;
+            pointer-events: auto;
         }
-        .portal-input::placeholder {
-            color: #888888;
+
+        /* Lock scroll when lamp is OFF for clean single-screen focus */
+        body.lamp-off-locked {
+            overflow: hidden !important;
+            height: 100vh !important;
         }
     </style>
 </head>
-<body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed min-h-screen flex flex-col">
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed min-h-screen flex flex-col lamp-off-locked">
     
     <!-- Header Section -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4 md:pt-6 transition-all duration-1000">
@@ -481,12 +486,12 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow pb-stack-xl">
+    <main class="flex-grow">
         
         <!-- =========================================================================
-             SECTION: INTERACTIVE LAMP LOGIN & ACCESS HERO
+             SECTION: INTERACTIVE LAMP & SPACES CURATOR HERO
              ========================================================================= -->
-        <section id="lamp-hero-section" class="lamp-room-container relative w-full min-h-[92vh] lg:min-h-screen flex items-center overflow-hidden pt-28 pb-16 md:pt-32 md:pb-24 border-b border-stone-900" data-theme="dark">
+        <section id="lamp-hero-section" class="lamp-room-container relative w-full min-h-screen flex items-center overflow-hidden pt-28 pb-16 md:pt-32 md:pb-24 border-b border-stone-900" data-theme="dark">
             
             <!-- Ambient Room Light (Expands when Lamp turns ON) -->
             <div class="ambient-light-glow"></div>
@@ -501,7 +506,7 @@
                     
                     <!-- Floating Hint Prompt -->
                     <div class="lamp-hint-prompt absolute -top-8 md:-top-4 left-1/2 -translate-x-1/2 text-stone-400 font-label-caps text-[11px] tracking-widest uppercase flex flex-col items-center gap-2 pointer-events-none text-center">
-                        <span class="bg-stone-950/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 shadow-lg text-stone-300">Pull string to illuminate space</span>
+                        <span class="bg-stone-950/80 backdrop-blur-md px-5 py-2 rounded-full border border-white/15 shadow-xl text-stone-200 font-medium">Pull string to illuminate &amp; reveal spaces</span>
                         <div class="w-0.5 h-6 bg-gradient-to-b from-stone-400 to-transparent animate-bounce"></div>
                     </div>
 
@@ -520,213 +525,224 @@
                         </svg>
 
                         <!-- Draggable / Clickable Handle Knob -->
-                        <div id="lamp-handle-knob" class="string-handle-knob" title="Pull or click to switch lamp"></div>
+                        <div id="lamp-handle-knob" class="string-handle-knob" title="Pull or click to illuminate space"></div>
                     </div>
                 </div>
 
-                <!-- Right Side: Luxury Glassmorphism Portal / Access Card (Cols 7-12) -->
+                <!-- Right Side: Luxury Spaces Showcase & Curator Card (Cols 7-12) -->
                 <div class="lg:col-span-6 w-full flex items-center justify-center lg:justify-end">
-                    <div class="portal-card lamp-glass p-8 sm:p-10 rounded-3xl w-full max-w-[440px] flex flex-col gap-5 relative overflow-hidden shadow-2xl">
+                    <div class="portal-card lamp-glass p-7 sm:p-9 rounded-3xl w-full max-w-[480px] flex flex-col gap-5 relative overflow-hidden shadow-2xl">
                         <!-- Glass Top Reflection Accent -->
                         <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
 
                         <!-- Card Header -->
-                        <div class="text-center font-outfit">
-                            <span class="font-label-caps text-secondary-fixed text-[10px] tracking-widest uppercase block mb-1.5 font-semibold">Private Client Access</span>
-                            <h2 class="font-display-lg text-2xl sm:text-3xl text-white font-normal mb-1">Welcome Back</h2>
-                            <p class="text-stone-400 text-xs font-light">Enter your details to access your curated spaces</p>
+                        <div class="font-outfit">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-label-caps text-secondary-fixed text-[10px] tracking-widest uppercase font-semibold">The Concept • Portfolio</span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-label-caps tracking-wider uppercase font-medium">
+                                    <span class="size-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    5 Works Live
+                                </span>
+                            </div>
+                            <h2 class="font-display-lg text-2xl sm:text-3xl text-white font-normal leading-tight mb-2">
+                                Curated Spatial<br><span class="italic font-light text-stone-300">Environments.</span>
+                            </h2>
+                            <p class="text-stone-400 text-xs font-light leading-relaxed">
+                                Environments sculpted with intentionality, where light, proportion, and raw materiality converge.
+                            </p>
                         </div>
 
-                        <!-- Form Inputs -->
-                        <form class="flex flex-col gap-3.5" onsubmit="event.preventDefault();">
-                            <!-- Username -->
-                            <div class="relative">
-                                <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-lg pointer-events-none">person</span>
-                                <input type="text" placeholder="Username" class="portal-input" autocomplete="username">
+                        <!-- Project Highlights Mini-List -->
+                        <div class="flex flex-col gap-2 font-outfit">
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-white/[0.03] border border-white/5 hover:border-white/15 hover:bg-white/[0.06] transition-all cursor-pointer" onclick="scrollToProject(0)">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-label-caps text-[10px] text-secondary-fixed font-bold">01</span>
+                                    <div>
+                                        <h4 class="text-white text-xs font-semibold">The Glass Pavilion</h4>
+                                        <p class="text-stone-400 text-[10px]">Malibu, CA • Coastal Residence</p>
+                                    </div>
+                                </div>
+                                <span class="font-label-caps text-[10px] text-stone-400 uppercase tracking-wider">Panoramic</span>
                             </div>
 
-                            <!-- Email -->
-                            <div class="relative">
-                                <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-lg pointer-events-none">mail</span>
-                                <input type="email" placeholder="Email Address" class="portal-input" autocomplete="email">
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-white/[0.03] border border-white/5 hover:border-white/15 hover:bg-white/[0.06] transition-all cursor-pointer" onclick="scrollToProject(1)">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-label-caps text-[10px] text-secondary-fixed font-bold">02</span>
+                                    <div>
+                                        <h4 class="text-white text-xs font-semibold">Materiality Study</h4>
+                                        <p class="text-stone-400 text-[10px]">Copenhagen • Architectural Detail</p>
+                                    </div>
+                                </div>
+                                <span class="font-label-caps text-[10px] text-stone-400 uppercase tracking-wider">Tactility</span>
                             </div>
 
-                            <!-- Password -->
-                            <div class="relative">
-                                <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-lg pointer-events-none">lock</span>
-                                <input type="password" placeholder="Password" class="portal-input" autocomplete="current-password">
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-white/[0.03] border border-white/5 hover:border-white/15 hover:bg-white/[0.06] transition-all cursor-pointer" onclick="scrollToProject(2)">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-label-caps text-[10px] text-secondary-fixed font-bold">03</span>
+                                    <div>
+                                        <h4 class="text-white text-xs font-semibold">Monolith House</h4>
+                                        <p class="text-stone-400 text-[10px]">Kyoto • Dining Sanctuary</p>
+                                    </div>
+                                </div>
+                                <span class="font-label-caps text-[10px] text-stone-400 uppercase tracking-wider">Zen Proportion</span>
                             </div>
-
-                            <!-- Sign In Button -->
-                            <button type="submit" class="mt-2 w-full py-3.5 px-6 rounded-xl bg-[#ffd600] text-black font-label-caps text-xs uppercase tracking-widest font-bold shadow-[0_0_24px_rgba(255,214,0,0.35)] hover:bg-[#ffdc64] hover:shadow-[0_0_30px_rgba(255,220,100,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
-                                Sign In
-                            </button>
-                        </form>
-
-                        <!-- Divider -->
-                        <div class="flex items-center gap-3 my-0.5">
-                            <div class="flex-1 h-[1px] bg-white/10"></div>
-                            <span class="text-[10px] font-label-caps tracking-widest text-stone-500 uppercase font-semibold">Or Continue With</span>
-                            <div class="flex-1 h-[1px] bg-white/10"></div>
                         </div>
 
-                        <!-- Social Buttons -->
-                        <div class="grid grid-cols-2 gap-3">
-                            <button type="button" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-white/10 bg-white/5 text-white text-xs font-medium hover:bg-white/15 hover:border-white/20 active:scale-95 transition-all duration-200 cursor-pointer">
-                                <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none">
-                                    <path d="M22.56 12.25C22.56 11.47 22.49 10.72 22.36 10H12V14.26H17.92C17.66 15.63 16.88 16.8 15.71 17.58V20.35H19.28C21.36 18.43 22.56 15.6 22.56 12.25Z" fill="#4285F4"/>
-                                    <path d="M12 23C14.97 23 17.46 22.02 19.28 20.35L15.71 17.58C14.73 18.24 13.47 18.64 12 18.64C9.16 18.64 6.75 16.73 5.88 14.15H2.21V17C4.01 20.57 7.72 23 12 23Z" fill="#34A853"/>
-                                    <path d="M5.88 14.15C5.66 13.49 5.53 12.77 5.53 12C5.53 11.23 5.66 10.51 5.88 9.85V7H2.21C1.47 8.47 1.05 10.17 1.05 12C1.05 13.83 1.47 15.53 2.21 17L5.88 14.15Z" fill="#FBBC05"/>
-                                    <path d="M12 5.36C13.62 5.36 15.07 5.92 16.22 7.01L19.36 3.87C17.45 2.09 14.97 1 12 1C7.72 1 4.01 3.43 2.21 7L5.88 9.85C6.75 7.27 9.16 5.36 12 5.36Z" fill="#EA4335"/>
-                                </svg>
-                                <span>Google</span>
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                            <button type="button" onclick="scrollToPortfolio()" class="flex-1 py-3.5 px-5 rounded-xl bg-[#ffd600] text-black font-label-caps text-xs uppercase tracking-widest font-bold shadow-[0_0_24px_rgba(255,214,0,0.35)] hover:bg-[#ffdc64] hover:shadow-[0_0_30px_rgba(255,220,100,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
+                                <span>Explore Spaces</span>
+                                <span class="material-symbols-outlined text-sm">arrow_downward</span>
                             </button>
-                            <button type="button" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-white/10 bg-white/5 text-white text-xs font-medium hover:bg-white/15 hover:border-white/20 active:scale-95 transition-all duration-200 cursor-pointer">
-                                <svg class="size-4 shrink-0 fill-white" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12C2 16.418 4.865 20.166 8.839 21.49C9.339 21.582 9.52 21.273 9.52 21.008C9.52 20.77 9.511 20.148 9.506 19.308C6.727 19.911 6.14 17.965 6.14 17.965C5.686 16.812 5.032 16.505 5.032 16.505C4.126 15.886 5.101 15.899 5.101 15.899C6.104 15.969 6.631 16.929 6.631 16.929C7.522 18.456 8.966 18.016 9.539 17.761C9.629 17.11 9.891 16.671 10.181 16.422C7.964 16.169 5.632 15.312 5.632 11.478C5.632 10.386 6.022 9.492 6.657 8.791C6.555 8.539 6.216 7.525 6.755 6.146C6.755 6.146 7.59 5.879 9.502 7.172C10.294 6.952 11.15 6.843 12 6.839C12.85 6.843 13.706 6.952 14.499 7.172C16.41 5.879 17.244 6.146 17.244 6.146C17.784 7.525 17.445 8.539 17.343 8.791C17.98 9.492 18.367 10.386 18.367 11.478C18.367 15.324 16.031 16.165 13.808 16.411C14.17 16.723 14.492 17.337 14.492 18.283C14.492 19.64 14.48 20.732 14.48 21.008C14.48 21.276 14.66 21.588 15.168 21.488C19.138 20.163 22 16.416 22 12C22 6.477 17.523 2 12 2Z"/>
-                                </svg>
-                                <span>GitHub</span>
-                            </button>
+                            <a href="contact.html" class="py-3.5 px-5 rounded-xl border border-white/15 bg-white/5 text-white font-label-caps text-xs uppercase tracking-widest font-semibold hover:bg-white/15 hover:border-white/25 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2">
+                                <span>Inquire</span>
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </a>
                         </div>
-
-                        <p class="text-center text-stone-500 text-[11px] mt-1 font-outfit">
-                            Need bespoke representation? <a href="contact.html" class="text-secondary-fixed hover:underline">Request Consult</a>
-                        </p>
                     </div>
                 </div>
+            </div>
+
+            <!-- Scroll Down Guide Indicator (Visible when Lamp is ON) -->
+            <div id="scroll-down-prompt" class="hidden absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-1 cursor-pointer group" onclick="scrollToPortfolio()">
+                <span class="font-label-caps text-[10px] tracking-widest text-stone-400 group-hover:text-secondary-fixed uppercase font-medium transition-colors">Scroll to explore gallery</span>
+                <span class="material-symbols-outlined text-stone-400 group-hover:text-secondary-fixed text-lg animate-bounce transition-colors">keyboard_arrow_down</span>
             </div>
         </section>
 
         <!-- =========================================================================
-             PORTFOLIO GALLERY SECTION
+             REVEALED CONTENT CONTAINER (HIDDEN WHEN LAMP IS OFF)
              ========================================================================= -->
-        <!-- Hero Title Section -->
-        <header id="page-hero" class="px-6 md:px-margin-desktop max-w-container-max mx-auto pt-20 md:pt-28 mb-16 md:mb-24">
-            <div class="grid grid-cols-12 gap-gutter">
-                <div class="col-span-12 md:col-span-8 lg:col-span-7 reveal active">
-                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase mb-4 block">Portfolio</span>
-                    <h1 class="font-display-lg text-4xl sm:text-5xl md:text-7xl text-primary mb-8 leading-[1.1]">
-                        Signature<br><span class="italic font-light">Spaces.</span>
-                    </h1>
-                    <p class="font-body-lg text-on-surface-variant max-w-xl leading-relaxed">
-                        A curated selection of our most definitive works. Environments crafted with intentionality, where light, proportion, and materiality converge to redefine the luxury of space.
-                    </p>
+        <div id="spaces-revealed-content" class="spaces-content-wrapper">
+            
+            <!-- Hero Title Section -->
+            <header id="page-hero" class="px-6 md:px-margin-desktop max-w-container-max mx-auto pt-20 md:pt-28 mb-16 md:mb-24">
+                <div class="grid grid-cols-12 gap-gutter">
+                    <div class="col-span-12 md:col-span-8 lg:col-span-7 reveal active">
+                        <span class="font-label-caps text-secondary text-xs tracking-widest uppercase mb-4 block">Portfolio</span>
+                        <h1 class="font-display-lg text-4xl sm:text-5xl md:text-7xl text-primary mb-8 leading-[1.1]">
+                            Signature<br><span class="italic font-light">Spaces.</span>
+                        </h1>
+                        <p class="font-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+                            A curated selection of our most definitive works. Environments crafted with intentionality, where light, proportion, and materiality converge to redefine the luxury of space.
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
-        <!-- Portfolio Grid (Asymmetric) -->
-        <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
-            <div class="grid grid-cols-12 gap-y-16 md:gap-gutter items-start">
-                
-                <!-- Project 1: Large Feature (Spans 8) -->
-                <article class="col-span-12 md:col-span-8 group cursor-pointer reveal">
-                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[4/3] shadow-lg">
-                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
-                             alt="The Glass Pavilion" 
-                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGAJxGBJZ17jFZuwMRqvYwu8ccsxpJwIlr9QDMtoc8Y0kJ9RTZ9N3FR-QvewZJK3p0YOIKw125KnnRizaI4NBiKWun3fKmC-s1VyP_eEGY7YXu1Pg2qIATpF4xSPxn4uEutctDlxCAh-V_siMNTVbHCyaSjd1x4IvrRnsUDq_Po76cSEh9b3OnfwaBxy6zhRchzTlq3PXphr8wchH0cXwrruZOZv8pcCwIC4FhJzbzlxhJ3OVxLW8N">
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">01 — Residence • Malibu, CA</span>
-                        <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">The Glass Pavilion</h2>
-                    </div>
-                </article>
-
-                <!-- Project 2: Portrait (Spans 4) -->
-                <article class="col-span-12 md:col-span-4 group cursor-pointer reveal md:mt-24">
-                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[3/4] shadow-lg">
-                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
-                             alt="Materiality Study" 
-                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfzgiiuDxhg_2bvIRkDGJZCcH-c0g-pEuUyyH3CPSKr74jwffdUPjvJ0dCWULEqOq3kKTY-SRpKmHmT-QlCiZS79icclgbLC0WHtKLFauLupMd8FZucOhtXI7__rAAaT4MaY6MllmTlH3EGqKNWzfQnn0eiy99411NReaqm9Cd37DkbO5URW_J9JpkbZv7Soj-bJsDh6q7nZ5FhOh9VHq7gyBKexZ__La-pGJB7akwUK85x5MpfX9B">
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">02 — Detail • Copenhagen</span>
-                        <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">Materiality Study</h2>
-                    </div>
-                </article>
-
-                <!-- Project 3: Wide/Panoramic (Spans 12) -->
-                <article class="col-span-12 group cursor-pointer reveal mt-8 md:mt-16">
-                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-video md:aspect-[21/9] shadow-xl">
-                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
-                             alt="Monolith House" 
-                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEqPZqWJjxI_st3i2ll2I0rwSX0_glLGOc_CQi0yQs59B05Klcw75HhpL72PKwAbodtxwPHmSuTJkItthVd5LL6VVj5uuLjgGxI1eaKF8k1_PNhjLbphljiMdeIwiUEA5smZ2qyHka4HvHNqCl-lp67xXzRey4x1D9y1beBYDXR_fs3muZ97XhExsvmHxBoWzHCNzgh76CXZJW-y264lQ5vvFZ-LThGfdSsEny2QXZrh9ya5Vma9UD">
-                    </div>
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                        <div class="flex flex-col gap-2">
-                            <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">03 — Dining • Kyoto</span>
-                            <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">Monolith House</h2>
+            <!-- Portfolio Grid (Asymmetric) -->
+            <section id="portfolio-grid-section" class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="grid grid-cols-12 gap-y-16 md:gap-gutter items-start">
+                    
+                    <!-- Project 1: Large Feature (Spans 8) -->
+                    <article id="project-0" class="col-span-12 md:col-span-8 group cursor-pointer reveal">
+                        <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[4/3] shadow-lg">
+                            <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
+                                 alt="The Glass Pavilion" 
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGAJxGBJZ17jFZuwMRqvYwu8ccsxpJwIlr9QDMtoc8Y0kJ9RTZ9N3FR-QvewZJK3p0YOIKw125KnnRizaI4NBiKWun3fKmC-s1VyP_eEGY7YXu1Pg2qIATpF4xSPxn4uEutctDlxCAh-V_siMNTVbHCyaSjd1x4IvrRnsUDq_Po76cSEh9b3OnfwaBxy6zhRchzTlq3PXphr8wchH0cXwrruZOZv8pcCwIC4FhJzbzlxhJ3OVxLW8N">
                         </div>
-                        <a href="contact.html" class="font-label-caps text-xs text-primary border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors uppercase tracking-widest font-semibold">
-                            Inquire About This Space &rarr;
+                        <div class="flex flex-col gap-2">
+                            <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">01 — Residence • Malibu, CA</span>
+                            <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">The Glass Pavilion</h2>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Portrait (Spans 4) -->
+                    <article id="project-1" class="col-span-12 md:col-span-4 group cursor-pointer reveal md:mt-24">
+                        <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[3/4] shadow-lg">
+                            <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
+                                 alt="Materiality Study" 
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfzgiiuDxhg_2bvIRkDGJZCcH-c0g-pEuUyyH3CPSKr74jwffdUPjvJ0dCWULEqOq3kKTY-SRpKmHmT-QlCiZS79icclgbLC0WHtKLFauLupMd8FZucOhtXI7__rAAaT4MaY6MllmTlH3EGqKNWzfQnn0eiy99411NReaqm9Cd37DkbO5URW_J9JpkbZv7Soj-bJsDh6q7nZ5FhOh9VHq7gyBKexZ__La-pGJB7akwUK85x5MpfX9B">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">02 — Detail • Copenhagen</span>
+                            <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">Materiality Study</h2>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Wide/Panoramic (Spans 12) -->
+                    <article id="project-2" class="col-span-12 group cursor-pointer reveal mt-8 md:mt-16">
+                        <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-video md:aspect-[21/9] shadow-xl">
+                            <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
+                                 alt="Monolith House" 
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEqPZqWJjxI_st3i2ll2I0rwSX0_glLGOc_CQi0yQs59B05Klcw75HhpL72PKwAbodtxwPHmSuTJkItthVd5LL6VVj5uuLjgGxI1eaKF8k1_PNhjLbphljiMdeIwiUEA5smZ2qyHka4HvHNqCl-lp67xXzRey4x1D9y1beBYDXR_fs3muZ97XhExsvmHxBoWzHCNzgh76CXZJW-y264lQ5vvFZ-LThGfdSsEny2QXZrh9ya5Vma9UD">
+                        </div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div class="flex flex-col gap-2">
+                                <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">03 — Dining • Kyoto</span>
+                                <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">Monolith House</h2>
+                            </div>
+                            <a href="contact.html" class="font-label-caps text-xs text-primary border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors uppercase tracking-widest font-semibold">
+                                Inquire About This Space &rarr;
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: Square (Spans 5, offset 1) -->
+                    <article id="project-3" class="col-span-12 md:col-start-2 md:col-span-5 group cursor-pointer reveal mt-8 md:mt-16">
+                        <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-square shadow-lg">
+                            <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
+                                 alt="The Bronze Suite" 
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgsKWPksiTFu9oP5Pw6FTp3SkjTerGXuu5Gcty-LPsED_8vMIMEx8p_BnjhhIjo3btxNtutXZFGLY9ZoRuqxS7P6O_-aX9MN6dla76_DSJ4e1AFmRvNqSRjqQ_oigJpEZLuSuBUoZBBbT1OZKCR7LzpQ7yJ58EgWMb7s4a7CXO3uH8uSyB8abK0cS7-zPvftHJH6qm3o407jFjfov2YbG4J-HahzkH9Af4T8Gq--8edNvZixG4mMQx">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">04 — Sanctuary • Paris</span>
+                            <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">The Bronze Suite</h2>
+                        </div>
+                    </article>
+
+                    <!-- Project 5: Portrait (Spans 4, offset 1) -->
+                    <article id="project-4" class="col-span-12 md:col-start-8 md:col-span-4 group cursor-pointer reveal mt-8 md:mt-32">
+                        <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[3/4] shadow-lg">
+                            <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
+                                 alt="Void and Ascent" 
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPyezeGIp3pl9ZJzJfJMlxzP2SFZGJlaPbEB-qJgaVb6Y1gVtGuN7H-BP7I9DT0UWvQIhnOabRdiaxQTxAad-NlQ3hFfRjatduK5gPb-Iyqwp_Zfs_nHeXlUOJQdcl7p0Kiu0ValMOk3JWI2L6POUJ2YtS6MS6JVb28hdauTgRKF3nOBuNvnxmWBFhkYLTGz6lCwtfBUbbYqtl3di6SyJLqZTX6-tZTR41YwgbKJHhYgQZwhCVt7KM">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">05 — Circulation • Zurich</span>
+                            <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">Void &amp; Ascent</h2>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="mt-24 md:mt-40 px-6 md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="bg-primary text-on-primary rounded-3xl p-12 md:p-20 text-center reveal">
+                    <h2 class="font-display-lg text-3xl sm:text-4xl md:text-5xl mb-6">Commission a Signature Space</h2>
+                    <p class="font-body-lg text-on-primary/70 mb-10 max-w-xl mx-auto leading-relaxed">
+                        Every project begins with a bespoke design consultation. Connect with our principal architects to start shaping your next environment.
+                    </p>
+                    <a href="contact.html" class="inline-block bg-surface text-primary px-12 py-5 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-secondary-fixed transition-all font-semibold">
+                        Begin Your Journey
+                    </a>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="w-full py-stack-md border-t border-outline-variant/30 bg-surface mt-24">
+                <div class="flex flex-col md:flex-row justify-between items-start px-6 md:px-margin-desktop max-w-container-max mx-auto gap-gutter">
+                    <div class="flex flex-col gap-4 max-w-xs">
+                        <a href="index.html" class="inline-block group">
+                            <img src="assets/the_concept_logo_dark.png" alt="the Concept" class="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
                         </a>
+                        <p class="font-body-md text-sm text-on-surface-variant leading-relaxed">© 2024 The Concept. Where your vision becomes reality.</p>
                     </div>
-                </article>
-
-                <!-- Project 4: Square (Spans 5, offset 1) -->
-                <article class="col-span-12 md:col-start-2 md:col-span-5 group cursor-pointer reveal mt-8 md:mt-16">
-                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-square shadow-lg">
-                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
-                             alt="The Bronze Suite" 
-                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgsKWPksiTFu9oP5Pw6FTp3SkjTerGXuu5Gcty-LPsED_8vMIMEx8p_BnjhhIjo3btxNtutXZFGLY9ZoRuqxS7P6O_-aX9MN6dla76_DSJ4e1AFmRvNqSRjqQ_oigJpEZLuSuBUoZBBbT1OZKCR7LzpQ7yJ58EgWMb7s4a7CXO3uH8uSyB8abK0cS7-zPvftHJH6qm3o407jFjfov2YbG4J-HahzkH9Af4T8Gq--8edNvZixG4mMQx">
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">04 — Sanctuary • Paris</span>
-                        <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">The Bronze Suite</h2>
-                    </div>
-                </article>
-
-                <!-- Project 5: Portrait (Spans 4, offset 1) -->
-                <article class="col-span-12 md:col-start-8 md:col-span-4 group cursor-pointer reveal mt-8 md:mt-32">
-                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[3/4] shadow-lg">
-                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
-                             alt="Void and Ascent" 
-                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPyezeGIp3pl9ZJzJfJMlxzP2SFZGJlaPbEB-qJgaVb6Y1gVtGuN7H-BP7I9DT0UWvQIhnOabRdiaxQTxAad-NlQ3hFfRjatduK5gPb-Iyqwp_Zfs_nHeXlUOJQdcl7p0Kiu0ValMOk3JWI2L6POUJ2YtS6MS6JVb28hdauTgRKF3nOBuNvnxmWBFhkYLTGz6lCwtfBUbbYqtl3di6SyJLqZTX6-tZTR41YwgbKJHhYgQZwhCVt7KM">
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">05 — Circulation • Zurich</span>
-                        <h2 class="font-headline-sm text-2xl text-primary group-hover:text-secondary transition-colors">Void &amp; Ascent</h2>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="mt-24 md:mt-40 px-6 md:px-margin-desktop max-w-container-max mx-auto">
-            <div class="bg-primary text-on-primary rounded-3xl p-12 md:p-20 text-center reveal">
-                <h2 class="font-display-lg text-3xl sm:text-4xl md:text-5xl mb-6">Commission a Signature Space</h2>
-                <p class="font-body-lg text-on-primary/70 mb-10 max-w-xl mx-auto leading-relaxed">
-                    Every project begins with a bespoke design consultation. Connect with our principal architects to start shaping your next environment.
-                </p>
-                <a href="contact.html" class="inline-block bg-surface text-primary px-12 py-5 rounded-full font-label-caps text-xs uppercase tracking-widest hover:bg-secondary-fixed transition-all font-semibold">
-                    Begin Your Journey
-                </a>
-            </div>
-        </section>
+                    
+                    <ul class="flex flex-col sm:flex-row gap-6 md:gap-8 font-label-caps text-xs text-on-surface-variant">
+                        <li><a class="hover:text-primary transition-colors" href="index.html">Studio Home</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="philosophy.html">Philosophy</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="w-full py-stack-md border-t border-outline-variant/30 bg-surface">
-        <div class="flex flex-col md:flex-row justify-between items-start px-6 md:px-margin-desktop max-w-container-max mx-auto gap-gutter">
-            <div class="flex flex-col gap-4 max-w-xs">
-                <a href="index.html" class="inline-block group">
-                    <img src="assets/the_concept_logo_dark.png" alt="the Concept" class="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
-                </a>
-                <p class="font-body-md text-sm text-on-surface-variant leading-relaxed">© 2024 The Concept. Where your vision becomes reality.</p>
-            </div>
-            
-            <ul class="flex flex-col sm:flex-row gap-6 md:gap-8 font-label-caps text-xs text-on-surface-variant">
-                <li><a class="hover:text-primary transition-colors" href="index.html">Studio Home</a></li>
-                <li><a class="hover:text-primary transition-colors" href="philosophy.html">Philosophy</a></li>
-                <li><a class="hover:text-primary transition-colors" href="contact.html">Contact</a></li>
-                <li><a class="hover:text-primary transition-colors" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
-            </ul>
-        </div>
-    </footer>
-
     <!-- Floating Luxury Call Button (Bottom Right Corner) -->
-    <aside aria-label="Direct Phone Line" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50">
+    <aside id="floating-call-container" class="hidden fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50">
         <a id="floating-call-btn" href="tel:+442079460000" aria-label="Call The Concept Studio" class="group relative flex items-center justify-center size-14 sm:size-16 rounded-full bg-primary text-white shadow-2xl border border-white/20 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_36px_rgba(0,0,0,0.5)] hover:border-secondary-fixed active:scale-95 focus:outline-none" title="Call The Concept Studio">
             <!-- Subtle pulse glow halo -->
             <span class="absolute -inset-1 rounded-full bg-secondary-fixed/25 animate-ping opacity-50 pointer-events-none group-hover:opacity-100"></span>
@@ -839,6 +855,9 @@
         const handleKnob = document.getElementById('lamp-handle-knob');
         const cordPath = document.getElementById('lamp-cord-path');
         const firefliesContainer = document.getElementById('fireflies-container');
+        const revealedContent = document.getElementById('spaces-revealed-content');
+        const scrollPrompt = document.getElementById('scroll-down-prompt');
+        const floatingCall = document.getElementById('floating-call-container');
 
         let isLampOn = false;
         let isDragging = false;
@@ -853,11 +872,40 @@
             isLampOn = forceState !== undefined ? forceState : !isLampOn;
             if (isLampOn) {
                 lampSection.classList.add('on');
+                if (revealedContent) revealedContent.classList.add('revealed');
+                if (scrollPrompt) {
+                    scrollPrompt.classList.remove('hidden');
+                    scrollPrompt.classList.add('flex');
+                }
+                if (floatingCall) floatingCall.classList.remove('hidden');
+                document.body.classList.remove('lamp-off-locked');
                 initFireflies();
             } else {
                 lampSection.classList.remove('on');
+                if (revealedContent) revealedContent.classList.remove('revealed');
+                if (scrollPrompt) {
+                    scrollPrompt.classList.add('hidden');
+                    scrollPrompt.classList.remove('flex');
+                }
+                if (floatingCall) floatingCall.classList.add('hidden');
+                document.body.classList.add('lamp-off-locked');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
             updateHeaderTheme();
+            setTimeout(reveal, 100);
+        }
+
+        // Scroll helpers
+        function scrollToPortfolio() {
+            if (!isLampOn) toggleLamp(true);
+            const target = document.getElementById('page-hero');
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToProject(index) {
+            if (!isLampOn) toggleLamp(true);
+            const project = document.getElementById(`project-${index}`);
+            if (project) project.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         // Update cord and handle position
