@@ -305,27 +305,38 @@
             opacity: 1;
         }
 
-        .light-beam {
+        /* Individual angled light rays emanating from lamp head */
+        .light-rays-container {
             position: absolute;
-            top: 45px;
-            width: 520px;
-            height: 360px;
-            background: linear-gradient(to bottom, rgba(255, 230, 140, 0.82) 0%, rgba(255, 200, 80, 0.22) 60%, transparent 100%);
-            /* Mask: cone shape with fully faded/soft side edges */
-            -webkit-mask-image: radial-gradient(ellipse 52% 100% at 50% 0%, black 0%, black 30%, transparent 100%),
-                                linear-gradient(to bottom, black 0%, transparent 100%);
-            -webkit-mask-composite: destination-in;
-            mask-image: radial-gradient(ellipse 52% 100% at 50% 0%, black 0%, black 30%, transparent 100%),
-                        linear-gradient(to bottom, black 0%, transparent 100%);
-            mask-composite: intersect;
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out;
+            top: 48px;
+            left: 50%;
+            width: 0;
+            height: 0;
             z-index: 3;
             pointer-events: none;
-            filter: blur(12px);
+            opacity: 0;
+            transition: opacity 0.7s ease-in-out;
         }
-        .lamp-room-container.on .light-beam {
+        .lamp-room-container.on .light-rays-container {
             opacity: 1;
+        }
+        .light-ray {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: top center;
+            transform: rotate(var(--ray-angle, 0deg));
+            width: var(--ray-w, 26px);
+            height: var(--ray-h, 320px);
+            margin-left: calc(var(--ray-w, 26px) / -2);
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 238, 160, var(--ray-op, 0.5)) 0%,
+                rgba(255, 215, 100, calc(var(--ray-op, 0.5) * 0.38)) 48%,
+                transparent 100%
+            );
+            border-radius: 40% 40% 80% 80%;
+            filter: blur(var(--ray-blur, 9px));
         }
 
         .lamp-stem {
@@ -520,7 +531,29 @@
                     <div class="lamp-stage-container mt-8 md:mt-4">
                         <div class="lamp-glow"></div>
                         <div class="lamp-head"></div>
-                        <div class="light-beam"></div>
+                        <!-- Angled Light Rays from Lamp Head -->
+                        <div class="light-rays-container">
+                            <!-- outer-left stray ray -->
+                            <div class="light-ray" style="--ray-angle:-62deg; --ray-w:10px; --ray-h:200px; --ray-op:0.28; --ray-blur:11px;"></div>
+                            <!-- far-left ray -->
+                            <div class="light-ray" style="--ray-angle:-48deg; --ray-w:16px; --ray-h:260px; --ray-op:0.38; --ray-blur:10px;"></div>
+                            <!-- left-mid ray -->
+                            <div class="light-ray" style="--ray-angle:-33deg; --ray-w:22px; --ray-h:310px; --ray-op:0.48; --ray-blur:9px;"></div>
+                            <!-- inner-left ray -->
+                            <div class="light-ray" style="--ray-angle:-18deg; --ray-w:30px; --ray-h:350px; --ray-op:0.56; --ray-blur:8px;"></div>
+                            <!-- near-center left ray -->
+                            <div class="light-ray" style="--ray-angle:-5deg;  --ray-w:36px; --ray-h:370px; --ray-op:0.62; --ray-blur:7px;"></div>
+                            <!-- center ray (brightest) -->
+                            <div class="light-ray" style="--ray-angle:8deg;   --ray-w:38px; --ray-h:380px; --ray-op:0.65; --ray-blur:6px;"></div>
+                            <!-- near-center right ray -->
+                            <div class="light-ray" style="--ray-angle:22deg;  --ray-w:32px; --ray-h:360px; --ray-op:0.58; --ray-blur:7px;"></div>
+                            <!-- inner-right ray -->
+                            <div class="light-ray" style="--ray-angle:37deg;  --ray-w:24px; --ray-h:325px; --ray-op:0.48; --ray-blur:8px;"></div>
+                            <!-- right-mid ray -->
+                            <div class="light-ray" style="--ray-angle:50deg;  --ray-w:17px; --ray-h:270px; --ray-op:0.36; --ray-blur:10px;"></div>
+                            <!-- outer-right stray ray -->
+                            <div class="light-ray" style="--ray-angle:63deg;  --ray-w:11px; --ray-h:205px; --ray-op:0.26; --ray-blur:12px;"></div>
+                        </div>
                         <div class="lamp-stem"></div>
                         <div class="lamp-base"></div>
                         <div class="desk-surface"></div>
