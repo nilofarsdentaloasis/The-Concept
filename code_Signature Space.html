@@ -277,10 +277,11 @@
                 
                 <!-- Project 1: Large Feature (Spans 8) -->
                 <article class="col-span-12 md:col-span-8 group cursor-pointer reveal">
-                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[4/3] shadow-lg">
-                        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out" 
-                             alt="The Glass Pavilion" 
-                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGAJxGBJZ17jFZuwMRqvYwu8ccsxpJwIlr9QDMtoc8Y0kJ9RTZ9N3FR-QvewZJK3p0YOIKw125KnnRizaI4NBiKWun3fKmC-s1VyP_eEGY7YXu1Pg2qIATpF4xSPxn4uEutctDlxCAh-V_siMNTVbHCyaSjd1x4IvrRnsUDq_Po76cSEh9b3OnfwaBxy6zhRchzTlq3PXphr8wchH0cXwrruZOZv8pcCwIC4FhJzbzlxhJ3OVxLW8N">
+                    <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-[4/3] shadow-lg relative">
+                        <video id="glass-pavilion-video" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture disableremoteplayback preload="auto" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out">
+                            <source src="assets/glass_pavilion_video.mp4" type="video/mp4">
+                            <source src="5823583-uhd_2560_1440_24fps.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="flex flex-col gap-2">
                         <span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">01 — Residence • Malibu, CA</span>
@@ -575,58 +576,71 @@
             reveal();
             updateHeaderTheme();
             initSnapsCoverflow();
-            initMonolithVideoLoop();
+            initPortfolioVideosLoop();
         });
         window.addEventListener("load", () => {
-            initMonolithVideoLoop();
+            initPortfolioVideosLoop();
         });
         window.addEventListener("resize", updateHeaderTheme);
 
-        // Continuous Loop Controller for Monolith House Video
-        function initMonolithVideoLoop() {
-            const video = document.getElementById('monolith-video');
-            if (!video) return;
+        // Continuous Loop Controller for Portfolio Videos (Monolith & Glass Pavilion @ 1.2x)
+        function initPortfolioVideosLoop() {
+            const videoConfigs = [
+                { id: 'monolith-video', rate: 1.0 },
+                { id: 'glass-pavilion-video', rate: 1.2 }
+            ];
 
-            video.muted = true;
-            video.defaultMuted = true;
-            video.playsInline = true;
-            video.loop = true;
+            videoConfigs.forEach(({ id, rate }) => {
+                const video = document.getElementById(id);
+                if (!video) return;
 
-            const playVideo = () => {
                 video.muted = true;
-                const p = video.play();
-                if (p !== undefined) {
-                    p.catch(() => {});
+                video.defaultMuted = true;
+                video.playsInline = true;
+                video.loop = true;
+                try { video.playbackRate = rate; } catch(e) {}
+
+                const playVideo = () => {
+                    video.muted = true;
+                    try { video.playbackRate = rate; } catch(e) {}
+                    const p = video.play();
+                    if (p !== undefined) {
+                        p.catch(() => {});
+                    }
+                };
+
+                // Immediate play attempt
+                playVideo();
+
+                // Resume loop if browser pauses or fires ended
+                video.addEventListener('ended', () => {
+                    video.currentTime = 0;
+                    try { video.playbackRate = rate; } catch(e) {}
+                    playVideo();
+                });
+                video.addEventListener('pause', () => {
+                    playVideo();
+                });
+                video.addEventListener('play', () => {
+                    try { video.playbackRate = rate; } catch(e) {}
+                });
+
+                // Intersection Observer to keep playing smoothly when scrolled into view
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                playVideo();
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    observer.observe(video);
                 }
-            };
 
-            // Immediate play attempt
-            playVideo();
-
-            // Resume loop if browser pauses or fires ended
-            video.addEventListener('ended', () => {
-                video.currentTime = 0;
-                playVideo();
-            });
-            video.addEventListener('pause', () => {
-                playVideo();
-            });
-
-            // Intersection Observer to keep playing smoothly when scrolled into view
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            playVideo();
-                        }
-                    });
-                }, { threshold: 0.1 });
-                observer.observe(video);
-            }
-
-            // Fallback play triggers on user interaction
-            ['click', 'touchstart', 'scroll', 'pointerdown'].forEach(evt => {
-                window.addEventListener(evt, playVideo, { once: true, passive: true });
+                // Fallback play triggers on user interaction
+                ['click', 'touchstart', 'scroll', 'pointerdown'].forEach(evt => {
+                    window.addEventListener(evt, playVideo, { once: true, passive: true });
+                });
             });
         }
 
