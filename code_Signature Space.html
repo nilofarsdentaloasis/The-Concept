@@ -347,8 +347,110 @@
             </div>
         </section>
 
+        <!-- =========================================================================
+             SNAPS — 3D Coverflow Snapshot Gallery
+             ========================================================================= -->
+        <section id="snaps-section" class="pt-20 md:pt-32 pb-8 overflow-hidden relative z-20">
+            <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-8 md:mb-12 flex justify-between items-end">
+                <div class="reveal">
+                    <span class="font-label-caps text-secondary text-[10px] sm:text-xs tracking-widest uppercase font-medium">Visual Journal</span>
+                    <h2 class="font-headline-md text-primary mt-1 text-2xl sm:text-3xl md:text-4xl">Snaps</h2>
+                </div>
+                <div class="flex items-center gap-2.5 reveal">
+                    <button id="snap-prev-btn" type="button" aria-label="Previous Snap" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-outline-variant/60 flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="snap-next-btn" type="button" aria-label="Next Snap" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-outline-variant/60 flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3D Coverflow Viewport -->
+            <div class="relative w-full max-w-[1400px] mx-auto px-2 sm:px-4 md:px-6 select-none reveal">
+                <div id="snaps-stage" class="relative h-[280px] sm:h-[380px] md:h-[480px] lg:h-[540px] w-full flex items-center justify-center overflow-visible">
+                    <!-- Snap 1: Architectural Foyers -->
+                    <div class="snap-card absolute inset-y-0 w-[84%] sm:w-[72%] md:w-[65%] max-w-[860px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer will-change-transform" data-index="0">
+                        <img src="assets/project_timber_foyer.jpg" alt="Architectural Foyers - The Concept" class="w-full h-full object-cover object-center pointer-events-none" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex flex-col justify-between p-4 sm:p-7">
+                            <span class="self-start px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-[10px] font-label-caps uppercase tracking-wider">01 · Architectural Foyers</span>
+                            <div class="text-white">
+                                <h3 class="text-base sm:text-xl font-medium tracking-wide">The Timber Vestibule</h3>
+                                <p class="text-white/80 text-xs sm:text-sm mt-0.5 font-light">Pune · Residential Entrance</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Snap 2: Living & Salons -->
+                    <div class="snap-card absolute inset-y-0 w-[84%] sm:w-[72%] md:w-[65%] max-w-[860px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer will-change-transform" data-index="1">
+                        <img src="assets/project_aurum_lounge.jpg" alt="Living & Salons - The Concept" class="w-full h-full object-cover object-center pointer-events-none" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex flex-col justify-between p-4 sm:p-7">
+                            <span class="self-start px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-[10px] font-label-caps uppercase tracking-wider">02 · Living &amp; Salons</span>
+                            <div class="text-white">
+                                <h3 class="text-base sm:text-xl font-medium tracking-wide">Aurum Geometric Salon</h3>
+                                <p class="text-white/80 text-xs sm:text-sm mt-0.5 font-light">Mumbai · Bespoke Lounge</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Snap 3: Japandi Dining -->
+                    <div class="snap-card absolute inset-y-0 w-[84%] sm:w-[72%] md:w-[65%] max-w-[860px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer will-change-transform" data-index="2">
+                        <img src="assets/project_japandi_dining.jpg" alt="Japandi Dining - The Concept" class="w-full h-full object-cover object-center pointer-events-none" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex flex-col justify-between p-4 sm:p-7">
+                            <span class="self-start px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-[10px] font-label-caps uppercase tracking-wider">03 · Japandi Dining</span>
+                            <div class="text-white">
+                                <h3 class="text-base sm:text-xl font-medium tracking-wide">The Fluted Dining Suite</h3>
+                                <p class="text-white/80 text-xs sm:text-sm mt-0.5 font-light">Bengaluru · Minimalist Dining</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Snap 4: Master Suites -->
+                    <div class="snap-card absolute inset-y-0 w-[84%] sm:w-[72%] md:w-[65%] max-w-[860px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer will-change-transform" data-index="3">
+                        <img src="assets/project_lumina_bedroom.jpg" alt="Master Suites - The Concept" class="w-full h-full object-cover object-center pointer-events-none" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex flex-col justify-between p-4 sm:p-7">
+                            <span class="self-start px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-[10px] font-label-caps uppercase tracking-wider">04 · Master Suites</span>
+                            <div class="text-white">
+                                <h3 class="text-base sm:text-xl font-medium tracking-wide">Lumina Master Suite</h3>
+                                <p class="text-white/80 text-xs sm:text-sm mt-0.5 font-light">Alibaug · Dressing &amp; Sanctuary</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Snap 5: Private Alcoves -->
+                    <div class="snap-card absolute inset-y-0 w-[84%] sm:w-[72%] md:w-[65%] max-w-[860px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer will-change-transform" data-index="4">
+                        <img src="assets/project_sanctuary_suite.jpg" alt="Private Alcoves - The Concept" class="w-full h-full object-cover object-center pointer-events-none" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex flex-col justify-between p-4 sm:p-7">
+                            <span class="self-start px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-[10px] font-label-caps uppercase tracking-wider">05 · Private Alcoves</span>
+                            <div class="text-white">
+                                <h3 class="text-base sm:text-xl font-medium tracking-wide">The Sanctuary Suite</h3>
+                                <p class="text-white/80 text-xs sm:text-sm mt-0.5 font-light">Goa · Wabi-Sabi Lounge</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Snap 6: Glass Pavilions -->
+                    <div class="snap-card absolute inset-y-0 w-[84%] sm:w-[72%] md:w-[65%] max-w-[860px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer will-change-transform" data-index="5">
+                        <img src="assets/space_glass_pavilion.jpg" alt="Glass Pavilions - The Concept" class="w-full h-full object-cover object-center pointer-events-none" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex flex-col justify-between p-4 sm:p-7">
+                            <span class="self-start px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-[10px] font-label-caps uppercase tracking-wider">06 · Glass Pavilions</span>
+                            <div class="text-white">
+                                <h3 class="text-base sm:text-xl font-medium tracking-wide">The Glass Pavilion</h3>
+                                <p class="text-white/80 text-xs sm:text-sm mt-0.5 font-light">Malibu · Architecture &amp; Nature</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Translucent Bottom Center Glass Pagination Dots (matching reference) -->
+                    <div id="snaps-dots-container" class="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/25 z-40 shadow-lg pointer-events-auto">
+                        <!-- Dots generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA Section -->
-        <section class="mt-24 md:mt-40 px-6 md:px-margin-desktop max-w-container-max mx-auto">
+        <section class="mt-20 md:mt-32 px-6 md:px-margin-desktop max-w-container-max mx-auto">
             <div class="bg-primary text-on-primary rounded-3xl p-12 md:p-20 text-center reveal">
                 <h2 class="font-display-lg text-3xl sm:text-4xl md:text-5xl mb-6">Commission a Signature Space</h2>
                 <p class="font-body-lg text-on-primary/70 mb-10 max-w-xl mx-auto leading-relaxed">
@@ -464,6 +566,7 @@
         window.addEventListener("DOMContentLoaded", () => {
             reveal();
             updateHeaderTheme();
+            initSnapsCoverflow();
         });
         window.addEventListener("resize", updateHeaderTheme);
 
@@ -482,6 +585,162 @@
         }
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        // =========================================
+        // SNAPS 3D COVERFLOW CONTROLLER
+        // =========================================
+        function initSnapsCoverflow() {
+            const stage = document.getElementById('snaps-stage');
+            const cards = Array.from(document.querySelectorAll('.snap-card'));
+            const dotsContainer = document.getElementById('snaps-dots-container');
+            const prevBtn = document.getElementById('snap-prev-btn');
+            const nextBtn = document.getElementById('snap-next-btn');
+            
+            if (!stage || cards.length === 0) return;
+
+            let currentIndex = 0;
+            const total = cards.length;
+            let autoPlayTimer = null;
+            let isHovered = false;
+
+            // Generate floating glass dots (matching reference layout)
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                cards.forEach((_, idx) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'snap-dot transition-all duration-300 rounded-full cursor-pointer';
+                    dot.setAttribute('aria-label', `Go to snap ${idx + 1}`);
+                    dot.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        updateSnaps(idx);
+                        resetAutoPlay();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function updateSnaps(newIndex) {
+                currentIndex = (newIndex + total) % total;
+
+                cards.forEach((card, idx) => {
+                    // Circular relative distance (-total/2 to +total/2)
+                    let diff = idx - currentIndex;
+                    if (diff > total / 2) diff -= total;
+                    if (diff < -total / 2) diff += total;
+
+                    if (diff === 0) {
+                        // Active Center Frame (Large, Crisp, In Full Focus)
+                        card.style.transform = 'translateX(0%) scale(1)';
+                        card.style.zIndex = '30';
+                        card.style.opacity = '1';
+                        card.style.filter = 'none';
+                        card.style.pointerEvents = 'auto';
+                        card.style.cursor = 'default';
+                    } else if (diff === -1 || (diff < 0 && Math.abs(diff) === 1)) {
+                        // Previous / Left Card (Scaled down peek on the left)
+                        card.style.transform = 'translateX(-66%) scale(0.78)';
+                        card.style.zIndex = '20';
+                        card.style.opacity = '0.65';
+                        card.style.filter = 'brightness(0.7)';
+                        card.style.pointerEvents = 'auto';
+                        card.style.cursor = 'pointer';
+                    } else if (diff === 1 || (diff > 0 && Math.abs(diff) === 1)) {
+                        // Next / Right Card (Scaled down peek on the right)
+                        card.style.transform = 'translateX(66%) scale(0.78)';
+                        card.style.zIndex = '20';
+                        card.style.opacity = '0.65';
+                        card.style.filter = 'brightness(0.7)';
+                        card.style.pointerEvents = 'auto';
+                        card.style.cursor = 'pointer';
+                    } else if (diff < -1) {
+                        // Offscreen Left
+                        card.style.transform = 'translateX(-120%) scale(0.6)';
+                        card.style.zIndex = '10';
+                        card.style.opacity = '0';
+                        card.style.pointerEvents = 'none';
+                    } else {
+                        // Offscreen Right
+                        card.style.transform = 'translateX(120%) scale(0.6)';
+                        card.style.zIndex = '10';
+                        card.style.opacity = '0';
+                        card.style.pointerEvents = 'none';
+                    }
+                });
+
+                // Update dots styling
+                const dots = document.querySelectorAll('.snap-dot');
+                dots.forEach((dot, idx) => {
+                    if (idx === currentIndex) {
+                        dot.className = 'snap-dot h-2 w-5 sm:w-6 bg-white rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(255,255,255,0.9)]';
+                    } else {
+                        dot.className = 'snap-dot size-2 bg-white/45 hover:bg-white/80 rounded-full transition-all duration-300';
+                    }
+                });
+            }
+
+            // Click handling on cards
+            cards.forEach((card, idx) => {
+                card.addEventListener('click', () => {
+                    if (idx !== currentIndex) {
+                        updateSnaps(idx);
+                        resetAutoPlay();
+                    }
+                });
+            });
+
+            // Prev / Next button listeners
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    updateSnaps(currentIndex - 1);
+                    resetAutoPlay();
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    updateSnaps(currentIndex + 1);
+                    resetAutoPlay();
+                });
+            }
+
+            // Touch / Swipe support
+            let touchStartX = 0;
+            stage.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                isHovered = true;
+            }, { passive: true });
+
+            stage.addEventListener('touchend', (e) => {
+                const diffX = e.changedTouches[0].clientX - touchStartX;
+                if (Math.abs(diffX) > 40) {
+                    if (diffX > 0) updateSnaps(currentIndex - 1);
+                    else updateSnaps(currentIndex + 1);
+                }
+                setTimeout(() => { isHovered = false; }, 2000);
+            }, { passive: true });
+
+            // Subtle auto-advance with hover pause
+            function startAutoPlay() {
+                clearInterval(autoPlayTimer);
+                autoPlayTimer = setInterval(() => {
+                    if (!isHovered) {
+                        updateSnaps(currentIndex + 1);
+                    }
+                }, 4500);
+            }
+
+            function resetAutoPlay() {
+                clearInterval(autoPlayTimer);
+                startAutoPlay();
+            }
+
+            stage.addEventListener('mouseenter', () => { isHovered = true; });
+            stage.addEventListener('mouseleave', () => { isHovered = false; });
+
+            // Initialize
+            updateSnaps(0);
+            startAutoPlay();
         }
     </script>
 </body>
