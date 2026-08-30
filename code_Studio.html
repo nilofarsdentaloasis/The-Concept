@@ -792,50 +792,106 @@
             </div>
         </section>
 
-        <!-- Featured Projects (Horizontal Gallery Style) -->
-        <section class="py-stack-xl bg-surface overflow-hidden relative z-20">
-            <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-12 flex justify-between items-end">
+        <!-- Featured Projects (The Archive - Horizontal Gallery Style) -->
+        <section id="the-archive" class="py-stack-xl bg-surface overflow-hidden relative z-20">
+            <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
                 <div class="reveal">
-                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase">The Archive</span>
-                    <h2 class="font-headline-md text-primary mt-4 text-3xl md:text-4xl">Selected Works</h2>
+                    <span class="font-label-caps text-secondary text-xs tracking-widest uppercase font-medium">The Archive</span>
+                    <h2 class="font-headline-md text-primary mt-3 text-3xl md:text-4xl">Selected Works</h2>
                 </div>
-                <a class="font-label-caps text-primary border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-all text-xs tracking-widest uppercase font-semibold" href="spaces.html">
-                    All Projects &rarr;
-                </a>
+                <div class="flex items-center gap-3 reveal">
+                    <!-- Gallery Navigation Controls -->
+                    <button id="archive-scroll-left" type="button" aria-label="Scroll left in gallery" class="w-10 h-10 rounded-full border border-outline-variant/60 flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="archive-scroll-right" type="button" aria-label="Scroll right in gallery" class="w-10 h-10 rounded-full border border-outline-variant/60 flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <a class="font-label-caps text-primary border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-all text-xs tracking-widest uppercase font-semibold ml-2" href="spaces.html">
+                        All Projects &rarr;
+                    </a>
+                </div>
             </div>
             
-            <div class="flex gap-8 px-6 md:px-margin-desktop overflow-x-auto no-scrollbar pb-12 reveal">
-                <!-- Project 1 -->
-                <a href="spaces.html" class="min-w-[280px] sm:min-w-[360px] md:min-w-[480px] group cursor-pointer block">
-                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container">
-                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQbZUK7agopCL6kOaS_eWA9gPzfXjJe0lFgrGNE1UZbCYaNJqA9-5CrzLXcSKpPcFbUCYvizGg8lBNcklxnaAIWMsLsqsY7AKV0uY45hyFmH6d3H0J3g2QLUaWPzSGRxU-RHi072NpSyR-vQQdge4jD7keh89cVMxQ7RpdF6s0-EY5ijWGKU8pdC_Kg7zEfVrIYSt2LUreXX3ihCW9ig_E5LpFj9hfs7ldUa0q855iN23YHaLBrMEX')">
+            <div id="archive-gallery-track" class="flex gap-8 px-6 md:px-margin-desktop overflow-x-auto no-scrollbar pb-12 reveal scroll-smooth">
+                <!-- Project 1: The Timber Vestibule -->
+                <a href="spaces.html" class="min-w-[300px] sm:min-w-[380px] md:min-w-[460px] lg:min-w-[480px] group cursor-pointer block shrink-0">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container relative shadow-sm group-hover:shadow-xl transition-all duration-500">
+                        <img src="assets/project_timber_foyer.jpg" alt="The Timber Vestibule - Foyer & Living by The Concept" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                            <span class="text-white text-xs font-light tracking-wide uppercase">Explore Spatial Details &rarr;</span>
                         </div>
                     </div>
-                    <p class="font-label-caps text-on-surface-variant text-[10px] tracking-widest uppercase mb-2">Malibu, CA</p>
-                    <h4 class="font-headline-sm text-primary text-xl group-hover:text-secondary transition-colors">The Shoreline House</h4>
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <p class="font-label-caps text-secondary text-[11px] tracking-widest uppercase font-medium">Residential Foyer · Pune, IN</p>
+                        <span class="font-label-caps text-on-surface-variant/70 text-[10px] tracking-widest uppercase">2024</span>
+                    </div>
+                    <h3 class="font-headline-sm text-primary text-xl md:text-2xl group-hover:text-secondary transition-colors">The Timber Vestibule</h3>
+                    <p class="text-on-surface-variant text-xs mt-1 leading-relaxed">Exposed timber ceiling rafters, bespoke shelving woodwork & double French courtyard glazing.</p>
                 </a>
 
-                <!-- Project 2 -->
-                <a href="spaces.html" class="min-w-[280px] sm:min-w-[360px] md:min-w-[480px] group cursor-pointer block">
-                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container">
-                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkEMNbnjX0dHEn4AUVyvxwgYptigsCtaWmtoaxpechM5_ZTOVv5f5tq1VINJxYwXnyTjHSD7Soy2GCvPKZIsUCf8YB4ajcHanjZ7tTQ-V_e6_kDEEkewfjcLOK0iHz-s0YqJ4hNbCyq2BAZ-4m-kr-MfVQK3k_-Kgw3OYsxXtyj7L4i4tqCMKvliqPxdeo9fDezsv5FPiO0PPkdTvSZZzDvP1pyrphtipxX-UkcqoS3c7LklVZmW5C')">
+                <!-- Project 2: Aurum Geometric Salon -->
+                <a href="spaces.html" class="min-w-[300px] sm:min-w-[380px] md:min-w-[460px] lg:min-w-[480px] group cursor-pointer block shrink-0">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container relative shadow-sm group-hover:shadow-xl transition-all duration-500">
+                        <img src="assets/project_aurum_lounge.jpg" alt="Aurum Geometric Salon - Luxury Living by The Concept" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                            <span class="text-white text-xs font-light tracking-wide uppercase">Explore Spatial Details &rarr;</span>
                         </div>
                     </div>
-                    <p class="font-label-caps text-on-surface-variant text-[10px] tracking-widest uppercase mb-2">Berlin, DE</p>
-                    <h4 class="font-headline-sm text-primary text-xl group-hover:text-secondary transition-colors">Kohlberg Residence</h4>
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <p class="font-label-caps text-secondary text-[11px] tracking-widest uppercase font-medium">Living & Lounge · Mumbai, IN</p>
+                        <span class="font-label-caps text-on-surface-variant/70 text-[10px] tracking-widest uppercase">2024</span>
+                    </div>
+                    <h3 class="font-headline-sm text-primary text-xl md:text-2xl group-hover:text-secondary transition-colors">Aurum Geometric Salon</h3>
+                    <p class="text-on-surface-variant text-xs mt-1 leading-relaxed">Sculptural geometric wood wall paneling, tiered crystal lighting & herringbone flooring.</p>
                 </a>
 
-                <!-- Project 3 -->
-                <a href="spaces.html" class="min-w-[280px] sm:min-w-[360px] md:min-w-[480px] group cursor-pointer block">
-                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container">
-                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPAKvS1FZ5UFlI8CDqWXNKJzlErZpDu_Y-rRCMEKHk2QoN3Z7TYR12bcUe_2YzqwLHeiwaV4UOXWPtAcdITiB9ahBZZrIeNRegAhXEKf61Um3q2c0ICdjaYUr2u6voGbOtxt9m1xYiACEROh3IMskH5Wt-9vC3DYxLLgN2OKWdNOj6eS9u1Xlg96FeXvxYYIdrZmSyga-l5RAG431oP5O4-tTDBUQXCBm83O2UjwxBZRTwLtwdXz6U')">
+                <!-- Project 3: The Sanctuary Alcove -->
+                <a href="spaces.html" class="min-w-[300px] sm:min-w-[380px] md:min-w-[460px] lg:min-w-[480px] group cursor-pointer block shrink-0">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container relative shadow-sm group-hover:shadow-xl transition-all duration-500">
+                        <img src="assets/project_sanctuary_suite.jpg" alt="The Sanctuary Alcove - Serene Minimalist Space by The Concept" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                            <span class="text-white text-xs font-light tracking-wide uppercase">Explore Spatial Details &rarr;</span>
                         </div>
                     </div>
-                    <p class="font-label-caps text-on-surface-variant text-[10px] tracking-widest uppercase mb-2">Tokyo, JP</p>
-                    <h4 class="font-headline-sm text-primary text-xl group-hover:text-secondary transition-colors">Omotesando Loft</h4>
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <p class="font-label-caps text-secondary text-[11px] tracking-widest uppercase font-medium">Lounge & Alcove · Goa, IN</p>
+                        <span class="font-label-caps text-on-surface-variant/70 text-[10px] tracking-widest uppercase">2024</span>
+                    </div>
+                    <h3 class="font-headline-sm text-primary text-xl md:text-2xl group-hover:text-secondary transition-colors">The Sanctuary Alcove</h3>
+                    <p class="text-on-surface-variant text-xs mt-1 leading-relaxed">Wabi-sabi tactile lime-wash textures, vintage brass storage & sheer natural linen drapery.</p>
+                </a>
+
+                <!-- Project 4: The Fluted Dining Suite -->
+                <a href="spaces.html" class="min-w-[300px] sm:min-w-[380px] md:min-w-[460px] lg:min-w-[480px] group cursor-pointer block shrink-0">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container relative shadow-sm group-hover:shadow-xl transition-all duration-500">
+                        <img src="assets/project_japandi_dining.jpg" alt="The Fluted Dining Suite - Japandi Interior by The Concept" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                            <span class="text-white text-xs font-light tracking-wide uppercase">Explore Spatial Details &rarr;</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <p class="font-label-caps text-secondary text-[11px] tracking-widest uppercase font-medium">Japandi Dining · Bengaluru, IN</p>
+                        <span class="font-label-caps text-on-surface-variant/70 text-[10px] tracking-widest uppercase">2024</span>
+                    </div>
+                    <h3 class="font-headline-sm text-primary text-xl md:text-2xl group-hover:text-secondary transition-colors">The Fluted Dining Suite</h3>
+                    <p class="text-on-surface-variant text-xs mt-1 leading-relaxed">Woven organic pendant illuminations, asymmetrical mirror & fluted timber acoustics.</p>
+                </a>
+
+                <!-- Project 5: Lumina Master Suite -->
+                <a href="spaces.html" class="min-w-[300px] sm:min-w-[380px] md:min-w-[460px] lg:min-w-[480px] group cursor-pointer block shrink-0">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-surface-container relative shadow-sm group-hover:shadow-xl transition-all duration-500">
+                        <img src="assets/project_lumina_bedroom.jpg" alt="Lumina Master Suite - Dressing & Media Suite by The Concept" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                            <span class="text-white text-xs font-light tracking-wide uppercase">Explore Spatial Details &rarr;</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <p class="font-label-caps text-secondary text-[11px] tracking-widest uppercase font-medium">Master Dressing & Media · Alibaug, IN</p>
+                        <span class="font-label-caps text-on-surface-variant/70 text-[10px] tracking-widest uppercase">2024</span>
+                    </div>
+                    <h3 class="font-headline-sm text-primary text-xl md:text-2xl group-hover:text-secondary transition-colors">Lumina Master Suite</h3>
+                    <p class="text-on-surface-variant text-xs mt-1 leading-relaxed">Backlit arch vanity mirror, fluted wall paneling, floating media credenza & warm bronze lighting.</p>
                 </a>
             </div>
         </section>
@@ -1210,6 +1266,23 @@
             }
         }
 
+        // Selected Works (The Archive) Horizontal Scroll Controls
+        function initArchiveControls() {
+            const gallery = document.getElementById('archive-gallery-track');
+            const prevBtn = document.getElementById('archive-scroll-left');
+            const nextBtn = document.getElementById('archive-scroll-right');
+            if (!gallery || !prevBtn || !nextBtn) return;
+
+            prevBtn.addEventListener('click', () => {
+                const scrollAmount = Math.max(320, gallery.clientWidth * 0.75);
+                gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+            nextBtn.addEventListener('click', () => {
+                const scrollAmount = Math.max(320, gallery.clientWidth * 0.75);
+                gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
+
         window.addEventListener('scroll', onScrollProgress, { passive: true });
         window.addEventListener('resize', () => {
             updateCanvasDimensions();
@@ -1221,6 +1294,7 @@
             onScrollProgress();
             updateHeaderTheme();
             updateHeroContentVisibility(0);
+            initArchiveControls();
         });
     </script>
 </body>
