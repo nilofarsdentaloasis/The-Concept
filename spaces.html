@@ -1204,6 +1204,10 @@
             const total = cards.length;
             let autoPlayTimer = null;
             let isHovered = false;
+            let isDragging = false;
+            let dragStartX = 0;
+            let dragDistance = 0;
+            let wheelDebounce = false;
 
             // Generate floating glass dots (matching reference layout)
             if (dotsContainer) {
@@ -1238,7 +1242,7 @@
                         card.style.opacity = '1';
                         card.style.filter = 'none';
                         card.style.pointerEvents = 'auto';
-                        card.style.cursor = 'default';
+                        card.style.cursor = 'grab';
                     } else if (diff === -1 || (diff < 0 && Math.abs(diff) === 1)) {
                         // Previous / Left Card (Scaled down peek on the left)
                         card.style.transform = 'translateX(-66%) scale(0.78)';
@@ -1283,7 +1287,8 @@
 
             // Click handling on cards
             cards.forEach((card, idx) => {
-                card.addEventListener('click', () => {
+                card.addEventListener('click', (e) => {
+                    if (Math.abs(dragDistance) > 10) return; // ignore click if dragging
                     if (idx !== currentIndex) {
                         updateSnaps(idx);
                         resetAutoPlay();
@@ -1305,30 +1310,57 @@
                 });
             }
 
-            // Touch / Swipe support
-            let touchStartX = 0;
-            stage.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
+            // Manual Pointer / Mouse drag on photos
+            stage.addEventListener('pointerdown', (e) => {
+                isDragging = true;
                 isHovered = true;
-            }, { passive: true });
+                dragStartX = e.clientX;
+                dragDistance = 0;
+            });
 
-            stage.addEventListener('touchend', (e) => {
-                const diffX = e.changedTouches[0].clientX - touchStartX;
-                if (Math.abs(diffX) > 40) {
-                    if (diffX > 0) updateSnaps(currentIndex - 1);
-                    else updateSnaps(currentIndex + 1);
+            window.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                dragDistance = e.clientX - dragStartX;
+            });
+
+            window.addEventListener('pointerup', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                if (Math.abs(dragDistance) > 30) {
+                    if (dragDistance > 0) {
+                        updateSnaps(currentIndex - 1);
+                    } else {
+                        updateSnaps(currentIndex + 1);
+                    }
+                    resetAutoPlay();
                 }
                 setTimeout(() => { isHovered = false; }, 2000);
+            });
+
+            // Manual Wheel / Trackpad scroll on photos
+            stage.addEventListener('wheel', (e) => {
+                if (wheelDebounce) return;
+                const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+                if (Math.abs(delta) > 20) {
+                    wheelDebounce = true;
+                    if (delta > 0) {
+                        updateSnaps(currentIndex + 1);
+                    } else {
+                        updateSnaps(currentIndex - 1);
+                    }
+                    resetAutoPlay();
+                    setTimeout(() => { wheelDebounce = false; }, 600);
+                }
             }, { passive: true });
 
-            // Subtle auto-advance with hover pause
+            // Auto-advance timer: 3 seconds (3000ms) with hover pause
             function startAutoPlay() {
                 clearInterval(autoPlayTimer);
                 autoPlayTimer = setInterval(() => {
-                    if (!isHovered) {
+                    if (!isHovered && !isDragging) {
                         updateSnaps(currentIndex + 1);
                     }
-                }, 4500);
+                }, 3000);
             }
 
             function resetAutoPlay() {
