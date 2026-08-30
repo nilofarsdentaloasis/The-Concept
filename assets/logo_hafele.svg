@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <!-- H lettermark box -->
+  <rect x="12" y="18" width="44" height="44" rx="3" fill="#C8102E"/>
+  <rect x="20" y="26" width="5" height="28" fill="white"/>
+  <rect x="35" y="26" width="5" height="28" fill="white"/>
+  <rect x="20" y="37" width="20" height="5" fill="white"/>
+  <!-- Text -->
+  <text x="68" y="40" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#1B1917" letter-spacing="1">Häfele</text>
+  <text x="68" y="56" font-family="Arial, sans-serif" font-size="7.5" fill="#C8102E" letter-spacing="2">GERMAN ENGINEERING</text>
+</svg>

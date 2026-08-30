@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <!-- Leaf icon -->
+  <path d="M22 52 C22 38 30 24 44 18 C44 18 44 36 36 46 C32 52 26 54 22 52Z" fill="#2D6A2D"/>
+  <path d="M44 18 C44 18 50 32 46 44 C44 50 40 54 36 54 C36 54 38 44 44 18Z" fill="#4A9940"/>
+  <line x1="36" y1="54" x2="30" y2="60" stroke="#2D6A2D" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="58" y="36" font-family="Georgia, serif" font-size="15" font-weight="700" fill="#1B1917" letter-spacing="0.5">ROYALE</text>
+  <text x="58" y="55" font-family="Georgia, serif" font-size="13" font-weight="400" fill="#4A9940" letter-spacing="2">TOUCHÉ</text>
+  <text x="58" y="68" font-family="Arial, sans-serif" font-size="7" fill="#888" letter-spacing="1.5">BY GREENLAM</text>
+</svg>
