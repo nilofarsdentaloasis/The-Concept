@@ -702,7 +702,7 @@
                     <!-- Project 3: Wide/Panoramic (Spans 12) -->
                     <article id="project-2" class="col-span-12 group cursor-pointer reveal mt-8 md:mt-16">
                         <div class="overflow-hidden bg-surface-container rounded-2xl mb-6 aspect-video md:aspect-[21/9] shadow-xl relative">
-                            <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out">
+                            <video id="monolith-video" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture disableremoteplayback preload="auto" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[800ms] ease-out">
                                 <source src="assets/monolith_house_video.mp4" type="video/mp4">
                                 <source src="15857229-uhd_3840_2160_30fps.mp4" type="video/mp4">
                             </video>
@@ -978,8 +978,62 @@
             reveal();
             updateHeaderTheme();
             initSnapsCoverflow();
+            initMonolithVideoLoop();
+        });
+        window.addEventListener("load", () => {
+            initMonolithVideoLoop();
         });
         window.addEventListener("resize", updateHeaderTheme);
+
+        // Continuous Loop Controller for Monolith House Video
+        function initMonolithVideoLoop() {
+            const video = document.getElementById('monolith-video');
+            if (!video) return;
+
+            video.muted = true;
+            video.defaultMuted = true;
+            video.playsInline = true;
+            video.loop = true;
+
+            const playVideo = () => {
+                video.muted = true;
+                const p = video.play();
+                if (p !== undefined) {
+                    p.catch(() => {});
+                }
+            };
+
+            // Immediate play attempt
+            playVideo();
+
+            // Resume loop if browser pauses or fires ended
+            video.addEventListener('ended', () => {
+                video.currentTime = 0;
+                playVideo();
+            });
+            video.addEventListener('pause', () => {
+                if (isLampOn || !document.body.classList.contains('lamp-off-locked')) {
+                    playVideo();
+                }
+            });
+
+            // Intersection Observer to keep playing smoothly when scrolled into view
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            playVideo();
+                        }
+                    });
+                }, { threshold: 0.1 });
+                observer.observe(video);
+            }
+
+            // Fallback play triggers on user interaction
+            ['click', 'touchstart', 'scroll', 'pointerdown'].forEach(evt => {
+                window.addEventListener(evt, playVideo, { once: true, passive: true });
+            });
+        }
 
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1030,6 +1084,7 @@
                 if (floatingCall) floatingCall.classList.remove('hidden');
                 document.body.classList.remove('lamp-off-locked');
                 initFireflies();
+                setTimeout(initMonolithVideoLoop, 150);
             } else {
                 lampSection.classList.remove('on');
                 if (revealedContent) revealedContent.classList.remove('revealed');
